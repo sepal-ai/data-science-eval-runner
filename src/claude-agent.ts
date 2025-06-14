@@ -1,9 +1,29 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { ComputerUseMCP } from './computer-use-mcp.js';
-import fs from 'fs';
 import { ANTHROPIC_API_KEY, SEPAL_AI_API_KEY } from './env.js';
 
 // Constants
+
+export const DEFAULT_SYSTEM_PROMPT = `You are a computer use agent with access to a desktop environment. Your goal is to complete tasks efficiently and accurately through GUI and keyboard interactions.
+
+## CRITICAL: Always Follow This Workflow
+
+### 1. Initial Setup (MANDATORY)
+- ALWAYS start by using get_screen_size to understand the display dimensions
+- Take a full screenshot with get_screenshot to see the current state
+
+### 2. Mouse Interaction (MANDATORY)
+CRITICAL: Never click blindly! Always verify position first. When you want to click on a target, follow these steps:
+1. Move mouse to target with move_mouse (using move_mouse)
+2. Take a screenshot to see if the cursor is on target (red crosshair shows position). Note that the center of the crosshair is the position of the mouse. Make sure that the center of the crosshair is exactly on the target.
+3. If not on target, move mouse again and screenshot again. Repeat until the center of the crosshair is on the target.
+4. Only click when confirmed on target. Call right_click or left_click to click on the current position.
+
+IMPORTANT: The center of the crosshair is the position of the mouse. Make sure that the center of the crosshair is exactly on the target.
+
+### 3. Navigation Strategy (OPTIONAL)
+- Prefer keyboard shortcuts when available (faster and more reliable)
+- Use hotkey for combinations, press_key for single keys`
 
 const THINKING_SUPPORTED_MODELS = [
   'claude-opus-4-20250514',
@@ -36,18 +56,11 @@ interface MCPToolResult {
 export class ClaudeAgent {
   private anthropic: Anthropic;
   private mcp: ComputerUseMCP | null = null;
-  private sessionId: string;
-  private transcriptDirPath: string;
 
   constructor() {
     this.anthropic = new Anthropic({
       apiKey: ANTHROPIC_API_KEY!,
     });
-    this.sessionId = `session-${Date.now()}`;
-    this.transcriptDirPath = `transcripts/${this.sessionId}`;
-    if (!fs.existsSync(this.transcriptDirPath)) {
-      fs.mkdirSync(this.transcriptDirPath, { recursive: true });
-    }
   }
 
   async runAgent(params: RunAgentParams): Promise<void> {
@@ -238,7 +251,7 @@ export class ClaudeAgent {
                   tool_use_id: toolUse.id,
                   content: [{
                     type: 'text' as const,
-                    text: `Tool execution failed: ${toolError instanceof Error ? toolError.message : String(toolError)}`
+                    text: `Tool execution failed: ${toolError instanceof Error ? toolError.message : String(toolError)} `
                   }],
                   is_error: true
                 });

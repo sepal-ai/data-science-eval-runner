@@ -3,7 +3,7 @@
 import * as readline from 'readline/promises';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { ClaudeAgent } from './claude-agent.js';
+import { ClaudeAgent, DEFAULT_SYSTEM_PROMPT } from './claude-agent.js';
 import { MachineCatalog, SepalUtilities } from './sepal-utilities.js';
 import { SEPAL_AI_API_KEY } from './env.js';
 
@@ -181,6 +181,7 @@ class ClaudeCLI {
 
       var machineSnapshotId = selectedMachine.id;
       var machineShortName = selectedMachine.taskShortName;
+      var machineDescription = selectedMachine.taskDescription;
 
     } catch (error) {
       this.log(`\n❌ Failed to fetch machine catalog: ${error}`, colors.red);
@@ -188,26 +189,58 @@ class ClaudeCLI {
     }
 
     // Task prompt
-    this.log('\nEnter your task prompt (press Enter twice when done):', colors.yellow);
-    const taskPrompt = await this.multiLineInput();
+    this.log('\nDefault task prompt:', colors.gray);
+    this.log(machineDescription, colors.gray);
+    const useDefaultTaskPrompt = (await this.rl.question(
+      `\n${colors.yellow}Use default task prompt shown above?${colors.reset} (Y/n): `
+    )).toLowerCase() !== 'n';
+
+    let taskPrompt: string;
+    if (useDefaultTaskPrompt) {
+      taskPrompt = machineDescription;
+      this.log('Using default task prompt ✓', colors.green);
+    } else {
+      this.log('\nEnter your custom task prompt (press Enter twice when done):', colors.yellow);
+      const taskPromptInput = await this.multiLineInput();
+      taskPrompt = taskPromptInput.trim() || machineDescription; // Fallback to default if empty
+      if (!taskPromptInput.trim()) {
+        this.log('Empty input - falling back to default task prompt:', colors.gray);
+        this.log(machineDescription, colors.gray);
+      }
+    }
 
     // System prompt
-    this.log('\nEnter system prompt (press Enter twice when done, or leave empty for default):', colors.yellow);
-    const systemPromptInput = await this.multiLineInput();
-    const systemPrompt = systemPromptInput.trim() ||
-      'You are Claude, an AI assistant created by Anthropic. You have access to computer use tools that allow you to interact with applications and perform tasks on behalf of the user. Use these tools responsibly and efficiently to complete the requested tasks.';
+    this.log('\nDefault system prompt:', colors.gray);
+    this.log(DEFAULT_SYSTEM_PROMPT, colors.gray);
+    const useDefaultSystemPrompt = (await this.rl.question(
+      `\n${colors.yellow}Use default system prompt shown above?${colors.reset} (Y/n): `
+    )).toLowerCase() !== 'n';
+
+    let systemPrompt: string;
+    if (useDefaultSystemPrompt) {
+      systemPrompt = DEFAULT_SYSTEM_PROMPT;
+      this.log('Using default system prompt ✓', colors.green);
+    } else {
+      this.log('\nEnter your custom system prompt (press Enter twice when done):', colors.yellow);
+      const systemPromptInput = await this.multiLineInput();
+      systemPrompt = systemPromptInput.trim() || DEFAULT_SYSTEM_PROMPT; // Fallback to default if empty
+      if (!systemPromptInput.trim()) {
+        this.log('Empty input - falling back to default system prompt:', colors.gray);
+        this.log(DEFAULT_SYSTEM_PROMPT, colors.gray);
+      }
+    }
 
     // Thinking mode
     const thinkingInput = await this.rl.question(
-      `${colors.yellow}Enable thinking mode?${colors.reset} (y/N): `
+      `${colors.yellow}Enable thinking mode?${colors.reset} (Y/n): `
     );
-    const thinking = thinkingInput.toLowerCase().startsWith('y');
+    const thinking = !thinkingInput.toLowerCase().startsWith('n');
 
     // Max iterations
     const maxIterationsInput = await this.rl.question(
-      `${colors.yellow}Maximum iterations${colors.reset} (default: 50): `
+      `${colors.yellow}Maximum iterations${colors.reset} (default: 500): `
     );
-    const maxIterations = parseInt(maxIterationsInput) || 50;
+    const maxIterations = parseInt(maxIterationsInput) || 500;
 
     // Max tokens
     const maxTokensInput = await this.rl.question(
@@ -303,7 +336,7 @@ class ClaudeCLI {
 
       case 'mcp_server_ready':
         this.log(
-          `[${displayTimestamp}] ✅ MCP server ready! Machine App Name: ${event.appName} Machine ID: ${event.machineId}`,
+          `[${displayTimestamp}] ✅ MCP server ready! Machine Name: ${event.appName} (${event.machineId})`,
           colors.bright + colors.green
         );
         if (event.vncUrl) {
@@ -432,6 +465,7 @@ class ClaudeCLI {
       this.log(`Thinking Mode: ${inputs.thinking ? 'Enabled' : 'Disabled'}`, colors.gray);
       this.log(`Max Iterations: ${inputs.maxIterations}`, colors.gray);
       this.log(`Max Tokens: ${inputs.maxTokens}`, colors.gray);
+      this.log(`Task Prompt: ${inputs.taskPrompt.substring(0, 100)}...`, colors.gray);
       this.log(`System Prompt: ${inputs.systemPrompt.substring(0, 100)}...`, colors.gray);
 
       // Add configuration to transcript

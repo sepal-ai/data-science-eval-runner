@@ -119,26 +119,19 @@ export class ComputerUseMCP {
         },
       },
       {
-        name: "click_mouse",
-        description: "Click mouse at current position or specified coordinates",
+        name: "left_click",
+        description: "Left click mouse at current position",
         inputSchema: {
           type: "object",
-          properties: {
-            x: {
-              type: "number",
-              description: "X coordinate to click at (optional, uses current position if not specified)",
-            },
-            y: {
-              type: "number",
-              description: "Y coordinate to click at (optional, uses current position if not specified)",
-            },
-            button: {
-              type: "string",
-              enum: ["left", "right", "middle"],
-              description: "Mouse button to click (default: left)",
-            },
-          },
-          required: [],
+          properties: {},
+        },
+      },
+      {
+        name: "right_click",
+        description: "Right click mouse at current position",
+        inputSchema: {
+          type: "object",
+          properties: {},
         },
       },
       {
@@ -157,21 +150,35 @@ export class ComputerUseMCP {
       },
       {
         name: "press_key",
-        description: "Press a key or key combination. Supports letters (a-z), numbers (0-9), symbols/punctuation, function keys (f1-f24), modifier keys (ctrl, alt, shift, win, command, option), navigation keys (up, down, left, right, home, end, pageup, pagedown), special keys (enter, escape, tab, space, backspace, delete, insert), etc. Use '+' to separate keys for combinations (e.g., 'ctrl+c', 'shift+v').",
+        description: "Press a single key. Supports letters (a-z), numbers (0-9), symbols/punctuation, function keys (f1-f24), navigation keys (up, down, left, right, home, end, pageup, pagedown), special keys (enter, escape, tab, space, backspace, delete, insert), etc.",
         inputSchema: {
           type: "object",
           properties: {
             key: {
               type: "string",
-              description: "Key or key combination to press (e.g., 'enter', 'ctrl+c', 'cmd+v')",
+              description: "Single key to press (e.g., 'a', 'enter', 'tab', 'f1')",
             },
             presses: {
               type: "number",
-              description: "Number of times to press the key (default: 1, only applies to single keys)",
+              description: "Number of times to press the key (default: 1)",
               minimum: 1,
             },
           },
           required: ["key"],
+        },
+      },
+      {
+        name: "hotkey",
+        description: "Press a key combination. Use '+' to separate keys (e.g., 'ctrl+c', 'shift+v'). Supports modifier keys (ctrl, alt, shift, win, command, option) combined with other keys.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            combination: {
+              type: "string",
+              description: "Key combination to press (e.g., 'ctrl+c', 'cmd+v', 'alt+tab')",
+            },
+          },
+          required: ["combination"],
         },
       },
       {
@@ -236,6 +243,14 @@ export class ComputerUseMCP {
           required: [],
         },
       },
+      {
+        name: "get_screen_size",
+        description: "Get the screen resolution (width and height) in pixels",
+        inputSchema: {
+          type: "object",
+          properties: {},
+        },
+      },
     ];
   }
 
@@ -253,12 +268,16 @@ export class ComputerUseMCP {
         return await this.moveMouse(args as { x: number; y: number });
       case "drag_mouse":
         return await this.dragMouse(args as { x: number; y: number; duration?: number });
-      case "click_mouse":
-        return await this.clickMouse(args as { x?: number; y?: number; button?: string });
+      case "left_click":
+        return await this.leftClick();
+      case "right_click":
+        return await this.rightClick();
       case "type_text":
         return await this.typeText(args as { text: string });
       case "press_key":
         return await this.pressKey(args as { key: string; presses?: number });
+      case "hotkey":
+        return await this.hotkey(args as { combination: string });
       case "get_current_position":
         return await this.getCurrentPosition();
       case "get_system_info":
@@ -267,6 +286,8 @@ export class ComputerUseMCP {
         return await this.getScreenshot(args as { format?: string });
       case "get_regional_screenshot":
         return await this.getRegionalScreenshot(args as { x: number; y: number; width: number; height: number; format?: string });
+      case "get_screen_size":
+        return await this.getScreenSize();
       default:
         throw new McpError(
           ErrorCode.MethodNotFound,
@@ -435,11 +456,8 @@ export class ComputerUseMCP {
     };
   }
 
-  private async clickMouse(args: { x?: number, y?: number, button?: string }) {
-    const data: Record<string, any> = {};
-    if (args.x !== undefined) data['x'] = args.x;
-    if (args.y !== undefined) data['y'] = args.y;
-    if (args.button) data['button'] = args.button;
+  private async leftClick() {
+    const data: Record<string, any> = { button: 'left' };
     const config: AxiosRequestConfig = {
       method: 'post',
       url: `${BASE_URL}/mouse/click`,
@@ -452,12 +470,37 @@ export class ComputerUseMCP {
         ...data,
       }),
     };
-    const response = await this.makeRequest(config, 'click mouse');
+    const response = await this.makeRequest(config, 'left click mouse');
     return {
       content: [
         {
           type: "text",
-          text: `Mouse ${response.data.button} clicked at (${response.data.x}, ${response.data.y})`,
+          text: `Left clicked at (${response.data.x}, ${response.data.y})`,
+        },
+      ],
+    };
+  }
+
+  private async rightClick() {
+    const data: Record<string, any> = { button: 'right' };
+    const config: AxiosRequestConfig = {
+      method: 'post',
+      url: `${BASE_URL}/mouse/click`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.apiKey}`,
+      },
+      data: JSON.stringify({
+        machineId: this.machineId,
+        ...data,
+      }),
+    };
+    const response = await this.makeRequest(config, 'right click mouse');
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Right clicked at (${response.data.x}, ${response.data.y})`,
         },
       ],
     };
@@ -489,6 +532,13 @@ export class ComputerUseMCP {
   }
 
   private async pressKey(args: { key: string, presses?: number }) {
+    // Validate that it's a single key, not a combination
+    if (args.key.includes('+')) {
+      throw new McpError(
+        ErrorCode.InvalidParams,
+        "press_key is for single keys only. Use hotkey tool for key combinations."
+      );
+    }
     const config: AxiosRequestConfig = {
       method: 'post',
       url: `${BASE_URL}/keyboard/press`,
@@ -508,6 +558,38 @@ export class ComputerUseMCP {
         {
           type: "text",
           text: `Pressed key: ${response.data.key} (${response.data.presses} time(s))`
+        },
+      ],
+    }
+  }
+
+  private async hotkey(args: { combination: string }) {
+    // Validate that it's a combination
+    if (!args.combination.includes('+')) {
+      throw new McpError(
+        ErrorCode.InvalidParams,
+        "hotkey is for key combinations only. Use press_key tool for single keys."
+      );
+    }
+    const config: AxiosRequestConfig = {
+      method: 'post',
+      url: `${BASE_URL}/keyboard/press`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.apiKey}`,
+      },
+      data: JSON.stringify({
+        machineId: this.machineId,
+        key: args.combination,
+        presses: 1,
+      }),
+    };
+    const response = await this.makeRequest(config, 'press hotkey');
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Pressed hotkey: ${response.data.key}`
         },
       ],
     }
@@ -643,6 +725,33 @@ export class ComputerUseMCP {
         {
           type: "text",
           text: `Regional screenshot captured. Cursor position: (${response.data.cursor_position.x}, ${response.data.cursor_position.y})`,
+        },
+      ],
+    };
+  }
+
+  private async getScreenSize() {
+    if (!this.machineId) {
+      throw new McpError(
+        ErrorCode.InternalError,
+        "Machine ID is not set. Please call start() first."
+      );
+    }
+    const config: AxiosRequestConfig = {
+      method: 'get',
+      url: `${BASE_URL}/system/info?machineId=${encodeURIComponent(this.machineId)}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.apiKey}`,
+      },
+    };
+    const response = await this.makeRequest(config, 'get screen size');
+    const screenResolution = response.data.screen_resolution;
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Screen size: ${screenResolution.width}x${screenResolution.height}`,
         },
       ],
     };
