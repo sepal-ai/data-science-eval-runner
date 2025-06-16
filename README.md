@@ -116,27 +116,33 @@ Base path: `/api/eval-machines`
 
 ### Machine Management
 
-#### Get All Machines
+#### Machine Catalog
 ```http
-GET /eval-machines
+GET /eval-machines/catalog
 ```
 
-Returns all evaluation machines created by the authenticated user.
+Lists all available machine snapshots/templates.
 
 **Response:**
 ```json
 [
   {
-    "id": "uuid",
-    "appName": "machine-name",
-    "machineId": "fly-machine-id",
-    "status": "running",
-    "createdAt": "2024-01-01T00:00:00Z"
+    "id": "snapshot-uuid",
+    "taskShortName": "login-flow",
+    "taskDescription": "Test user login flow",
+    "machineType": "ubuntu-desktop",
+    "goalState": [{
+      "type": "ods"
+      "absoluteFilePath": "...";
+      "sheetName": "...";
+      "fileContent": "...";
+    }]
   }
 ]
 ```
 
 #### Create Machine
+
 ```http
 POST /eval-machines
 ```
@@ -196,30 +202,8 @@ POST /eval-machines/shutdown
 **Response:**
 ```json
 {
-  "status": "stopped"
+  "status": "success"
 }
-```
-
-#### Machine Catalog
-```http
-GET /eval-machines/catalog
-```
-
-Lists all available machine snapshots/templates.
-
-**Response:**
-```json
-[
-  {
-    "id": "snapshot-uuid",
-    "taskShortName": "login-flow",
-    "taskDescription": "Test user login flow",
-    "machineType": "ubuntu-desktop",
-    "goalState": {
-      "/home/user/status.txt": "logged_in"
-    }
-  }
-]
 ```
 
 ### Goal State Verification
@@ -340,9 +324,10 @@ Returns a base64-encoded PNG screenshot.
 **Response:**
 ```json
 {
-  "screenshot": "data:image/png;base64,...",
-  "cursorX": 500,
-  "cursorY": 300
+   "status": "success",
+   "format": "png",
+   "cursor_position": {"x": 500, "y": 500},
+   "data": f"data:image/png;base64,<img_str>"
 }
 ```
 
@@ -363,28 +348,19 @@ GET /eval-machines/system/info?machineId=<machine-id>
 **Response:**
 ```json
 {
-  "ip": "10.0.0.1",
-  "hostname": "eval-machine",
-  "screenWidth": 1920,
-  "screenHeight": 1080,
-  "cursorX": 960,
-  "cursorY": 540,
-  "activeWindow": "Terminal",
-  "runningApps": ["Terminal", "Firefox", "VS Code"]
-}
-```
-
-#### Health Check
-```http
-GET /eval-machines/healthcheck?machineId=<machine-id>
-```
-
-**Response:**
-```json
-{
-  "status": "healthy",
-  "message": "Machine is responsive",
-  "uptime": 3600
+   "status": "running",
+   "ip_address": "10.0.0.1",
+   "hostname": "eval-machine",
+   "screen_resolution": {
+      "width": 1920,
+      "height": 1080
+   },
+   cursor_position: {
+      "x": 960,
+      "y": 540,
+   },
+   "active_window": "Terminal",
+   "running_apps": ["Terminal", "Firefox", "VS Code"]
 }
 ```
 
