@@ -339,12 +339,6 @@ class ClaudeCLI {
           `[${displayTimestamp}] ✅ MCP server ready! Machine Name: ${event.appName} (${event.machineId})`,
           colors.bright + colors.green
         );
-        if (event.vncUrl) {
-          this.log(
-            `[${displayTimestamp}] 🖥️  View the agent in action at: ${event.vncUrl}`,
-            colors.bright + colors.yellow
-          );
-        }
         // Store the machineId for later use
         if (event.machineId) {
           this.machineId = event.machineId;
