@@ -136,8 +136,8 @@ class ClaudeCLI {
 
     // Model selection
     const model = await this.rl.question(
-      `${colors.yellow}Enter Claude model${colors.reset} (default: claude-sonnet-4-20250514): `
-    ) || 'claude-sonnet-4-20250514';
+      `${colors.yellow}Enter Claude model${colors.reset} (default: claude-opus-4-20250514): `
+    ) || 'claude-opus-4-20250514';
 
     // Get machine catalog
     this.log('\n🔍 Fetching available machines...', colors.yellow);
