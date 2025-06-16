@@ -87,3 +87,470 @@ Configure the MCP server machine type based on your requirements:
 │ - Thinking      │    │ - Event Relay    │    │ - Applications  │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
 ```
+
+---
+
+# Sepal Computer Use API Documentation
+
+This section provides comprehensive documentation for the Evaluation Machines and Agent Evaluation Run APIs from Sepal AI.
+
+## Table of Contents
+
+## Overview
+
+The API provides a comprehensive platform for:
+- Creating and managing virtual evaluation machines
+- Automating UI interactions (mouse, keyboard)
+- Running AI agent evaluations
+- Verifying goal states
+- Capturing screenshots and system information
+
+## Authentication
+
+All endpoints require API token authentication:
+- **Header**: `Authorization: Bearer <API_TOKEN>`
+
+## Evaluation Machines API
+
+Base path: `/api/eval-machines`
+
+### Machine Management
+
+#### Get All Machines
+```http
+GET /eval-machines
+```
+
+Returns all evaluation machines created by the authenticated user.
+
+**Response:**
+```json
+[
+  {
+    "id": "uuid",
+    "appName": "machine-name",
+    "machineId": "fly-machine-id",
+    "status": "running",
+    "createdAt": "2024-01-01T00:00:00Z"
+  }
+]
+```
+
+#### Create Machine
+```http
+POST /eval-machines
+```
+
+Creates a new evaluation machine from a snapshot.
+
+**Request:**
+```json
+{
+  "alias": "my-test-machine",
+  "machine": {
+    "snapshotId": "uuid-of-snapshot",
+    // OR
+    "taskShortName": "task-name"
+  },
+  "machineExpirationDate": "2024-01-02T00:00:00Z"
+}
+```
+
+**Response:**
+```json
+{
+  "machineId": "fly-machine-id",
+  "appName": "my-test-machine-abc123",
+  "vncUrl": "https://vnc.fly.dev/...",
+  "machineExpirationDate": "2024-01-02T00:00:00Z"
+}
+```
+
+#### Get Machine Status
+```http
+GET /eval-machines/status?machineId=<machine-id>
+```
+
+Returns the current status of a specific machine.
+
+**Response:**
+```json
+{
+  "status": "deployed",
+  "appName": "machine-name"
+}
+```
+
+#### Shutdown Machine
+```http
+POST /eval-machines/shutdown
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id"
+}
+```
+
+**Response:**
+```json
+{
+  "status": "stopped"
+}
+```
+
+#### Machine Catalog
+```http
+GET /eval-machines/catalog
+```
+
+Lists all available machine snapshots/templates.
+
+**Response:**
+```json
+[
+  {
+    "id": "snapshot-uuid",
+    "taskShortName": "login-flow",
+    "taskDescription": "Test user login flow",
+    "machineType": "ubuntu-desktop",
+    "goalState": {
+      "/home/user/status.txt": "logged_in"
+    }
+  }
+]
+```
+
+### Goal State Verification
+
+#### Check Goal State
+```http
+POST /eval-machines/goal-state-reached
+```
+
+Verifies if the machine has reached its expected goal state.
+
+**Request:**
+```json
+{
+  "machineId": "machine-id"
+}
+```
+
+**Response:**
+```json
+[
+  {
+    "filePath": "/home/user/status.txt",
+    "goalReached": true,
+    "diffString": "",
+    "diffLength": 0,
+    "note": "File matches expected content"
+  }
+]
+```
+
+### UI Automation
+
+#### Mouse Operations
+
+##### Move Mouse
+```http
+POST /eval-machines/mouse/move
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id",
+  "x": 500,
+  "y": 300
+}
+```
+
+##### Click Mouse
+```http
+POST /eval-machines/mouse/click
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id",
+  "x": 500,
+  "y": 300,
+  "button": "left"  // "left", "right", or "middle"
+}
+```
+
+##### Drag Mouse
+```http
+POST /eval-machines/mouse/drag
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id",
+  "x": 600,
+  "y": 400,
+  "duration": 1000  // milliseconds
+}
+```
+
+#### Keyboard Operations
+
+##### Type Text
+```http
+POST /eval-machines/keyboard/type
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id",
+  "text": "Hello World"
+}
+```
+
+##### Press Key
+```http
+POST /eval-machines/keyboard/press
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id",
+  "key": "Enter",
+  "presses": 1
+}
+```
+
+### Screen Capture
+
+#### Full Screenshot
+```http
+GET /eval-machines/screenshot?machineId=<machine-id>&crosshairs=true
+```
+
+Returns a base64-encoded PNG screenshot.
+
+**Response:**
+```json
+{
+  "screenshot": "data:image/png;base64,...",
+  "cursorX": 500,
+  "cursorY": 300
+}
+```
+
+#### Region Screenshot
+```http
+GET /eval-machines/screenshot/region?machineId=<machine-id>&x=100&y=100&width=400&height=300
+```
+
+Captures a specific region of the screen.
+
+### System Information
+
+#### Get System Info
+```http
+GET /eval-machines/system/info?machineId=<machine-id>
+```
+
+**Response:**
+```json
+{
+  "ip": "10.0.0.1",
+  "hostname": "eval-machine",
+  "screenWidth": 1920,
+  "screenHeight": 1080,
+  "cursorX": 960,
+  "cursorY": 540,
+  "activeWindow": "Terminal",
+  "runningApps": ["Terminal", "Firefox", "VS Code"]
+}
+```
+
+#### Health Check
+```http
+GET /eval-machines/healthcheck?machineId=<machine-id>
+```
+
+**Response:**
+```json
+{
+  "status": "healthy",
+  "message": "Machine is responsive",
+  "uptime": 3600
+}
+```
+
+### File System Operations
+
+#### List Files
+```http
+GET /eval-machines/fs/list?machineId=<machine-id>&path=/home/user
+```
+
+**Response:**
+```json
+{
+  "files": [
+    {
+      "name": "document.txt",
+      "isDirectory": false,
+      "size": 1024,
+      "modifiedAt": "2024-01-01T00:00:00Z"
+    }
+  ]
+}
+```
+
+#### Read File
+```http
+POST /eval-machines/fs/read-file
+```
+
+**Request:**
+```json
+{
+  "machineId": "machine-id",
+  "path": "/home/user/document.txt"
+}
+```
+
+**Response:**
+```json
+{
+  "content": "File content here...",
+  "encoding": "utf-8"  // or "base64" for binary files
+}
+```
+
+## Agent Evaluation Run API
+
+Base path: `/api/agent-eval-runs`
+
+### Start Evaluation Run
+```http
+POST /agent-eval-runs
+```
+
+Starts a new AI agent evaluation on a virtual machine.
+
+**Request:**
+```json
+{
+  "machineSnapshotId": "snapshot-uuid",
+  // OR
+  "machineSnapshotTaskShortName": "login-flow",
+  
+  "agentType": "claude",
+  "agentConfig": {
+    "modelName": "claude-3-sonnet-20240229",
+    "modelApiKey": "sk-...",
+    "taskPrompt": "Complete the login flow",
+    "systemPrompt": "You are a QA tester...",
+    "thinking": true,
+    "maxIterations": 50,
+    "maxTokens": 100000
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "id": "run-uuid"
+}
+```
+
+### Get Evaluation Run Details
+```http
+GET /agent-eval-runs/{id}
+```
+
+Returns comprehensive details about an evaluation run.
+
+**Response:**
+```json
+{
+  "id": "run-uuid",
+  "agentType": "claude",
+  "agentConfig": {
+    "modelName": "claude-3-sonnet-20240229",
+    "thinking": true
+  },
+  "status": "completed",
+  "startedAt": "2024-01-01T00:00:00Z",
+  "completedAt": "2024-01-01T00:10:00Z",
+  "errorMessage": null,
+  "machineSnapshot": {
+    "id": "snapshot-uuid",
+    "taskShortName": "login-flow",
+    "taskDescription": "Test user login flow"
+  },
+  "machineInstance": {
+    "id": "instance-uuid",
+    "appName": "eval-machine-abc123",
+    "machineId": "fly-machine-id",
+    "machineStatus": "running"
+  },
+  "goalStateCheck": [
+    {
+      "filePath": "/home/user/status.txt",
+      "goalReached": true,
+      "diffString": "",
+      "diffLength": 0,
+      "note": "Goal state achieved"
+    }
+  ]
+}
+```
+
+### Get Evaluation Transcript
+```http
+GET /agent-eval-runs/{id}/transcript
+```
+
+Returns the full transcript of agent actions.
+
+**Response:**
+```json
+[
+  {
+    "createdAt": "2024-01-01T00:00:00Z",
+    "id": "step-uuid",
+    "data": {
+      "action": "screenshot",
+      "result": "screenshot-123.png"
+    }
+  },
+  {
+    "createdAt": "2024-01-01T00:00:01Z",
+    "id": "step-uuid-2",
+    "data": {
+      "action": "click",
+      "x": 500,
+      "y": 300
+    }
+  }
+]
+```
+
+### Get Screenshot
+```http
+GET /agent-eval-runs/{id}/images/{imageFileName}
+```
+
+Returns a presigned URL to download screenshots captured during evaluation.
+
+**Response:**
+```json
+{
+  "imageDownloadUrl": "https://storage.example.com/..."
+}
+```
