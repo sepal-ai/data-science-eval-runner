@@ -1,0 +1,29 @@
+{
+  "problem_set": {
+    "owner": "anthropic",
+    "name": "libreoffice-hard1",
+    "description": "Problems that require navigating a LibreOffice spreadsheet to solve a problem",
+    "version": "1.0.0",
+    "created_at": "2025-04-10T00:00:00Z",
+    "metadata": {
+      "category": "computer",
+      "difficulty": "medium"
+    },
+    "problems": [
+      {
+        "image": "libreoffice_hard1",
+        "startup_command": "uv --offline --directory /mcp_server run libreoffice_hard1 mcp",
+        "id": "libreoffice-hard1",
+        "required_tools": [
+          "computer"
+        ],
+        "scratchpad": "allowed",
+        "metadata": {
+          "difficulty": "easy",
+          "task_type": "sheets",
+          "description": "Solve the task to create transaction_data_analysis.ods"
+        }
+      }
+    ]
+  }
+}
