@@ -18,10 +18,6 @@ fi
 
 echo "starting tint2 on display ${DISPLAY}..."
 
-export LIBREOFFICE_ICON=$(find /usr/share/icons -name "libreoffice-calc*.png" | head -1)
-if [ -z "$LIBREOFFICE_ICON" ]; then
-  export LIBREOFFICE_ICON="/usr/share/pixmaps/libreoffice-calc.png"
-fi
 # Start tint2 and capture its stderr
 tint2 -c ${WORKDIR}/image/.config/tint2/tint2rc 2>/tmp/tint2_stderr.log &
 

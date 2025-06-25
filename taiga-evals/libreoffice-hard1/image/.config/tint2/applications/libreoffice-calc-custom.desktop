@@ -4,6 +4,6 @@ Type=Application
 Name=LibreOffice Calc
 Comment=Spreadsheet Application
 Exec=libreoffice --calc
-Icon=libreoffice
+Icon=/usr/share/icons/hicolor/128x128/apps/libreoffice-calc.png
 Terminal=false
 Categories=Office;Spreadsheet;
