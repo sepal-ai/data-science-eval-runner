@@ -67,10 +67,7 @@ async def verify_output_file() -> int:
     
     # Check if output file exists
     if not output_path.exists():
-        print("Output file does not exist")
         return 0
-    
-    print(f"Found output file at {output_path}")
     
     # Create temporary directory for conversion
     temp_dir = Path("/tmp/libreoffice_conversion")
@@ -79,7 +76,6 @@ async def verify_output_file() -> int:
     try:
         # Use libreoffice to convert ODS to CSV
         cmd = f"libreoffice --headless --convert-to csv --outdir {temp_dir} {output_path}"
-        print(f"Running conversion command: {cmd}")
         process = await asyncio.create_subprocess_shell(
             cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -89,21 +85,12 @@ async def verify_output_file() -> int:
         
         # Check if conversion was successful
         if process.returncode != 0:
-            print(f"Failed to convert ODS to CSV: {stderr.decode(errors='replace')}")
             return 0
-        
-        print(f"Conversion successful: {stdout.decode(errors='replace')}")
         
         # Check if the conversion created the expected file
         converted_file = temp_dir / "accounts.csv"
         if not converted_file.exists():
-            print(f"Conversion didn't create expected file at {converted_file}")
-            # Try to list directory contents
-            try:
-                print(f"Files in {temp_dir}: {list(temp_dir.glob('*'))}")
-            except Exception as e:
-                print(f"Error listing directory: {e}")
-            return 0
+          return 0
         
         # Normalize and compare CSV files
         try:
@@ -115,7 +102,6 @@ async def verify_output_file() -> int:
             
             # Calculate score based on diff length
             if diff == "":
-                print("Perfect match! No differences found.")
                 return 1.0  # Perfect match
             else:
                 # Calculate a partial score based on diff length
@@ -123,17 +109,13 @@ async def verify_output_file() -> int:
                 max_diff_length = 1000  # Maximum expected diff length
                 diff_length = len(diff)
                 score = max(0, 1 - (diff_length / max_diff_length))
-                print(f"Differences found. Diff length: {diff_length}, Score: {score}")
-                print(f"Diff details:\n{diff}")
                 return score
         except Exception as e:
-            print(f"Error during comparison: {str(e)}")
             import traceback
             traceback.print_exc()
             return 0
             
     except Exception as e:
-        print(f"Error during verification: {str(e)}")
         import traceback
         traceback.print_exc()
         return 0
@@ -173,18 +155,14 @@ def normalize_csv_data(csv_path: Path) -> list[list[str]]:
                                     normalized_row.append(cell)
                             normalized_data.append(normalized_row)
                     data_read = True
-                    print(f"Successfully read CSV with {encoding} encoding")
                     break
             except UnicodeDecodeError:
-                print(f"Failed to decode with {encoding}, trying next encoding")
                 continue
             except Exception as e:
-                print(f"Error reading CSV with {encoding}: {str(e)}")
                 continue
         
         if not data_read:
             # Last resort: try to read as binary and decode with errors='replace'
-            print("Trying binary read with replacement for invalid characters")
             with open(csv_path, 'rb') as f:
                 content = f.read()
                 text = content.decode('utf-8', errors='replace')
@@ -203,17 +181,10 @@ def normalize_csv_data(csv_path: Path) -> list[list[str]]:
                             else:
                                 normalized_row.append(cell)
                         normalized_data.append(normalized_row)
-                print("Successfully read CSV with binary mode and replacement")
     
     except Exception as e:
-        print(f"Error normalizing CSV data: {str(e)}")
         import traceback
         traceback.print_exc()
-    
-    # Print the normalized data for debugging
-    print(f"Normalized data has {len(normalized_data)} rows")
-    if normalized_data:
-        print(f"First row: {normalized_data[0]}")
     
     return normalized_data
 
@@ -311,15 +282,9 @@ async def setup_problem(
         current_problem = _get_problem(problem_id)
 
         # Run the entrypoint script to initialize the environment
-        try:
-            run_entrypoint_script()
-        except Exception as e:
-            print(f"Error in entrypoint script: {str(e)}")
-            # Continue even if entrypoint script fails, don't block the test
-        
+        run_entrypoint_script()
         return template.replace("<STATEMENT>", current_problem.statement)
     except Exception as e:
-        print(f"Error in setup_problem: {str(e)}")
         import traceback
         traceback.print_exc()
         # Return a simple string instead of potentially propagating a binary error
@@ -343,15 +308,12 @@ async def grade_problem(
         try:
             score = float(await current_problem.solution())  # The answer is collected from the state of the environment
         except Exception as e:
-            print(f"Error in solution function: {str(e)}")
             import traceback
             traceback.print_exc()
             score = 0.0  # Default to zero score if there's an error
         
-        print(f"Final score for problem {problem_id}: {score}")
         return Grade(subscores={"matched_solution": score}, weights={"matched_solution": 1})
     except Exception as e:
-        print(f"Error in grade_problem: {str(e)}")
         import traceback
         traceback.print_exc()
         return Grade(subscores={"matched_solution": 0.0}, weights={"matched_solution": 1})
@@ -362,10 +324,8 @@ def run_entrypoint_script():
     try:
         # Run the entrypoint script
         entrypoint_script = Path("/workdir") / "image" / "entrypoint.sh"
-        print(f"Running entrypoint script: {entrypoint_script}")
         
         if not entrypoint_script.exists():
-            print(f"Warning: Entrypoint script {entrypoint_script} does not exist")
             # Create a mock script for testing purposes
             entrypoint_script.parent.mkdir(exist_ok=True, parents=True)
             with open(entrypoint_script, 'w') as f:
@@ -374,14 +334,9 @@ def run_entrypoint_script():
         
         subprocess.run([str(entrypoint_script)], check=True, env=os.environ.copy())
         
-    except subprocess.SubprocessError as e:
-        print(f"Failed to run entrypoint script: {e}")
-        # Don't raise, just report the error
     except Exception as e:
-        print(f"Unexpected error in run_entrypoint_script: {str(e)}")
         import traceback
         traceback.print_exc()
-        # Don't raise, just report the error
 
 
 def main():
@@ -419,8 +374,6 @@ def main():
         
         # Change to working directory
         os.chdir("/workdir")
-        
-        print("Starting MCP server...")
         
         # Configure MCP with safe encoding settings
         mcp.run(transport="stdio")

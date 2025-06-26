@@ -50,9 +50,4 @@ run_command "su model -c ${WORKDIR}/image/startup/x11vnc_startup.sh"
 run_command "su model -c ${WORKDIR}/image/startup/novnc_startup.sh"
 ### END: Run startup scripts
 
-echo "Starting LibreOffice"
-
 run_command "libreoffice --calc" &
-echo "LibreOffice started"
-
-echo "Entrypoint script completed"

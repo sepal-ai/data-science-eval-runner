@@ -12,11 +12,8 @@ check_tint2_running() {
 
 # Check if tint2 is already running
 if check_tint2_running; then
-    echo "tint2 is already running on display ${DISPLAY}"
     exit 0
 fi
-
-echo "starting tint2 on display ${DISPLAY}..."
 
 # Start tint2 and capture its stderr
 tint2 -c ${WORKDIR}/image/.config/tint2/tint2rc 2>/tmp/tint2_stderr.log &

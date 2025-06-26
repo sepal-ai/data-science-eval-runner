@@ -1,4 +1,5 @@
-echo "starting mutter"
+#!/bin/sh
+
 XDG_SESSION_TYPE=x11 mutter --replace --sm-disable 2>/tmp/mutter_stderr.log &
 
 # Wait for tint2 window properties to appear

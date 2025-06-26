@@ -1,6 +1,4 @@
 #!/bin/bash
-echo "starting vnc"
-
 (x11vnc -display $DISPLAY \
     -forever \
     -shared \

@@ -29,7 +29,6 @@ wait_for_xvfb() {
 
 # Check if Xvfb is already running
 if check_xvfb_running; then
-    echo "Xvfb is already running on display ${DISPLAY}"
     exit 0
 fi
 
@@ -39,8 +38,8 @@ XVFB_PID=$!
 
 # Wait for Xvfb to start
 if wait_for_xvfb; then
-    echo "Xvfb started successfully on display ${DISPLAY}"
-    echo "Xvfb PID: $XVFB_PID"
+    echo "Xvfb started successfully on display ${DISPLAY}" >&2
+    echo "Xvfb PID: $XVFB_PID" >&2
 else
     echo "Xvfb failed to start"
     kill $XVFB_PID

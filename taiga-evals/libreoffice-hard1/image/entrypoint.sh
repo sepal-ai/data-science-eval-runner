@@ -50,16 +50,10 @@ run_command "su model -c ${WORKDIR}/image/startup/x11vnc_startup.sh"
 run_command "su model -c ${WORKDIR}/image/startup/novnc_startup.sh"
 ### END: Run startup scripts
 
-echo "Starting LibreOffice"
-
 input_file_path="${WORKDIR}/image/inputs/transaction_data.ods"
 if [ -f "${input_file_path}" ]; then
-  echo "${input_file_path}..."
   run_command "libreoffice --calc ${input_file_path}" &
-  echo "LibreOffice started"
 else
   echo "Expected input file not found"
   exit 1
 fi
-
-echo "Entrypoint script completed"

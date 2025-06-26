@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "starting noVNC"
 
 # Start noVNC with explicit websocket settings
 /workdir/noVNC/utils/novnc_proxy \
@@ -17,5 +16,3 @@ while [ $timeout -gt 0 ]; do
     sleep 1
     timeout=$((timeout-1))
 done
-
-echo "noVNC started successfully"
