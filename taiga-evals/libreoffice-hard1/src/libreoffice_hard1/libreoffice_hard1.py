@@ -61,8 +61,8 @@ async def verify_output_file() -> int:
     Verifies that the output file exists and matches the expected format.
     Returns a score between 0 and 1 based on the correctness of the output.
     """
-    output_path = Path("/home/model/global_customers_summarized.ods")
-    expected_csv_path = Path("/workdir/image/outputs/global_customers_summarized.csv")
+    output_path = Path("/home/model/transaction_data_analysis.ods")
+    expected_csv_path = Path("/workdir/image/outputs/transaction_data_analysis.csv")
     
     # Check if output file exists
     if not output_path.exists():
@@ -87,7 +87,7 @@ async def verify_output_file() -> int:
             return 0
         
         # Check if the conversion created the expected file
-        converted_file = temp_dir / "global_customers_summarized.csv"
+        converted_file = temp_dir / "transaction_data_analysis.csv"
         if not converted_file.exists():
           return 0
         
@@ -331,7 +331,7 @@ def run_entrypoint_script():
         subprocess.run([str(entrypoint_script)], check=True, env=os.environ.copy())
         
         # Check if input file exists
-        input_file = Path("/workdir/image/inputs/global_customers.ods")
+        input_file = Path("/workdir/image/inputs/transaction_data.ods")
         if not input_file.exists():
             # Create directory structure for testing
             input_file.parent.mkdir(exist_ok=True, parents=True)
