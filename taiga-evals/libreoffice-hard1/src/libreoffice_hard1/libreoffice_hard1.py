@@ -1,9 +1,9 @@
 import asyncio
+import csv
 import json
 import os
 import platform
 import subprocess
-import csv
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -11,6 +11,7 @@ from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from mcp.types import CallToolResult
 from pydantic import Field
+
 from taiga.spec import Grade
 
 # This is part of the reference impl
@@ -25,10 +26,7 @@ if TEST_MODE:
     # If the enviroment performs well with these tools, it will also work with our internal
     # implementation
 
-    from taiga.tools.computer import (
-        Action,
-        ComputerTool,
-    )
+    from taiga.tools.computer import Action, ComputerTool
 
     computer_tool = ComputerTool()
 
@@ -56,6 +54,7 @@ if TEST_MODE:
 
 # This is the contractor provided environment
 # -------------------------------------------
+
 
 async def verify_output_file() -> int:
     """
@@ -280,12 +279,7 @@ async def setup_problem(
 
         current_problem = _get_problem(problem_id)
 
-        # Run the entrypoint script to initialize the environment
-        try:
-            run_entrypoint_script()
-        except Exception as e:
-            # Continue even if entrypoint script fails, don't block the test
-        
+        run_entrypoint_script()
         return template.replace("<STATEMENT>", current_problem.statement)
     except Exception as e:
         import traceback
@@ -314,7 +308,6 @@ async def grade_problem(
             import traceback
             traceback.print_exc()
             score = 0.0  # Default to zero score if there's an error
-        
         return Grade(subscores={"matched_solution": score}, weights={"matched_solution": 1})
     except Exception as e:
         import traceback
@@ -340,6 +333,7 @@ def run_entrypoint_script():
         # Check if input file exists
         input_file = Path("/workdir/image/inputs/transaction_data.ods")
         if not input_file.exists():
+            # Create directory structure for testing
             input_file.parent.mkdir(exist_ok=True, parents=True)
             
         # Create agent directories
@@ -365,10 +359,10 @@ def main():
     """
     try:
         # Configure process to handle errors gracefully
-        import sys
-        import io
         import codecs
-        
+        import io
+        import sys
+
         # Create a custom stdout wrapper that handles binary data gracefully
         class SafeTextIOWrapper(io.TextIOWrapper):
             def write(self, s):

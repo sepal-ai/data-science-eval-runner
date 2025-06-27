@@ -11,7 +11,7 @@
     },
     "problems": [
       {
-        "image": "libreoffice_easy1",
+        "image": "us-east1-docker.pkg.dev/gcp-taiga/sepalai/libreoffice_easy1:0.0.10",
         "startup_command": "uv --offline --directory /mcp_server run libreoffice_easy1 mcp",
         "id": "libreoffice-easy1",
         "required_tools": [
