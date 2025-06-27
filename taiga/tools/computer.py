@@ -184,6 +184,7 @@ class ComputerTool:
         scroll_amount: int | None = None,
         duration: int | float | None = None,
     ):
+        # print("#### ACTION #####", action)
         if action in ("left_mouse_down", "left_mouse_up"):
             if coordinate is not None:
                 raise McpError(ErrorData(code=INVALID_PARAMS, message=f"coordinate is not accepted for {action=}"))
@@ -314,6 +315,7 @@ class ComputerTool:
                 return [ImageContent(data=screenshot_base64, annotations=None, mimeType="image/png", type="image")]
 
         if action == "screenshot":
+            # print("Taking screenshot....")
             cli_result = await self.screenshot()
             return cli_result_to_content_blocks(cli_result)
 

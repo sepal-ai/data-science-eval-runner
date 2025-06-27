@@ -1,9 +1,9 @@
 import asyncio
+import csv
 import json
 import os
 import platform
 import subprocess
-import csv
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -11,7 +11,9 @@ from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from mcp.types import CallToolResult
 from pydantic import Field
+
 from taiga.spec import Grade
+from taiga.tools.computer import ScrollDirection
 
 # This is part of the reference impl
 # ----------------------------------
@@ -25,10 +27,7 @@ if TEST_MODE:
     # If the enviroment performs well with these tools, it will also work with our internal
     # implementation
 
-    from taiga.tools.computer import (
-        Action,
-        ComputerTool,
-    )
+    from taiga.tools.computer import Action, ComputerTool
 
     computer_tool = ComputerTool()
 
@@ -40,9 +39,9 @@ if TEST_MODE:
         coordinate: tuple[int, int] | None = None,
         start_coordinate: tuple[int, int] | None = None,
         duration: int | float | None = None,
-        scroll_direction: str | None = None,
+        scroll_direction: ScrollDirection | None = None,
         scroll_amount: int | None = None,
-    ) -> CallToolResult:
+    ):
         return await computer_tool(
             action=action,
             text=text,
@@ -346,10 +345,10 @@ def main():
     """
     try:
         # Configure process to handle errors gracefully
-        import sys
-        import io
         import codecs
-        
+        import io
+        import sys
+
         # Create a custom stdout wrapper that handles binary data gracefully
         class SafeTextIOWrapper(io.TextIOWrapper):
             def write(self, s):
