@@ -56,7 +56,7 @@ cd data-science-eval-runner
 pip install -e .
 
 # Validate setup
-python -m taiga validate-setup
+python -m ds_runner validate-setup
 ```
 
 ### Set Environment Variables
@@ -69,22 +69,22 @@ export ANTHROPIC_API_KEY="your_anthropic_api_key"
 
 1. **Setup mock data:**
 ```bash
-python -m taiga setup-data
+python -m ds_runner setup-data
 ```
 
 2. **List available problems:**
 ```bash
-python -m taiga list-problems
+python -m ds_runner list-problems
 ```
 
 3. **Run a sample agent:**
 ```bash
-python -m taiga run-agent "sales_analysis_001" "Analyze customer sales data to identify top customers and trends"
+python -m ds_runner run-agent "sales_analysis_001" "Analyze customer sales data to identify top customers and trends"
 ```
 
 4. **Evaluate an agent:**
 ```bash
-python -m taiga eval-agent examples.sample_ds_agent --problem sales_analysis_001 --output results.json
+python -m ds_runner eval-agent examples.sample_ds_agent --problem sales_analysis_001 --output results.json
 ```
 
 ## Evaluation Problems
@@ -143,36 +143,33 @@ scoring:
 
 ```bash
 # Setup and validation
-python -m taiga validate-setup          # Validate system setup
-python -m taiga setup-data              # Generate mock data
-python -m taiga list-problems            # List available problems
+python -m ds_runner validate-setup          # Validate system setup
+python -m ds_runner setup-data              # Generate mock data
+python -m ds_runner list-problems            # List available problems
 
 # Agent execution
-python -m taiga run-agent PROBLEM_ID "PROBLEM_STATEMENT"    # Run agent directly
-python -m taiga eval-agent AGENT --problem PROBLEM_ID       # Evaluate agent
-python -m taiga eval-agent AGENT --suite SUITE_NAME         # Run problem suite
-
-# MCP server
-python -m taiga ds-mcp                   # Start DS agent MCP server
+python -m ds_runner run-agent PROBLEM_ID "PROBLEM_STATEMENT"    # Run agent directly
+python -m ds_runner eval-agent AGENT --problem PROBLEM_ID       # Evaluate agent
+python -m ds_runner eval-agent AGENT --suite SUITE_NAME         # Run problem suite
 ```
 
 ### Evaluation Options
 
 ```bash
 # Single problem evaluation
-python -m taiga eval-agent my_agent --problem sales_analysis_001
+python -m ds_runner eval-agent my_agent --problem sales_analysis_001
 
 # Problem suite evaluation  
-python -m taiga eval-agent my_agent --suite standard
+python -m ds_runner eval-agent my_agent --suite standard
 
 # Custom configuration
-python -m taiga eval-agent my_agent --config custom_config.yaml
+python -m ds_runner eval-agent my_agent --config custom_config.yaml
 
 # Save results
-python -m taiga eval-agent my_agent --suite all --output results.json
+python -m ds_runner eval-agent my_agent --suite all --output results.json
 
 # Verbose output
-python -m taiga eval-agent my_agent --problem sales_analysis_001 --verbose
+python -m ds_runner eval-agent my_agent --problem sales_analysis_001 --verbose
 ```
 
 ## Building Custom Agents
@@ -285,7 +282,7 @@ docker run -it ds-eval /bin/bash
 
 # Run specific evaluation
 docker run -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY ds-eval \
-  python -m taiga eval-agent examples.sample_ds_agent --problem sales_analysis_001
+  python -m ds_runner eval-agent examples.sample_ds_agent --problem sales_analysis_001
 ```
 
 ## Mock Data
@@ -335,7 +332,7 @@ CREATE TABLE transactions (
 │   └── cli_runner.py        # Command line interface
 ├── problems/                # Problem definitions
 ├── examples/                # Sample agents
-├── taiga/                   # Original MCP functionality
+├── ds_runner/               # Main package entry point
 ├── config.yaml             # Default configuration
 ├── Dockerfile              # Evaluation environment
 └── README.md               # This file
@@ -365,7 +362,7 @@ expected_files:
 3. Test with an agent:
 
 ```bash
-python -m taiga eval-agent examples.sample_ds_agent --problem my_new_problem
+python -m ds_runner eval-agent examples.sample_ds_agent --problem my_new_problem
 ```
 
 ### Contributing
@@ -387,7 +384,7 @@ See the `examples/` directory for:
 For issues and questions:
 1. Check the GitHub issues
 2. Review the example agents
-3. Validate your setup with `python -m taiga validate-setup`
+3. Validate your setup with `python -m ds_runner validate-setup`
 
 ## License
 

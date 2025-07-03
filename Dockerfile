@@ -20,7 +20,7 @@ WORKDIR /workdir
 # Copy project files
 COPY pyproject.toml uv.lock ./
 COPY src/ ./src/
-COPY taiga/ ./taiga/
+COPY ds_runner/ ./ds_runner/
 COPY problems/ ./problems/
 COPY config.yaml ./
 
@@ -44,4 +44,4 @@ EXPOSE 8000
 USER model
 
 # Default command
-CMD ["python", "-m", "taiga", "validate-setup"] 
+CMD ["python", "-m", "ds_runner", "validate-setup"] 

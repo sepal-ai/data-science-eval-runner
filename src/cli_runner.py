@@ -12,8 +12,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 import yaml
 
-from .ds_evaluator import DSAgentEvaluator, EvaluationConfig, EvaluationResult
-from .data_generator import setup_database_with_mock_data
+from ds_evaluator import DSAgentEvaluator, EvaluationConfig, EvaluationResult
+from data_generator import setup_database_with_mock_data
 
 
 def load_config(config_path: str) -> Dict[str, Any]:

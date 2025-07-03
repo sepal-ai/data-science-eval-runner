@@ -14,8 +14,16 @@ from dataclasses import dataclass, asdict
 from datetime import datetime
 import pandas as pd
 
-from ds_runner.spec import Grade
-from .data_generator import setup_database_with_mock_data
+from data_generator import setup_database_with_mock_data
+
+
+@dataclass
+class Grade:
+    """Grade for evaluation results."""
+
+    subscores: Dict[str, float]
+    weights: Dict[str, float]
+    metadata: Dict[str, Any] = None
 
 
 @dataclass

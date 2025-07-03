@@ -14,8 +14,24 @@ from mcp.server.fastmcp import FastMCP
 from pydantic import Field
 from anthropic import Anthropic
 
-from taiga.tools.base import ToolResult
-from taiga.spec import Grade
+
+@dataclass
+class ToolResult:
+    """Represents the result of a tool execution."""
+
+    output: str | None = None
+    error: str | None = None
+    base64_image: str | None = None
+    system: str | None = None
+
+
+@dataclass
+class Grade:
+    """Grade for evaluation results."""
+
+    subscores: Dict[str, float]
+    weights: Dict[str, float]
+    metadata: Dict[str, Any] = None
 
 
 @dataclass
@@ -89,6 +105,8 @@ class DSAgent:
             }
         ]
 
+        print(f"🤖 Starting DS Agent: {params.problem_statement[:60]}...")
+
         # Run conversation loop
         result = await self._conversation_loop(
             model=params.model,
@@ -101,13 +119,18 @@ class DSAgent:
         return result
 
     async def _conversation_loop(
-        self, model: str, system_prompt: str, messages: List[Dict[str, Any]], max_iterations: int, max_tokens: int
+        self,
+        model: str,
+        system_prompt: str,
+        messages: List[Dict[str, Any]],
+        max_iterations: int,
+        max_tokens: int,
     ) -> Dict[str, Any]:
         """Main conversation loop handling tool calls and responses."""
 
         for iteration in range(max_iterations):
             try:
-                print(f"\n--- Iteration {iteration + 1} ---")
+                print(f"\n🔄 Iteration {iteration + 1}/{max_iterations}")
 
                 # Get available tools
                 tools = self._get_tool_definitions()
@@ -125,23 +148,35 @@ class DSAgent:
 
                 if not tool_calls:
                     # No more tool calls, agent is done
-                    print("Agent completed - no more tool calls")
+                    print("✅ Agent completed")
                     break
+
+                print(f"🔧 Executing {len(tool_calls)} tool(s): {', '.join([tc['name'] for tc in tool_calls])}")
 
                 # Execute tool calls
                 tool_results = await self._execute_tool_calls(tool_calls)
 
-                # Add tool results to messages
-                for result in tool_results:
-                    messages.append({"role": "user", "content": f"Tool result: {result}"})
+                # Add tool results to messages in proper format
+                tool_result_content = []
+                for i, result in enumerate(tool_results):
+                    if i < len(tool_calls):
+                        tool_result_content.append(
+                            {"type": "tool_result", "tool_use_id": tool_calls[i]["id"], "content": result}
+                        )
+
+                if tool_result_content:
+                    messages.append({"role": "user", "content": tool_result_content})
 
                 # Check if we should continue
                 if iteration == max_iterations - 1:
-                    print("Reached maximum iterations")
+                    print("⏹️ Reached maximum iterations")
                     break
 
             except Exception as e:
-                print(f"Error in iteration {iteration + 1}: {e}")
+                print(f"❌ Error in iteration {iteration + 1}: {e}")
+                import traceback
+
+                traceback.print_exc()
                 return {"success": False, "error": str(e), "messages": messages, "iterations": iteration + 1}
 
         return {
@@ -161,10 +196,9 @@ class DSAgent:
     ) -> Any:
         """Make API call to Claude with tools."""
         try:
-            response = await self.anthropic.messages.create(
+            return self.anthropic.messages.create(
                 model=model, system=system_prompt, messages=messages, tools=tools, max_tokens=max_tokens
             )
-            return response
         except Exception as e:
             raise Exception(f"Claude API call failed: {e}")
 
@@ -189,7 +223,7 @@ class DSAgent:
             tool_name = tool_call["name"]
             tool_input = tool_call["input"]
 
-            print(f"Executing tool: {tool_name} with input: {tool_input}")
+            print(f"  → {tool_name}({', '.join(f'{k}={v}' for k, v in tool_input.items())})")
 
             try:
                 if tool_name == "write_file":
