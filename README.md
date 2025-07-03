@@ -1,532 +1,394 @@
-# Sepal AI Claude Agent Evaluation
+# Data Science Agent Evaluation System
 
-This is an example repo on how to use Sepal AI's computer-use eval framework. 
-
-## Features
-
-- **Claude Integration**: Uses Anthropic's Claude models with advanced reasoning capabilities
-- **Computer Use**: MCP (Model Context Protocol) integration for computer interaction using Sepal AI's APIs
-- **Flexible Configuration**: Configurable model, machine type, and execution parameters
-- **Real-time CLI**: CLI for running agent eval locally
-
-## Prerequisites
-
-- **Node.js**
-- **npm**
-- **API Keys**: 
-  - Anthropic API key (for Claude access)
-  - Sepal AI API key (for MCP computer-use capabilities)
-
-## Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/sepal-ai/agent-eval-claude.git
-   cd agent-eval-claude
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Set up environment variables**:
-   Create a `.env.local` file in the project root:
-   ```bash
-   touch .env.local
-   ```
-
-4. **Configure your API keys**:
-   Add the following to your `.env.local` file:
-   ```env
-   ANTHROPIC_API_KEY=<your-anthropic-key-here>
-   SEPAL_AI_API_KEY=<your-sepal-key-here>
-   ```
-
-## Usage
-
-### CLI
-Run the CLI to test out the agent:
-```bash
-npm run run-agent-eval
-```
-
-## Configuration
-
-The agent accepts various configuration parameters:
-
-### Supported Models
-- `claude-opus-4-20250514` (supports thinking)
-- `claude-sonnet-4-20250514` (supports thinking)  
-- `claude-3-7-sonnet-20250219` (supports thinking)
-- Other Claude models (without thinking capabilities)
-
-### Machine Types
-Configure the MCP server machine type based on your requirements:
-- libreoffice (open-source Excel-alternative)
-- appflowy (open-source Notion-alternative)
-- firefox
-
-### Parameters
-- **model**: Claude model to use
-- **machineType**: MCP server machine configuration
-- **taskPrompt**: The task description for the agent
-- **systemPrompt**: System-level instructions
-- **thinking**: Enable thinking for supported models
-- **maxIterations**: Maximum conversation iterations
-- **maxTokens**: Maximum tokens per request
-
-## Architecture
-
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Claude API    │    │   Claude Agent   │    │   MCP Server    │
-│                 │◄──►│                  │◄──►│  (Computer Use) │
-│ - Text Gen      │    │ - Conversation   │    │ - Screenshots   │
-│ - Tool Use      │    │ - Tool Execution │    │ - Mouse/Keys    │
-│ - Thinking      │    │ - Event Relay    │    │ - Applications  │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-```
-
----
-
-# Sepal Computer Use API Documentation
-
-This section provides comprehensive documentation for the Evaluation Machines and Agent Evaluation Run APIs from Sepal AI.
-
-## Table of Contents
+A comprehensive evaluation framework for data science agents, featuring a restricted action space for analytical tasks, mock data generation, and automated scoring.
 
 ## Overview
 
-The API provides a comprehensive platform for:
-- Creating and managing virtual evaluation machines
-- Automating UI interactions (mouse, keyboard)
-- Running AI agent evaluations
-- Verifying goal states
-- Capturing screenshots and system information
+This system evaluates data science agents on their ability to:
+- Explore and understand datasets
+- Perform SQL-based data analysis
+- Generate insights and visualizations
+- Create well-documented code and reports
+- Solve real-world analytical problems
 
-## Authentication
+## System Architecture
 
-All endpoints require API token authentication:
-- **Header**: `Authorization: Bearer <API_TOKEN>`
+### Core Components
 
-## Evaluation Machines API
+1. **DSAgent** - Main agent interface with restricted action space:
+   - `write_file(path, content)` - Write code/analysis files
+   - `list_tables()` - Discover available datasets
+   - `describe_table(table_name)` - Get schema and basic stats
+   - `read_table(table_name, limit=None)` - Sample or read full table
+   - `execute_sql(query)` - Run SQL queries on datasets
 
-Base path: `/api/eval-machines`
+2. **DSAgentEvaluator** - Orchestrates evaluation and scoring:
+   - Problem environment setup
+   - Agent execution monitoring
+   - Automated scoring with rubrics
+   - Result validation and cleanup
 
-### Machine Management
+3. **Mock Data Generator** - Creates realistic synthetic datasets:
+   - Customer/user data with demographics
+   - Sales/transaction data for e-commerce analysis
+   - Time series data with patterns
+   - Text data (reviews, comments)
+   - Geospatial location data
 
-#### Machine Catalog
-```http
-GET /eval-machines/catalog
+4. **Docker Environment** - Containerized execution for security and consistency
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.11+
+- Docker
+- Anthropic API key for Claude
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd data-science-eval-runner
+
+# Install dependencies
+pip install -e .
+
+# Validate setup
+python -m taiga validate-setup
 ```
 
-Lists all available machine snapshots/templates.
+### Set Environment Variables
 
-**Response:**
-```json
-[
-  {
-    "id": "snapshot-uuid",
-    "taskShortName": "login-flow",
-    "taskDescription": "Test user login flow",
-    "machineType": "ubuntu-desktop",
-    "goalState": [{
-      "type": "ods"
-      "absoluteFilePath": "...";
-      "sheetName": "...";
-      "fileContent": "...";
-    }]
-  }
-]
+```bash
+export ANTHROPIC_API_KEY="your_anthropic_api_key"
 ```
 
-#### Create Machine
+### Basic Usage
 
-```http
-POST /eval-machines
+1. **Setup mock data:**
+```bash
+python -m taiga setup-data
 ```
 
-Creates a new evaluation machine from a snapshot.
-
-**Request:**
-```json
-{
-  "alias": "my-test-machine",
-  "machine": {
-    "snapshotId": "uuid-of-snapshot",
-    // OR
-    "taskShortName": "task-name"
-  },
-  "machineExpirationDate": "2024-01-02T00:00:00Z"
-}
+2. **List available problems:**
+```bash
+python -m taiga list-problems
 ```
 
-**Response:**
-```json
-{
-  "machineId": "fly-machine-id",
-  "appName": "my-test-machine-abc123",
-  "vncUrl": "https://vnc.fly.dev/...",
-  "machineExpirationDate": "2024-01-02T00:00:00Z"
-}
+3. **Run a sample agent:**
+```bash
+python -m taiga run-agent "sales_analysis_001" "Analyze customer sales data to identify top customers and trends"
 ```
 
-#### Get Machine Status
-```http
-GET /eval-machines/status?machineId=<machine-id>
+4. **Evaluate an agent:**
+```bash
+python -m taiga eval-agent examples.sample_ds_agent --problem sales_analysis_001 --output results.json
 ```
 
-Returns the current status of a specific machine.
+## Evaluation Problems
 
-**Response:**
-```json
-{
-  "status": "deployed",
-  "appName": "machine-name"
-}
+### Available Problem Types
+
+1. **sales_analysis_001** (Easy)
+   - Exploratory data analysis
+   - Customer transaction analysis
+   - Sales trend identification
+
+2. **customer_segmentation_002** (Medium)
+   - RFM analysis
+   - Clustering algorithms
+   - Customer behavior segmentation
+
+3. **time_series_forecast_003** (Hard)
+   - Time series modeling
+   - Sales forecasting
+   - Trend and seasonality analysis
+
+### Problem Definition Format
+
+Problems are defined in YAML files in the `problems/` directory:
+
+```yaml
+id: sales_analysis_001
+title: "Customer Sales Analysis"
+description: "Analyze customer transaction data to identify top customers and sales trends"
+difficulty: "easy"
+category: "exploratory_data_analysis"
+
+problem_statement: |
+  Your task is to:
+  1. Explore the available datasets
+  2. Identify the top 10 customers by total purchase amount
+  3. Analyze monthly sales trends
+  4. Create a summary report
+
+expected_files:
+  - "analysis.py"
+  - "top_customers.csv" 
+  - "monthly_sales.csv"
+  - "report.md"
+
+scoring:
+  correctness: 0.4
+  methodology: 0.3
+  code_quality: 0.15
+  completeness: 0.15
 ```
 
-#### Shutdown Machine
-```http
-POST /eval-machines/shutdown
+## Command Line Interface
+
+### Main Commands
+
+```bash
+# Setup and validation
+python -m taiga validate-setup          # Validate system setup
+python -m taiga setup-data              # Generate mock data
+python -m taiga list-problems            # List available problems
+
+# Agent execution
+python -m taiga run-agent PROBLEM_ID "PROBLEM_STATEMENT"    # Run agent directly
+python -m taiga eval-agent AGENT --problem PROBLEM_ID       # Evaluate agent
+python -m taiga eval-agent AGENT --suite SUITE_NAME         # Run problem suite
+
+# MCP server
+python -m taiga ds-mcp                   # Start DS agent MCP server
 ```
 
-**Request:**
-```json
-{
-  "machineId": "machine-id"
-}
+### Evaluation Options
+
+```bash
+# Single problem evaluation
+python -m taiga eval-agent my_agent --problem sales_analysis_001
+
+# Problem suite evaluation  
+python -m taiga eval-agent my_agent --suite standard
+
+# Custom configuration
+python -m taiga eval-agent my_agent --config custom_config.yaml
+
+# Save results
+python -m taiga eval-agent my_agent --suite all --output results.json
+
+# Verbose output
+python -m taiga eval-agent my_agent --problem sales_analysis_001 --verbose
 ```
 
-**Response:**
-```json
-{
-  "status": "success"
-}
+## Building Custom Agents
+
+### Basic Agent Structure
+
+```python
+import asyncio
+from src.ds_agent import DSAgent, RunAgentParams
+
+class MyDSAgent:
+    def __init__(self, db_path="/workdir/data.db"):
+        self.agent = DSAgent(db_path)
+    
+    async def solve_problem(self, problem_statement: str):
+        # 1. Explore data
+        tables = await self.agent.list_tables()
+        
+        # 2. Analyze specific tables
+        customers = await self.agent.describe_table("customers")
+        
+        # 3. Run SQL queries
+        query = "SELECT COUNT(*) FROM customers"
+        result = await self.agent.execute_sql(query)
+        
+        # 4. Write analysis files
+        code = "# Analysis code here"
+        await self.agent.write_file("analysis.py", code)
+        
+        return {"success": True}
 ```
 
-### Goal State Verification
+### Agent with Claude Integration
 
-#### Check Goal State
-```http
-POST /eval-machines/goal-state-reached
+```python
+from src.ds_agent import DSAgent, RunAgentParams
+
+# Create agent with conversation loop
+agent = DSAgent()
+
+# Run with Claude integration
+params = RunAgentParams(
+    problem_id="sales_analysis_001",
+    problem_statement="Analyze sales data...",
+    model="claude-3-5-sonnet-20241022",
+    max_iterations=10
+)
+
+result = await agent.run_agent(params)
 ```
 
-Verifies if the machine has reached its expected goal state.
+## Scoring System
 
-**Request:**
-```json
-{
-  "machineId": "machine-id"
-}
+### Rubric Categories
+
+- **Correctness (40%)** - Accuracy of analysis and results
+- **Methodology (30%)** - Appropriateness of approach and techniques  
+- **Code Quality (15%)** - Readability, efficiency, best practices
+- **Completeness (15%)** - Thoroughness of analysis and documentation
+
+### Scoring Levels
+
+- **Excellent (90-100%)** - Exceeds expectations, production-ready
+- **Good (70-89%)** - Meets requirements with minor issues
+- **Satisfactory (50-69%)** - Adequate but needs improvement  
+- **Poor (0-49%)** - Significant issues or incomplete
+
+## Configuration
+
+### config.yaml
+
+```yaml
+# Evaluation settings
+timeout_seconds: 600
+max_memory_mb: 2048
+max_cpu_cores: 2.0
+
+# Agent settings  
+model: "claude-3-5-sonnet-20241022"
+max_iterations: 15
+max_tokens: 8192
+
+# Problem suites
+suites:
+  basic: ["sales_analysis_001"]
+  standard: ["sales_analysis_001", "customer_segmentation_002"]
+  advanced: ["sales_analysis_001", "customer_segmentation_002", "time_series_forecast_003"]
+
+# Scoring rubric
+scoring:
+  correctness_weight: 0.4
+  methodology_weight: 0.3  
+  code_quality_weight: 0.15
+  completeness_weight: 0.15
 ```
 
-**Response:**
-```json
-[
-  {
-    "filePath": "/home/user/status.txt",
-    "goalReached": true,
-    "diffString": "",
-    "diffLength": 0,
-    "note": "File matches expected content"
-  }
-]
+## Docker Usage
+
+### Build and Run
+
+```bash
+# Build the evaluation environment
+docker build -t ds-eval .
+
+# Run with data volume
+docker run -v $(pwd)/data:/workdir/data ds-eval
+
+# Interactive mode
+docker run -it ds-eval /bin/bash
+
+# Run specific evaluation
+docker run -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY ds-eval \
+  python -m taiga eval-agent examples.sample_ds_agent --problem sales_analysis_001
 ```
 
-### UI Automation
+## Mock Data
 
-#### Mouse Operations
+The system generates realistic synthetic datasets including:
 
-##### Move Mouse
-```http
-POST /eval-machines/mouse/move
+- **Customers** (1,000 records) - Demographics, registration info, account status
+- **Transactions** (5,000 records) - Purchase history, amounts, payment methods
+- **Time Series** (2,000 points) - Metrics with daily/seasonal patterns
+- **Reviews** (1,500 records) - Product reviews with sentiment
+- **Locations** (300 records) - Geospatial data for stores/warehouses
+
+### Database Schema
+
+```sql
+-- Customers table
+CREATE TABLE customers (
+    customer_id VARCHAR,
+    first_name VARCHAR,
+    last_name VARCHAR,
+    email VARCHAR,
+    registration_date DATE,
+    lifetime_value DECIMAL,
+    -- ... more columns
+);
+
+-- Transactions table  
+CREATE TABLE transactions (
+    transaction_id VARCHAR,
+    customer_id VARCHAR,
+    transaction_date TIMESTAMP,
+    total_amount DECIMAL,
+    order_status VARCHAR,
+    -- ... more columns
+);
 ```
 
-**Request:**
-```json
-{
-  "machineId": "machine-id",
-  "x": 500,
-  "y": 300
-}
+## Development
+
+### Project Structure
+
+```
+├── src/
+│   ├── ds_agent.py          # Core agent with conversation loop
+│   ├── data_generator.py    # Mock data generation
+│   ├── ds_evaluator.py      # Evaluation orchestration
+│   └── cli_runner.py        # Command line interface
+├── problems/                # Problem definitions
+├── examples/                # Sample agents
+├── taiga/                   # Original MCP functionality
+├── config.yaml             # Default configuration
+├── Dockerfile              # Evaluation environment
+└── README.md               # This file
 ```
 
-##### Click Mouse
-```http
-POST /eval-machines/mouse/click
+### Adding New Problems
+
+1. Create a YAML file in `problems/`:
+
+```yaml
+id: my_new_problem
+title: "My Analysis Problem"
+description: "Solve this analytical challenge"
+difficulty: "medium"
+category: "data_analysis"
+
+problem_statement: |
+  Your analytical task here...
+
+expected_files:
+  - "solution.py"
+  - "results.csv"
 ```
 
-**Request:**
-```json
-{
-  "machineId": "machine-id",
-  "x": 500,
-  "y": 300,
-  "button": "left"  // "left", "right", or "middle"
-}
+2. Add to a problem suite in `config.yaml`
+
+3. Test with an agent:
+
+```bash
+python -m taiga eval-agent examples.sample_ds_agent --problem my_new_problem
 ```
 
-##### Drag Mouse
-```http
-POST /eval-machines/mouse/drag
-```
+### Contributing
 
-**Request:**
-```json
-{
-  "machineId": "machine-id",
-  "x": 600,
-  "y": 400,
-  "duration": 1000  // milliseconds
-}
-```
+1. Fork the repository
+2. Create a feature branch
+3. Add tests for new functionality
+4. Submit a pull request
 
-#### Keyboard Operations
+## Examples
 
-##### Type Text
-```http
-POST /eval-machines/keyboard/type
-```
+See the `examples/` directory for:
+- `sample_ds_agent.py` - Basic agent demonstrating the tool usage
+- Advanced agent patterns and techniques
+- Problem-specific solution approaches
 
-**Request:**
-```json
-{
-  "machineId": "machine-id",
-  "text": "Hello World"
-}
-```
+## Support
 
-##### Press Key
-```http
-POST /eval-machines/keyboard/press
-```
+For issues and questions:
+1. Check the GitHub issues
+2. Review the example agents
+3. Validate your setup with `python -m taiga validate-setup`
 
-**Request:**
-```json
-{
-  "machineId": "machine-id",
-  "key": "Enter",
-  "presses": 1
-}
-```
+## License
 
-### Screen Capture
-
-#### Full Screenshot
-```http
-GET /eval-machines/screenshot?machineId=<machine-id>&crosshairs=true
-```
-
-Returns a base64-encoded PNG screenshot.
-
-**Response:**
-```json
-{
-   "status": "success",
-   "format": "png",
-   "cursor_position": {"x": 500, "y": 500},
-   "data": f"data:image/png;base64,<img_str>"
-}
-```
-
-#### Region Screenshot
-```http
-GET /eval-machines/screenshot/region?machineId=<machine-id>&x=100&y=100&width=400&height=300
-```
-
-Captures a specific region of the screen.
-
-### System Information
-
-#### Get System Info
-```http
-GET /eval-machines/system/info?machineId=<machine-id>
-```
-
-**Response:**
-```json
-{
-   "status": "running",
-   "ip_address": "10.0.0.1",
-   "hostname": "eval-machine",
-   "screen_resolution": {
-      "width": 1920,
-      "height": 1080
-   },
-   cursor_position: {
-      "x": 960,
-      "y": 540,
-   },
-   "active_window": "Terminal",
-   "running_apps": ["Terminal", "Firefox", "VS Code"]
-}
-```
-
-### File System Operations
-
-#### List Files
-```http
-GET /eval-machines/fs/list?machineId=<machine-id>&path=/home/user
-```
-
-**Response:**
-```json
-{
-  "files": [
-    {
-      "name": "document.txt",
-      "isDirectory": false,
-      "size": 1024,
-      "modifiedAt": "2024-01-01T00:00:00Z"
-    }
-  ]
-}
-```
-
-#### Read File
-```http
-POST /eval-machines/fs/read-file
-```
-
-**Request:**
-```json
-{
-  "machineId": "machine-id",
-  "path": "/home/user/document.txt"
-}
-```
-
-**Response:**
-```json
-{
-  "content": "File content here...",
-  "encoding": "utf-8"  // or "base64" for binary files
-}
-```
-
-## Agent Evaluation Run API
-
-Base path: `/api/agent-eval-runs`
-
-### Start Evaluation Run
-```http
-POST /agent-eval-runs
-```
-
-Starts a new AI agent evaluation on a virtual machine.
-
-**Request:**
-```json
-{
-  "machineSnapshotId": "snapshot-uuid",
-  // OR
-  "machineSnapshotTaskShortName": "login-flow",
-  
-  "agentType": "claude",
-  "agentConfig": {
-    "modelName": "claude-3-sonnet-20240229",
-    "modelApiKey": "sk-...",
-    "taskPrompt": "Complete the login flow",
-    "systemPrompt": "You are a QA tester...",
-    "thinking": true,
-    "maxIterations": 50,
-    "maxTokens": 100000
-  }
-}
-```
-
-**Response:**
-```json
-{
-  "id": "run-uuid"
-}
-```
-
-### Get Evaluation Run Details
-```http
-GET /agent-eval-runs/{id}
-```
-
-Returns comprehensive details about an evaluation run.
-
-**Response:**
-```json
-{
-  "id": "run-uuid",
-  "agentType": "claude",
-  "agentConfig": {
-    "modelName": "claude-3-sonnet-20240229",
-    "thinking": true
-  },
-  "status": "completed",
-  "startedAt": "2024-01-01T00:00:00Z",
-  "completedAt": "2024-01-01T00:10:00Z",
-  "errorMessage": null,
-  "machineSnapshot": {
-    "id": "snapshot-uuid",
-    "taskShortName": "login-flow",
-    "taskDescription": "Test user login flow"
-  },
-  "machineInstance": {
-    "id": "instance-uuid",
-    "appName": "eval-machine-abc123",
-    "machineId": "fly-machine-id",
-    "machineStatus": "running"
-  },
-  "goalStateCheck": [
-    {
-      "filePath": "/home/user/status.txt",
-      "goalReached": true,
-      "diffString": "",
-      "diffLength": 0,
-      "note": "Goal state achieved"
-    }
-  ]
-}
-```
-
-### Get Evaluation Transcript
-```http
-GET /agent-eval-runs/{id}/transcript
-```
-
-Returns the full transcript of agent actions.
-
-**Response:**
-```json
-[
-  {
-    "createdAt": "2024-01-01T00:00:00Z",
-    "id": "step-uuid",
-    "data": {
-      "action": "screenshot",
-      "result": "screenshot-123.png"
-    }
-  },
-  {
-    "createdAt": "2024-01-01T00:00:01Z",
-    "id": "step-uuid-2",
-    "data": {
-      "action": "click",
-      "x": 500,
-      "y": 300
-    }
-  }
-]
-```
-
-### Get Screenshot
-```http
-GET /agent-eval-runs/{id}/images/{imageFileName}
-```
-
-Returns a presigned URL to download screenshots captured during evaluation.
-
-**Response:**
-```json
-{
-  "imageDownloadUrl": "https://storage.example.com/..."
-}
-```
+[Your license here]

@@ -1,0 +1,52 @@
+id: customer_segmentation_002
+title: "Customer Segmentation Analysis"
+description: "Segment customers based on their purchasing behavior and demographics"
+difficulty: "medium"
+category: "machine_learning"
+tags: ["segmentation", "clustering", "customer_behavior"]
+
+problem_statement: |
+  Use the customer and transaction data to perform customer segmentation analysis.
+  
+  Your tasks:
+  1. Create customer features from transaction data (RFM analysis)
+     - Recency: Days since last purchase
+     - Frequency: Number of transactions
+     - Monetary: Total amount spent
+  2. Add demographic features from customer data
+  3. Perform clustering analysis to identify customer segments
+  4. Analyze and interpret the segments
+  5. Provide business recommendations
+  
+  Expected deliverables:
+  - Feature engineering script (feature_engineering.py)
+  - Clustering analysis script (clustering_analysis.py)
+  - Customer segments data (customer_segments.csv)
+  - Segment analysis report (segment_report.md)
+
+expected_files:
+  - "feature_engineering.py"
+  - "clustering_analysis.py"
+  - "customer_segments.csv"
+  - "segment_report.md"
+
+scoring:
+  correctness: 0.35
+  methodology: 0.35
+  code_quality: 0.15
+  completeness: 0.15
+
+hints:
+  - "Calculate RFM metrics by aggregating transaction data per customer"
+  - "Consider normalizing features before clustering"
+  - "Use appropriate clustering algorithms (K-means, hierarchical)"
+  - "Validate your clusters and choose optimal number of segments"
+
+validation_criteria:
+  - "RFM features should be properly calculated"
+  - "Clustering should produce meaningful segments"
+  - "Customer segments CSV should include cluster assignments"
+  - "Report should provide clear business insights"
+
+estimated_time_minutes: 60
+timeout_seconds: 900 

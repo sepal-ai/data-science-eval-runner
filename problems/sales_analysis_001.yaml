@@ -1,0 +1,47 @@
+id: sales_analysis_001
+title: "Customer Sales Analysis"
+description: "Analyze customer transaction data to identify top customers and sales trends"
+difficulty: "easy"
+category: "exploratory_data_analysis"
+tags: ["sales", "customers", "aggregation"]
+
+problem_statement: |
+  You have access to a database with customer and transaction data. Your task is to:
+  
+  1. Explore the available datasets
+  2. Identify the top 10 customers by total purchase amount
+  3. Analyze monthly sales trends over the past year
+  4. Create a summary report with your findings
+  
+  Expected deliverables:
+  - Python script with your analysis (analysis.py)
+  - CSV file with top 10 customers (top_customers.csv)
+  - Monthly sales summary (monthly_sales.csv)
+  - Brief report with insights (report.md)
+
+expected_files:
+  - "analysis.py"
+  - "top_customers.csv"
+  - "monthly_sales.csv"
+  - "report.md"
+
+scoring:
+  correctness: 0.4
+  methodology: 0.3
+  code_quality: 0.15
+  completeness: 0.15
+
+hints:
+  - "Start by exploring the database with list_tables() and describe_table()"
+  - "Use SQL queries to aggregate transaction data by customer"
+  - "Consider using date functions to group transactions by month"
+  - "Don't forget to filter for completed transactions only"
+
+validation_criteria:
+  - "Top customers CSV should have customer_id, total_amount columns"
+  - "Monthly sales should show clear time series data"
+  - "Analysis script should be well-commented and executable"
+  - "Report should contain actionable insights"
+
+estimated_time_minutes: 30
+timeout_seconds: 600 

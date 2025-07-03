@@ -1,0 +1,65 @@
+# Data Science Agent Evaluation Configuration
+
+# Evaluation settings
+timeout_seconds: 600  # 10 minutes default timeout
+max_memory_mb: 2048   # 2GB memory limit
+max_cpu_cores: 2.0    # CPU core limit
+workdir: "/workdir"   # Working directory for agent
+database_path: "/workdir/data.db"  # DuckDB database path
+
+# Agent settings
+model: "claude-3-5-sonnet-20241022"
+max_iterations: 15
+max_tokens: 8192
+
+# Problem suites
+suites:
+  basic:
+    - "sales_analysis_001"
+  
+  standard:
+    - "sales_analysis_001"
+    - "customer_segmentation_002"
+  
+  advanced:
+    - "sales_analysis_001"
+    - "customer_segmentation_002"
+    - "time_series_forecast_003"
+  
+  all:
+    - "sales_analysis_001"
+    - "customer_segmentation_002"
+    - "time_series_forecast_003"
+
+# Scoring rubric defaults
+scoring:
+  correctness_weight: 0.4
+  methodology_weight: 0.3
+  code_quality_weight: 0.15
+  completeness_weight: 0.15
+
+# Output settings
+output_formats:
+  - "json"
+  - "csv"
+  - "html"
+
+# Docker settings (for containerized evaluation)
+docker:
+  image: "python:3.11-slim"
+  network_mode: "none"  # No network access for security
+  remove_after_run: true
+
+# Data generation settings
+data_generation:
+  seed: 42
+  customers_count: 1000
+  transactions_count: 5000
+  time_series_points: 2000
+  reviews_count: 1500
+  locations_count: 300
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s" 
