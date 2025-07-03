@@ -2,7 +2,6 @@
 Data Science Agent with restricted action space for analytical tasks.
 """
 
-import asyncio
 import os
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,9 +9,9 @@ from typing import Any, Dict, List, Optional
 
 import duckdb
 import pandas as pd
+from anthropic import Anthropic
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
-from anthropic import Anthropic
 
 
 @dataclass
@@ -55,8 +54,8 @@ class RunAgentParams:
     system_prompt: Optional[str] = None
     max_iterations: int = 10
     max_tokens: int = 4096
-    database_path: str = "/workdir/data.db"
-    workdir: str = "/workdir"
+    database_path: str = "./data.db"
+    workdir: str = "./workdir"
 
 
 class DSAgent:
@@ -71,7 +70,7 @@ class DSAgent:
     - execute_sql(query) - Run SQL queries on datasets
     """
 
-    def __init__(self, db_path: str = "/workdir/data.db"):
+    def __init__(self, db_path: str = "./data.db"):
         self.db_path = db_path
         self.conn = None
         self.anthropic = None
@@ -105,7 +104,7 @@ class DSAgent:
             }
         ]
 
-        print(f"🤖 Starting DS Agent: {params.problem_statement[:60]}...")
+        print(f"🤖 Starting DS Agent: {params.problem_statement}...")
 
         # Run conversation loop
         result = await self._conversation_loop(
@@ -334,9 +333,9 @@ Best practices:
     async def write_file(self, path: str, content: str) -> ToolResult:
         """Write code/analysis files to the filesystem."""
         try:
-            # Ensure we're writing to /workdir
-            if not path.startswith("/workdir/"):
-                path = f"/workdir/{path.lstrip('/')}"
+            # Ensure we're writing to a safe location (workdir or current dir)
+            if not (path.startswith("./") or path.startswith("workdir/") or path.startswith("./workdir/")):
+                path = f"./workdir/{path.lstrip('/')}"
 
             file_path = Path(path)
             file_path.parent.mkdir(parents=True, exist_ok=True)

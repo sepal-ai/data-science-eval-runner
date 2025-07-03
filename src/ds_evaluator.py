@@ -2,16 +2,14 @@
 DSAgentEvaluator for orchestrating the evaluation process and scoring.
 """
 
-import asyncio
-import json
 import os
-import docker
 import tempfile
-import shutil
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Callable
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import docker
 import pandas as pd
 
 from data_generator import setup_database_with_mock_data
@@ -34,8 +32,8 @@ class EvaluationConfig:
     timeout_seconds: int = 300
     max_memory_mb: int = 1024
     max_cpu_cores: float = 1.0
-    workdir: str = "/workdir"
-    database_path: str = "/workdir/data.db"
+    workdir: str = "./workdir"
+    database_path: str = "./workdir/data.db"
 
 
 @dataclass
@@ -132,8 +130,8 @@ class DSAgentEvaluator:
                 db_path = workdir / "data.db"
                 setup_database_with_mock_data(str(db_path))
 
-                # Run agent in Docker container
-                result = await self._run_agent_in_container(agent_module, problem_id, workdir, config)
+                # Run agent locally (Docker support coming later)
+                result = await self._run_agent_locally(agent_module, problem_id, workdir, config)
 
                 execution_time = (datetime.now() - start_time).total_seconds()
 
@@ -172,6 +170,65 @@ class DSAgentEvaluator:
                 execution_time=execution_time,
                 error_message=str(e),
             )
+
+    async def _run_agent_locally(
+        self, agent_module: str, problem_id: str, workdir: Path, config: EvaluationConfig
+    ) -> Dict[str, Any]:
+        """Run agent locally without Docker for testing."""
+        try:
+            import os
+            import subprocess
+            import sys
+            from pathlib import Path
+
+            # Change to workdir for execution
+            original_cwd = os.getcwd()
+            os.chdir(workdir)
+
+            # Set up environment
+            env = os.environ.copy()
+            env["PYTHONPATH"] = str(Path(original_cwd) / "src")
+
+            try:
+                # Run the agent module
+                agent_path = Path(original_cwd) / agent_module
+
+                # Import and run the agent
+                sys.path.insert(0, str(Path(original_cwd) / "src"))
+                sys.path.insert(0, str(Path(original_cwd)))
+
+                # Use the generic DSAgent class for all evaluations
+                from ds_agent import DSAgent, RunAgentParams
+
+                # Get problem statement from problem definition
+                problem_statement = self._get_problem_statement(problem_id)
+
+                # Create agent with workdir database
+                agent = DSAgent(str(workdir / "data.db"))
+
+                # Create params for the agent
+                params = RunAgentParams(
+                    problem_id=problem_id,
+                    problem_statement=problem_statement,
+                    database_path=str(workdir / "data.db"),
+                    workdir=str(workdir),
+                )
+
+                # Run the AI-powered agent
+                result = await agent.run_agent(params)
+
+                return {
+                    "success": result.get("success", True),
+                    "output": result.get("final_response", "Agent completed successfully"),
+                    "error": result.get("error"),
+                }
+
+            finally:
+                # Restore original working directory
+                os.chdir(original_cwd)
+
+        except Exception as e:
+            return {"success": False, "output": None, "error": f"Local execution failed: {str(e)}"}
 
     async def _run_agent_in_container(
         self, agent_module: str, problem_id: str, workdir: Path, config: EvaluationConfig
@@ -352,6 +409,23 @@ class DSAgentEvaluator:
             score += 0.1
 
         return min(1.0, score)
+
+    def _get_problem_statement(self, problem_id: str) -> str:
+        """Get problem statement from problem definition."""
+        try:
+            # Load problem definition from YAML file
+            import yaml
+
+            problem_file = Path("problems") / f"{problem_id}.yaml"
+            if problem_file.exists():
+                with open(problem_file, "r") as f:
+                    problem_data = yaml.safe_load(f)
+                    return problem_data.get("problem_statement", f"Solve the data science problem: {problem_id}")
+            else:
+                return f"Analyze the data and provide insights for problem: {problem_id}"
+        except Exception as e:
+            print(f"Error loading problem statement: {e}")
+            return f"Analyze the data and provide insights for problem: {problem_id}"
 
     def _get_expected_files(self, problem_id: str) -> List[str]:
         """Get list of expected output files for a problem."""

@@ -1,8 +1,9 @@
-import typer
+import asyncio
 import os
 import sys
-import asyncio
 from pathlib import Path
+
+import typer
 
 # Add src directory to Python path for imports
 src_path = Path(__file__).parent.parent / "src"
@@ -12,13 +13,39 @@ app = typer.Typer(help="Data Science Agent Evaluation System")
 
 
 @app.command()
-def setup_data(db_path: str = typer.Option("./data.db", help="Database path")):
+def generate_csv_data(data_dir: str = typer.Option("data", help="Directory to save CSV files")):
+    """Generate and save consistent mock data to CSV files for rubric development."""
+    try:
+        from data_generator import save_data_to_csv
+
+        save_data_to_csv(data_dir)
+        print(f"✅ CSV data generated and saved to {data_dir}/")
+        print("💡 This data will be used consistently for all evaluations")
+        print("💡 Commit these CSV files to your repo for reproducible rubrics")
+    except ImportError as e:
+        print(f"Error importing data generator: {e}")
+        sys.exit(1)
+
+
+@app.command()
+def setup_data(
+    db_path: str = typer.Option("./data.db", help="Database path"),
+    use_csv: bool = typer.Option(True, help="Use consistent CSV data if available"),
+    data_dir: str = typer.Option("data", help="Directory containing CSV files"),
+):
     """Setup mock data for evaluation."""
     try:
         from data_generator import setup_database_with_mock_data
 
         print(f"Setting up mock data at {db_path}...")
-        setup_database_with_mock_data(db_path)
+        if use_csv and Path(data_dir).exists():
+            print(f"📁 Using consistent data from {data_dir}/")
+        else:
+            print("🎲 Generating new random data")
+            if use_csv:
+                print(f"💡 Run 'python -m ds_runner generate-csv-data' to create consistent data")
+
+        setup_database_with_mock_data(db_path, use_csv=use_csv, data_dir=data_dir)
         print("Mock data setup complete!")
     except ImportError as e:
         print(f"Error importing data generator: {e}")
@@ -74,10 +101,9 @@ def run_agent(
 ):
     """Run a data science agent directly on a problem."""
     try:
-        from ds_agent import DSAgent, RunAgentParams
-
         # Setup database first
         from data_generator import setup_database_with_mock_data
+        from ds_agent import DSAgent, RunAgentParams
 
         setup_database_with_mock_data(db_path)
 

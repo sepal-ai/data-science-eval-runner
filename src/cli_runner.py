@@ -3,17 +3,18 @@
 Command Line Interface for Data Science Agent Evaluation System.
 """
 
+import argparse
 import asyncio
 import json
-import argparse
-import sys
 import os
+import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List
+
 import yaml
 
-from ds_evaluator import DSAgentEvaluator, EvaluationConfig, EvaluationResult
 from data_generator import setup_database_with_mock_data
+from ds_evaluator import DSAgentEvaluator, EvaluationConfig, EvaluationResult
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
@@ -107,14 +108,17 @@ async def run_single_evaluation(
     """Run evaluation on a single problem."""
     evaluator = DSAgentEvaluator()
 
-    # Setup problem configuration
+    # Setup problem configuration - use local paths for local execution
+    workdir = config.get("workdir", "./workdir")
+    database_path = config.get("database_path", "./workdir/data.db")
+
     problem_config = EvaluationConfig(
         problem_id=problem_id,
         timeout_seconds=config.get("timeout_seconds", 300),
         max_memory_mb=config.get("max_memory_mb", 1024),
         max_cpu_cores=config.get("max_cpu_cores", 1.0),
-        workdir=config.get("workdir", "/workdir"),
-        database_path=config.get("database_path", "/workdir/data.db"),
+        workdir=workdir,
+        database_path=database_path,
     )
 
     # Setup problem

@@ -8,9 +8,8 @@ more sophisticated agents.
 """
 
 import asyncio
-import os
-from pathlib import Path
 import sys
+from pathlib import Path
 
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
@@ -21,7 +20,7 @@ from ds_agent import DSAgent, RunAgentParams
 class SampleDSAgent:
     """Sample data science agent that follows a systematic approach."""
 
-    def __init__(self, db_path: str = "/workdir/data.db"):
+    def __init__(self, db_path: str = "./workdir/data.db"):
         self.agent = DSAgent(db_path)
 
     async def solve_problem(self, problem_statement: str) -> dict:
@@ -100,7 +99,7 @@ import pandas as pd
 import duckdb
 
 # Connect to database
-conn = duckdb.connect('/workdir/data.db')
+conn = duckdb.connect('./workdir/data.db')
 
 # Get top customers
 top_customers_query = '''
@@ -124,7 +123,7 @@ print("Top 10 Customers by Spending:")
 print(top_customers)
 
 # Save to CSV
-top_customers.to_csv('/workdir/top_customers.csv', index=False)
+top_customers.to_csv('./workdir/top_customers.csv', index=False)
 print("Results saved to top_customers.csv")
 
 # Monthly sales analysis
@@ -145,13 +144,13 @@ print("\\nMonthly Sales Summary:")
 print(monthly_sales)
 
 # Save monthly sales
-monthly_sales.to_csv('/workdir/monthly_sales.csv', index=False)
+monthly_sales.to_csv('./workdir/monthly_sales.csv', index=False)
 print("Monthly sales saved to monthly_sales.csv")
 
 conn.close()
 """
 
-            script_result = await self.agent.write_file("/workdir/analysis.py", analysis_script)
+            script_result = await self.agent.write_file("./workdir/analysis.py", analysis_script)
             if not script_result.error:
                 print("Created analysis.py")
                 results["files_created"].append("analysis.py")
@@ -197,7 +196,7 @@ Analyze customer transaction data to identify top customers and sales trends.
 3. Investigate factors driving customer spending differences
 """
 
-            report_result = await self.agent.write_file("/workdir/report.md", report_content)
+            report_result = await self.agent.write_file("./workdir/report.md", report_content)
             if not report_result.error:
                 print("Created report.md")
                 results["files_created"].append("report.md")

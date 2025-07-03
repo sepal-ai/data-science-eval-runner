@@ -1,0 +1,301 @@
+location_id,name,location_type,latitude,longitude,address,city,state,country,postal_code,is_active,capacity,operating_hours,established_date
+a7af276b-6c69-4108-af31-331e49ed3659,"Rosario, Phillips and Haynes",supplier,-70.287058,-47.534789,2061 Howard Underpass,West Ashley,South Dakota,Afghanistan,53469,True,1959,7:00 - 18:00,2021-10-04
+bfc841bd-6365-4f75-9b92-9ec0a8047169,Faulkner-Spencer,warehouse,-59.099662,-80.068483,68125 Rose Creek,Lake Bruceberg,Michigan,Christmas Island,64582,False,7142,6:00 - 20:00,2015-11-30
+a378a047-ed9d-42f6-936f-a3e86d3dc3d0,Taylor Group,distribution_center,-80.3300595,44.750685,2458 Nelson Hill,Juliahaven,Idaho,Czech Republic,08706,True,9705,6:00 - 21:00,2017-07-04
+4d24770f-c836-40ed-8985-4b3cb253a557,Castro Group,distribution_center,-36.6733445,-56.742233,77375 Kyle Groves,Ramirezfurt,Maryland,Algeria,20215,False,449,8:00 - 21:00,2017-06-07
+f80f63c1-d36e-4385-9aa7-6bc503d34dc1,Holland-Benson,distribution_center,-55.619479,-118.54063,2835 Long Cliff,Lake Robertville,Louisiana,Australia,32208,False,3646,6:00 - 18:00,2017-10-24
+b6110b7c-97a1-4cd7-ad53-58cd7ee6676f,Taylor LLC,distribution_center,30.046666,127.810491,03316 Dawson Landing,South Gregoryfort,Alabama,Montserrat,96934,True,2939,9:00 - 18:00,2020-10-01
+9330e557-ae76-4710-8da7-3dfd73199486,Miller-Harris,warehouse,-73.1734725,35.992613,855 Underwood Mills Suite 448,Lake Juliaton,Texas,Kazakhstan,11911,False,2821,7:00 - 20:00,2025-04-02
+5acd476d-1470-49a8-bf25-13f72a5559a0,Ortiz-Chapman,customer,24.861248,-83.796856,549 Brian Center Suite 487,North Douglastown,Louisiana,New Zealand,27643,False,8625,8:00 - 18:00,2022-02-28
+cdec093f-d3ea-4af6-a1cd-f86992548bed,"Solomon, Garcia and Ruiz",distribution_center,84.7700135,-41.378132,401 Omar Loop Apt. 759,North Laurentown,Arkansas,Saint Barthelemy,92844,True,4183,7:00 - 19:00,2015-09-26
+e7d7c9dc-be72-41b6-a4de-83a4cbc01b8d,"Lewis, Gonzales and Hernandez",warehouse,19.514272,-86.042812,83562 Kenneth Station,Brianmouth,Louisiana,Bangladesh,29174,True,2014,7:00 - 22:00,2024-12-07
+f6377b2c-86b7-4e6e-914b-a4976389f705,"Marshall, Wilson and Williams",distribution_center,-75.6129895,-121.108373,32713 Andrew Circle,Lisafurt,Vermont,Tuvalu,16074,False,1214,10:00 - 21:00,2016-11-21
+131ab7e7-3e27-4372-9400-db48669d7dc3,Noble Group,supplier,64.4626835,74.918595,716 Robert Point,Port Christian,Minnesota,Pakistan,50966,True,7837,6:00 - 22:00,2020-03-02
+ded1e219-738e-4383-b77e-0a9448020076,Johnson-Calhoun,customer,-57.1025745,174.072997,618 Jones Ville Apt. 471,Moralesland,Texas,Congo,59835,True,9630,8:00 - 21:00,2024-07-10
+c7e56a27-8ac2-4cbf-93e2-37fc8c29c583,"Perry, Bauer and Bass",warehouse,-22.514298,134.106304,737 Hopkins Lodge Suite 911,Munozfurt,Illinois,Montenegro,11277,False,1553,9:00 - 22:00,2016-03-11
+eb2f28b1-a459-421a-ac20-114998d956c2,Zimmerman PLC,customer,46.477199,-54.546684,25862 Lewis Burgs Suite 927,East Daniel,Utah,Sao Tome and Principe,69412,False,5839,7:00 - 21:00,2020-01-23
+4c4eaa99-c98b-4706-b369-173d797738c9,Fritz LLC,distribution_center,-6.924776,-48.675049,4807 Brown Curve Suite 930,Stevenfurt,Maryland,Djibouti,72487,True,735,8:00 - 19:00,2021-01-06
+48eb458b-352d-426b-b11b-d1adc40a2e90,"Bennett, Martin and Erickson",customer,-15.0178445,-34.380651,722 Cory Stream,North Melissa,Alabama,Albania,84176,True,6058,7:00 - 20:00,2018-11-05
+9d543532-bc36-46ed-a9b0-595e109ab1d3,Rubio-Perry,supplier,75.1699085,-78.329243,49536 Williams Throughway Suite 270,Lake Cynthia,Alabama,Cook Islands,55531,False,9439,7:00 - 19:00,2025-06-03
+bd96f2f5-fce3-4bce-b653-88abff27bcef,Walker and Sons,store,17.2607675,-60.834785,424 Edward Alley,Josephland,Iowa,Holy See (Vatican City State),18947,True,922,9:00 - 22:00,2019-08-20
+939c0c0a-824c-4280-a967-0256d10cdc47,"Dixon, Smith and Gomez",distribution_center,-80.636733,-162.892664,976 Mcdonald Hill,North Kristiton,Illinois,Bolivia,77472,True,4528,8:00 - 21:00,2020-06-09
+1dda34e1-14f2-4467-8573-9a53153277a2,"Bryant, Smith and Mckay",customer,60.490341,-104.10585,85547 Douglas Green,Wernerfort,Massachusetts,Tonga,04810,True,3776,10:00 - 18:00,2022-05-29
+32da9539-eb9f-4b90-a361-e017e0511c9f,King-Smith,supplier,-17.0342165,-25.493915,74076 Ramirez Heights Apt. 061,North Veronica,South Dakota,Georgia,98973,True,6460,9:00 - 20:00,2016-03-09
+095117d3-25de-4788-a44c-0e752370bde5,"Young, Fernandez and Cohen",customer,26.1485755,62.387515,842 William Ways,Hinesberg,Florida,Ecuador,76337,True,3788,10:00 - 21:00,2016-08-02
+be078e3c-4c9a-48cd-a2a5-cbca80e43ce9,Lambert-Preston,warehouse,-13.381078,-161.840436,3402 Philip Lights Suite 316,Patelstad,Alaska,Gambia,25217,False,9501,10:00 - 22:00,2020-06-13
+490ae949-43a2-414e-82d6-341bf99ad9e6,Jones PLC,store,29.625588,15.404685,39728 Tamara Stravenue Suite 052,Michaelland,Delaware,Guinea-Bissau,69852,False,9114,6:00 - 19:00,2020-01-17
+a992d7de-1431-4fbf-9989-5abd7492c095,"Baker, Haynes and Benson",supplier,-39.4049665,143.545577,810 Williams Grove,West Sarashire,Iowa,Marshall Islands,43565,True,5299,7:00 - 19:00,2016-01-13
+85efe174-1218-4d69-89a4-d65d97666dcf,Ramirez Group,supplier,62.1992245,42.838458,533 Davis Island Suite 433,West Jared,Louisiana,Barbados,16778,True,7992,7:00 - 19:00,2023-03-19
+a30c0ebc-fdc5-4eaf-ad8b-387d8152e0fb,"Yoder, Gallegos and Garcia",supplier,-14.900576,106.579056,402 Veronica Greens Apt. 022,Lake Kevinmouth,Hawaii,Malta,59204,True,8750,9:00 - 18:00,2018-08-01
+ec90cde9-9d98-478b-a703-a0db39870aef,Lee-Bell,supplier,14.7333295,-107.572964,18418 Jenny Crescent,Mercerton,Oregon,Moldova,70620,True,6331,10:00 - 18:00,2019-06-07
+5a29ae07-84f3-4017-93a4-d9875fdddbd1,Jones-Vasquez,warehouse,-34.573374,-84.562983,2513 Wilson Island,Robertland,New Jersey,Costa Rica,85186,True,5657,10:00 - 18:00,2024-11-03
+ed897be4-4216-46cc-b7f5-384d9f82a4cf,Morales Ltd,supplier,-81.4400005,166.208814,94348 Martin Trail Suite 847,New Matthewland,Utah,Wallis and Futuna,17427,True,577,8:00 - 19:00,2018-05-15
+8e2bf437-85a6-4ded-bce8-24c445c7a77a,Clark-Smith,customer,88.566102,0.963762,3535 Harold Inlet,Cherylshire,Utah,Saint Martin,45068,False,303,7:00 - 20:00,2022-02-09
+75a1fc74-9804-44a4-8d43-a165ea6630cb,"Cruz, Hatfield and Wilson",supplier,59.964712,37.708814,34222 Cruz Views,Sarahfurt,Virginia,Saint Kitts and Nevis,65385,True,6103,8:00 - 19:00,2020-03-29
+b7b8d867-649c-488e-a54c-98af13fe01f9,Perez-Sanchez,store,-69.528884,86.042265,16244 Carl Street,Jonesmouth,Nevada,Armenia,00834,True,3378,8:00 - 21:00,2025-03-07
+0e956862-4c8e-4109-a126-535e01f29d56,"Ferguson, Bauer and Townsend",distribution_center,62.5376975,-77.148569,666 Hines Lock Apt. 895,Andreahaven,Vermont,Congo,82736,False,1601,8:00 - 20:00,2025-04-27
+0bbb8b2e-dfe2-4025-9e59-6ca8dfb6d8b1,Rivera LLC,customer,60.412951,-34.05558,77973 Wilson Inlet Apt. 471,Susanberg,Oregon,Bouvet Island (Bouvetoya),18791,True,1090,8:00 - 21:00,2022-06-16
+b3f419c7-d100-4634-9491-10683f5f7f01,Brock-Gordon,distribution_center,42.291027,-165.295237,20804 Holmes Stream Apt. 098,Nguyenfort,Wisconsin,South Africa,26283,False,9088,8:00 - 19:00,2017-06-18
+e83fb3a7-a665-4a71-b83e-5fbe4575677a,Willis-Becker,store,-78.5523205,79.086907,752 Griffin Well,Harperside,Rhode Island,Greenland,02634,False,2908,7:00 - 21:00,2017-01-04
+fbbcc54f-d234-4fc1-90a0-0c520206dd82,Lopez-Peterson,distribution_center,-15.5609455,-95.815009,245 Wilson Harbors Suite 615,Adamville,Idaho,Macao,67762,True,1905,6:00 - 21:00,2015-07-12
+1f20ffbf-4dbf-4e0a-bd56-5d594a668b19,"Frazier, Campbell and Lopez",customer,58.385523,98.393949,7722 Harris Ports,South Ashleeport,South Dakota,Cayman Islands,22228,False,5850,8:00 - 18:00,2017-09-29
+2c8cc93c-1601-4f9a-8db2-d35e050901f1,"Edwards, Martinez and Robinson",supplier,37.5616695,-170.637342,003 Eric Harbors Apt. 793,South Phillipberg,Louisiana,Belize,66340,False,3977,6:00 - 19:00,2015-09-10
+c49704c9-f899-4e82-96ba-ade98398f428,Hurley-Frank,store,60.463298,-13.839124,2358 Jenny Avenue,North David,Kentucky,Tunisia,27566,True,7039,10:00 - 21:00,2020-10-17
+72329df4-1463-4b67-8e0e-fa6fc96d342b,Lawson-Rodriguez,customer,-81.612487,-99.907626,491 Brittany Forest Suite 297,Michaelbury,Minnesota,Guatemala,02676,True,3191,7:00 - 18:00,2022-07-25
+25b68964-6e08-4f4c-8abe-fcd2a6a39f44,"Evans, Conley and Johnson",customer,78.3141145,83.404753,30112 Logan Harbors Suite 984,South Pamela,Oklahoma,Monaco,49522,True,463,8:00 - 19:00,2019-12-09
+7371592f-20a2-471d-9e21-c482079dcf41,Duncan PLC,warehouse,20.590259,-38.88844,67885 Mike Spring Apt. 809,Williamsbury,South Dakota,Belgium,49215,False,7717,6:00 - 20:00,2024-12-04
+cc4b0817-e54b-4d99-8a8a-ee71aac4b9cc,"Pugh, Johnson and Coleman",warehouse,30.677969,-88.530248,1278 Pamela Extension Apt. 423,East Heather,Arizona,Myanmar,83905,False,8309,8:00 - 18:00,2020-02-09
+1758b58c-b31c-47cc-8e58-ea5aa1ef4c38,"White, Dunn and Lara",store,-62.7289465,-53.816908,2374 Kimberly Mall,Port Katelyn,Illinois,United Kingdom,77341,True,6710,9:00 - 19:00,2020-10-02
+049aefb3-0e60-4f77-bbb8-2eb62fca859d,Coleman-Mendez,customer,-39.5215285,127.18182,242 Samuel Field Suite 629,South Matthewberg,Hawaii,Kazakhstan,63410,False,427,10:00 - 22:00,2018-12-04
+87c2b843-db15-4523-8231-a17c877bf984,Martinez-Hall,warehouse,16.785591,0.946593,934 Guzman Center,East Aimee,Maine,Saint Martin,06889,True,975,6:00 - 22:00,2018-03-09
+5c216169-dfda-4cc8-ae00-c9ea4a195dab,Peterson-Lyons,customer,55.2652045,161.271289,7920 Joyce Lodge,Lake Edwinville,Alaska,Lebanon,44330,False,5392,7:00 - 18:00,2020-04-17
+8e5bd500-a1d6-4a2e-9067-cbf3923bc318,"Moore, Simmons and Martinez",distribution_center,-73.3283785,-132.278078,3530 Sonya Row,Kellyburgh,Hawaii,Sierra Leone,80084,True,2721,9:00 - 22:00,2019-12-15
+7622fc77-05cc-46ee-8ed0-edae2c1a48a1,Hall-Franco,customer,89.659623,141.65827,271 Peters Crossroad Apt. 338,Codyfurt,Nevada,Congo,15047,False,6244,8:00 - 19:00,2020-08-19
+4921b3f7-3ad1-4d3a-8e0c-a60593fb07bc,Lee LLC,store,39.189574,-152.899816,7534 Jeffrey Haven,Velezshire,West Virginia,Fiji,98809,True,2163,10:00 - 18:00,2023-12-27
+393bfb26-c62d-4f29-9cdd-6af551823422,Silva and Sons,warehouse,79.426751,74.891134,38005 Young Mission Suite 382,West Ashley,New Mexico,Mauritania,48461,True,9341,9:00 - 21:00,2018-07-16
+049a9075-5135-4b3c-98bd-021bcb5ee344,Dodson-Buckley,customer,-5.5000155,114.100063,904 Rachel Canyon Suite 792,Jeanettebury,South Carolina,Brunei Darussalam,25823,True,5980,9:00 - 18:00,2016-05-15
+e1bc66c7-5458-4e6c-81d8-a74f225d2864,"Williams, Hurley and Gardner",supplier,-10.4815545,-156.162397,94347 Conway Walks Suite 979,Blackchester,North Carolina,Tonga,56203,False,2328,6:00 - 22:00,2017-01-21
+84df7f14-de1b-4256-ab95-76b752d796b3,Jones LLC,distribution_center,-80.5908685,130.080099,714 Thompson Bypass,Port Rachel,Illinois,Namibia,47667,True,7588,10:00 - 22:00,2018-02-27
+8e661ba6-bad6-4379-96d6-d707a0a2347b,"Blevins, Flores and Hall",supplier,-52.3236215,-100.022516,7506 Jessica Neck Apt. 255,Baileyton,Kentucky,Zimbabwe,14855,True,4208,10:00 - 19:00,2022-08-29
+5c27a2f5-4eb7-4293-8b66-f1f4be94eb80,"Burgess, Hardy and Moore",warehouse,62.229848,-138.585454,677 Sanchez Spring,Port Susanview,Missouri,Turkey,58275,False,8613,6:00 - 21:00,2016-03-20
+ed97b4f4-117e-41a6-82a8-5ac3a7bff3fc,Evans-Jackson,customer,39.574339,-67.244001,90133 Page Forks Suite 946,Maxwellport,Kentucky,Haiti,07273,True,6687,10:00 - 22:00,2015-07-20
+73bc6414-7292-48ac-9b99-15a307a13537,"Mcmahon, Sawyer and Hess",store,-52.761863,-162.746315,49941 Leonard Rest,South Kelly,Arkansas,Moldova,83443,True,7429,8:00 - 18:00,2018-01-02
+8a1e96cc-b82b-44ed-ba59-26e704a7d844,Roth-Moore,store,-82.155133,178.445506,54658 Koch Mills,Dawnmouth,Nevada,Macao,41471,False,7928,8:00 - 20:00,2024-07-25
+b8d1201b-d27d-49fe-bdbc-8ca990935baf,Watkins Group,supplier,-38.975579,-79.933965,11298 Dawn Throughway Apt. 804,South Cassandraborough,New Jersey,Zambia,54769,False,630,7:00 - 18:00,2022-12-28
+6e778507-8150-4695-8128-0b3771200b3c,Martin LLC,supplier,15.462445,86.48812,493 Marcia Overpass Suite 362,Hoganville,Kentucky,United States Virgin Islands,16364,True,5960,9:00 - 19:00,2021-10-18
+2572189f-2c83-4a2e-bda5-fa39a057a387,Fritz and Sons,supplier,-84.7616035,-18.142578,8288 Clark Road Apt. 814,Thompsonport,South Dakota,Algeria,86286,False,5196,6:00 - 22:00,2022-12-24
+41b63091-612f-47ab-9355-0d402865cb3a,"Butler, Coleman and Lucas",supplier,-62.7497045,148.332294,2986 Kevin Curve,East Ashley,Kentucky,Czech Republic,17783,True,1996,7:00 - 18:00,2017-02-14
+1bdfc626-c314-49ad-b620-6bbfdc57066b,Flores and Sons,store,-34.2993605,6.273346,148 Melanie Circle Apt. 054,West Zacharyfort,Utah,Nicaragua,81166,True,9376,6:00 - 22:00,2016-03-02
+1d188b7a-f2a2-408a-82d4-37f203717283,"Spencer, Gutierrez and Willis",store,3.4831555,36.977005,040 Kevin Lakes,Port Nicholas,Georgia,Ireland,41546,False,1043,8:00 - 21:00,2018-04-14
+7d5a42af-6744-4187-8e54-560cef1ba0c1,"White, Gordon and Romero",supplier,-27.8702655,-46.336323,580 Robbins Loop Apt. 095,Anthonystad,Massachusetts,Austria,86477,False,5543,8:00 - 20:00,2017-07-06
+66a98311-cb96-433e-afb9-fd05f99c252f,"Shaffer, Dillon and Rodgers",store,40.153847,95.739771,39007 Graham Path,Duncanville,Arkansas,Turkmenistan,43921,False,276,7:00 - 21:00,2024-02-22
+bbbf6ff5-a4f0-4293-ae62-06fe6a92d98b,"Lewis, Diaz and Vazquez",warehouse,42.7578615,26.497577,16198 Clay Rue Apt. 537,Ramoston,Vermont,Equatorial Guinea,11344,True,9493,7:00 - 18:00,2018-09-14
+e776324e-16df-41f2-a60a-432402902359,Atkins Ltd,customer,-0.0824915,-103.120805,0579 Joseph Squares,Lake Sherryland,Vermont,Swaziland,38923,True,9198,6:00 - 22:00,2020-07-12
+1660f31f-5187-438d-8a7c-e818bca98339,Morgan-Freeman,customer,62.77687,-5.477232,56073 Gonzales Corner Apt. 882,Natalietown,Massachusetts,Sri Lanka,16545,True,9703,9:00 - 18:00,2017-04-21
+23351bbd-298d-4280-bc4b-f52ab528cecd,Morales Inc,customer,64.92911,-44.553627,3714 Watts Wells,West Marthaburgh,Arizona,Nepal,22746,False,2668,6:00 - 22:00,2016-02-21
+a585d83d-212d-43a1-badf-cbe40efc09b3,"Mason, Klein and Rasmussen",supplier,22.91116,-79.067726,7754 Wendy Motorway Apt. 954,Lake Donnamouth,Washington,China,13234,True,9119,8:00 - 19:00,2022-12-14
+cc935ac9-1e7e-443c-bc7a-e641f41394bc,"Velez, Neal and Foster",warehouse,28.1217275,-78.044724,5408 Brad Harbors Apt. 865,South Melissa,Maine,Belize,72713,True,1733,8:00 - 21:00,2022-12-14
+ffa5016c-b8d5-4a61-b74b-76d86e02a871,Stewart PLC,warehouse,-79.3065005,-155.660544,8481 Robert Terrace,Robertmouth,Nebraska,Guam,54188,False,3362,10:00 - 21:00,2019-06-19
+b0beee60-0b8c-4cb2-b2c0-f5bf3d466fb8,"Smith, Arias and Scott",supplier,35.7540195,-68.423576,7698 Edwards Crossing,Jessicaview,Montana,Angola,92052,True,5842,7:00 - 19:00,2024-01-06
+b69b7f15-50b6-4132-a9cb-23742f733ea5,"Bird, Johnson and Payne",distribution_center,-43.0575965,90.672992,74546 Powell Manors,Rebeccashire,South Dakota,Lesotho,26651,True,5718,8:00 - 21:00,2024-11-19
+353e93b5-2f4f-48f6-9ad0-661e01649bc1,Wilcox PLC,customer,62.2590785,15.13623,2697 Mathis Ford Suite 064,Wongville,Wyoming,Mongolia,63775,True,2901,10:00 - 22:00,2019-10-21
+869a269b-8114-4dff-9a0f-5e1bba509e39,Sandoval-Bush,customer,-59.640445,-89.496616,13398 Alvarez Terrace Suite 094,South Sydneyside,Maryland,Bahamas,52664,False,7435,8:00 - 20:00,2022-04-11
+aebde6cf-7bb6-4f7c-9d43-98f3db6df53d,Meyers and Sons,warehouse,6.353628,41.676914,062 Kimberly Bridge,South Lisaville,Connecticut,Japan,66613,True,6036,6:00 - 21:00,2023-03-27
+1833f782-3888-4d0b-b8a4-cefcf8489611,Gould-Petty,customer,-26.6720555,166.841695,9261 Ronald Circle Suite 079,Lake Mary,Alaska,Norfolk Island,56134,False,1278,7:00 - 22:00,2017-06-02
+a9fd4410-5415-49c0-9864-21643f0b1393,Jenkins Group,store,74.0119105,-88.554844,2071 Charles Flat Suite 127,New Jesusmouth,Washington,Bouvet Island (Bouvetoya),94674,False,4591,8:00 - 19:00,2021-11-15
+bc9798d5-c3c8-4aea-b24f-b006db7cd71e,Shaw-Krause,warehouse,-64.320502,-71.955021,083 Kent Shoal Suite 134,Michaelberg,Wisconsin,Ukraine,49265,False,9417,7:00 - 18:00,2023-07-05
+d6d62409-b2ff-473c-af3d-a0406f2780fe,"Nguyen, Andrade and Williams",warehouse,34.7312225,-30.817061,142 Jeremy Harbors Suite 190,Stevenview,Delaware,Singapore,58937,True,3140,6:00 - 19:00,2021-09-13
+ebf286a2-2d6e-45e2-a937-e1613538b456,Wong LLC,warehouse,-9.232187,-157.589198,1826 Catherine Pass Apt. 526,West Anamouth,California,Algeria,54479,False,235,7:00 - 19:00,2021-05-19
+2fabc0d9-63e6-45f4-9484-e1b9b5a5d98e,Roberson-Orr,warehouse,-69.4132835,-19.96251,8926 Young Mill Suite 718,East Anthonyfurt,Delaware,Central African Republic,12282,False,1069,7:00 - 21:00,2017-04-07
+409c899f-e185-4437-bd24-de8c81793f89,Lewis Inc,store,64.420024,54.05091,005 Mullins Hollow Suite 531,North Stephanieshire,Alabama,Costa Rica,53200,True,5869,7:00 - 18:00,2019-06-10
+cda4f16d-0186-4736-869c-d320e5ef1c1b,Collins-Williamson,supplier,87.7576105,121.035549,773 Nicole Orchard,Medinaland,California,Bosnia and Herzegovina,28836,True,599,10:00 - 20:00,2017-05-09
+d75b21d2-8d81-41c6-954e-aa56704a9ca0,"Gomez, Arnold and Lopez",store,-81.2442195,47.630998,1262 Smith Skyway,Lake Nicolas,Alaska,Cameroon,88883,True,6421,10:00 - 21:00,2019-07-11
+ef62ea46-4b5c-4cfb-a993-2161bf6b1423,"Valencia, Schneider and Pope",supplier,43.6919625,-104.685156,580 Franklin Lake Apt. 020,East Calvin,Michigan,Gabon,15938,False,5625,7:00 - 19:00,2017-10-26
+5ad5ef65-8347-4fba-b369-112ece9d5ed6,Atkins Group,warehouse,62.4694225,85.419857,54915 Morris Green,Port Joshuaport,Wyoming,Grenada,84040,False,3240,9:00 - 21:00,2017-07-24
+a9912054-c918-4cc2-8f88-d70f651d8852,English Group,warehouse,32.7866615,-51.367092,66556 Christopher Light,East Stevenfurt,Maryland,Andorra,32926,False,4941,7:00 - 18:00,2017-01-22
+8ff3d1c9-44bc-4b68-88f6-670fcf998803,Garrett-Vaughn,supplier,3.1223305,67.753824,07116 Shannon Harbors,New Scotthaven,Nevada,Singapore,12497,False,7821,7:00 - 19:00,2025-01-17
+8d474035-47b1-470a-897e-c68ab423b67b,Simon-Davis,distribution_center,86.719283,49.0249,04757 Lee Union,Dawntown,Texas,Svalbard & Jan Mayen Islands,10865,True,4473,7:00 - 21:00,2024-02-15
+1bd87567-1056-4e09-8266-0c2b7839eac6,Myers PLC,distribution_center,-39.57131,103.894768,77282 Kramer Junctions Suite 512,Lake Joseph,Rhode Island,Fiji,69045,True,7292,8:00 - 19:00,2022-05-20
+f44ba5c2-b96c-4094-8eeb-90467d9bc040,"Garza, Campbell and Jarvis",warehouse,-10.960549,163.592933,469 Caitlin Run Suite 366,North Michael,West Virginia,Puerto Rico,02744,True,8868,9:00 - 22:00,2023-08-28
+73b0d58f-8bce-43f1-b3a5-9a682abae210,Juarez-Ramsey,store,-39.792057,68.179993,1316 Lori Forest,Port Darinmouth,North Carolina,Holy See (Vatican City State),43067,True,8660,6:00 - 22:00,2019-09-26
+0959277e-2800-414c-b4a0-9a8e54bf3150,Cole Inc,distribution_center,79.522843,-95.04278,133 Justin Viaduct,West Justin,Nevada,Albania,13021,True,7874,8:00 - 20:00,2022-09-27
+893ac1c9-4ee1-43c9-b6e7-2a493d70e409,Ingram-Lopez,customer,50.978257,-126.394232,877 Kennedy Port,Hayesshire,Virginia,Reunion,34592,True,7464,8:00 - 19:00,2023-02-07
+25145892-174d-43af-9588-700e7f2b3c85,Rosales-Williams,supplier,63.7257105,-49.485914,09111 Blair Flat Suite 754,Mcclureside,Maryland,Armenia,52313,True,495,8:00 - 18:00,2016-07-22
+2f1d145d-bb0b-41ba-b49a-a5d1a91acbbf,"Bowers, Shaw and Mcclain",store,64.3409245,42.072992,5729 Blackwell Brook Suite 149,New Catherineville,Nevada,Cayman Islands,12740,True,3384,7:00 - 21:00,2019-02-21
+c8be5628-99f8-438f-ac60-216e27477bd5,Warren and Sons,warehouse,-29.5710825,178.880944,1046 Rodriguez Keys,Davisburgh,Alabama,Trinidad and Tobago,56236,False,4792,6:00 - 18:00,2019-10-18
+eb6f95d9-1306-4d94-b2d0-fceafd5802d5,Richardson-Watson,supplier,1.2844765,-172.326787,676 Fuentes Camp Suite 605,Andersonfurt,South Dakota,Finland,63173,True,8140,9:00 - 18:00,2018-07-23
+20767290-9ce6-4cc3-805f-d2403e0765e4,"Smith, Underwood and Castillo",warehouse,-9.610618,54.858134,51182 George Ways,Kristyside,Delaware,Nepal,42341,True,1263,7:00 - 21:00,2022-03-29
+7190e063-e084-4351-ae27-2af8e4b11ba8,Rodriguez-Jones,customer,-26.93624,-139.58365,76788 John Knolls Suite 135,East Stephen,Pennsylvania,Burundi,29626,True,4095,9:00 - 20:00,2019-01-04
+48d56d7c-97b1-45f6-9e04-123aaa6425b9,Walker Inc,supplier,73.93265,74.705272,514 Wright Parkway Suite 283,Prattview,Tennessee,Kyrgyz Republic,03266,True,7037,10:00 - 22:00,2021-11-16
+3d9347fb-69df-485a-9092-8dc1822a79c0,Pineda-Mathews,distribution_center,64.6750595,-43.552506,95956 Hernandez Forks,West Kellyton,Ohio,Vietnam,09020,False,2519,10:00 - 19:00,2020-02-19
+5cb1c234-f881-4101-8f96-ad0f2324c8d7,"Brown, Lopez and Carpenter",store,41.634615,-108.910513,196 Jason Lodge Suite 956,South Levihaven,Kentucky,Qatar,05129,True,1335,6:00 - 18:00,2016-04-29
+6d94011c-f28a-4b0b-a2e2-fe34bb8b19a1,Hernandez Group,distribution_center,-33.126307,-73.027123,66027 Guzman Harbors Suite 425,Lake John,Washington,Luxembourg,76535,False,5876,8:00 - 18:00,2024-01-25
+ca7dbefa-51cb-4371-8112-1ba0068d524c,Johnson Ltd,customer,57.071223,173.007798,9578 Hernandez Brooks,Whiteheadport,Michigan,Palestinian Territory,87915,False,4350,8:00 - 22:00,2021-07-28
+f5d534b5-b016-4dae-8c22-11c23328e35e,Davis-Chung,supplier,-53.5132785,-82.933619,3870 Guerrero Corners,Michelleburgh,California,Malta,16008,True,3713,10:00 - 18:00,2019-04-08
+ccbe5957-781a-4c4a-94fb-1441d898ec5c,Cook-Hutchinson,supplier,85.729613,20.975337,6415 King Plains Apt. 866,North Ryan,Maine,Marshall Islands,82460,True,8024,8:00 - 21:00,2023-01-14
+d873e26c-9c5f-42ea-9d78-229daab4b544,Peterson Group,customer,-57.3305795,-148.620799,748 Garcia Glens,Michaelfurt,Utah,Nicaragua,04280,True,7869,10:00 - 19:00,2023-10-25
+0a55eb09-0e6e-4615-a494-af70dc5ea866,Clark-Wilson,warehouse,23.321114,-27.920821,079 Wood Port,West Annefurt,Mississippi,Poland,10965,True,8716,8:00 - 19:00,2021-02-22
+4638367d-7a65-4ecc-9992-2230b6da0bca,"Harper, Prince and Heath",warehouse,-39.584813,68.480897,570 Castillo Mill Suite 700,Michellestad,Texas,Cape Verde,61321,False,4170,9:00 - 19:00,2022-11-10
+b24a0f77-952c-4e6f-9fb2-9ce69e49c8ee,Hall-Montoya,warehouse,85.2345475,-113.748444,4430 Lisa Extensions,New Danielview,Alaska,Tunisia,11619,True,5519,9:00 - 21:00,2020-08-29
+66d61d4a-8e3d-4abb-bbf2-8f611c273417,"Villanueva, Lopez and Gonzalez",warehouse,8.9403255,135.342873,53962 Aguirre Road Suite 548,New Keith,New Hampshire,Bouvet Island (Bouvetoya),20548,True,7670,7:00 - 21:00,2019-08-29
+f2442846-c934-4eae-be6c-eaec3db6ffc0,Moore-Barnes,supplier,33.0068695,-100.449271,71408 Megan Station Suite 631,New Adam,Massachusetts,Slovakia (Slovak Republic),33304,True,2101,10:00 - 20:00,2018-06-18
+bc94ce86-11cd-45eb-87a9-e80ccc71fa9a,Smith-Rivera,distribution_center,-2.006635,-148.517653,06464 Tyler Gateway,Lake Jamesside,Arizona,Netherlands Antilles,80626,False,2937,6:00 - 22:00,2025-01-11
+57f88d7d-b0bb-4bb0-b4fb-a63cf67dc47b,"Macias, Ruiz and Martin",supplier,12.094979,103.782312,10414 Lyons Mission,Brendachester,Kentucky,Slovakia (Slovak Republic),87088,True,6153,7:00 - 22:00,2019-11-07
+d617a679-bbfe-45c9-b2bb-79b55a431a3f,"Miller, Mitchell and Schwartz",customer,-64.3413765,141.925254,485 Christine Gardens,East Deannashire,Massachusetts,Holy See (Vatican City State),58108,False,3601,10:00 - 20:00,2016-04-20
+b20f025b-98fe-4f0f-a6fc-359b77828931,Young-Morgan,distribution_center,-30.6685055,-106.466876,73379 Alyssa Falls,Margaretberg,Washington,Papua New Guinea,20597,False,4719,7:00 - 19:00,2019-10-13
+a6868d2c-8a33-4569-a427-fc185d60b3de,Lara LLC,customer,56.7437755,-124.854519,122 Robinson Terrace,Beckyfurt,North Carolina,Germany,57167,True,4885,10:00 - 18:00,2024-11-21
+ab93f3f1-481f-44d3-a117-184d4c1cb0b7,"Miller, Lopez and Velasquez",distribution_center,-74.6745425,79.12173,84256 Castro Drives,Kimberlyhaven,Virginia,Brazil,46774,True,4260,7:00 - 21:00,2021-07-24
+101a4303-b820-4176-af8e-e701d4712944,"Anderson, Bowen and Fischer",distribution_center,-70.1170305,-41.064534,4847 Green Mountain,North Sierra,Connecticut,Switzerland,08343,True,6805,7:00 - 20:00,2020-07-29
+7c1f9d46-a5ce-4ba2-b6a2-07d186cf57d2,"Walker, Parker and Velez",customer,58.5895585,93.09936,2434 Norton Hills Apt. 680,South Rachelton,Oklahoma,Costa Rica,71245,False,9291,7:00 - 18:00,2020-02-15
+c0ca77ed-7843-41c1-9459-ceeeeb19e79f,Johnson LLC,customer,-87.601311,111.737284,21757 Jones View Suite 954,Smithfurt,Tennessee,Samoa,70262,True,398,8:00 - 20:00,2016-12-08
+4a94362d-e2a3-4d44-a337-82571aec718d,Griffin-Wilson,customer,-59.8397925,-151.338693,51446 Weaver Walks,East Meganburgh,Nevada,Netherlands,59816,False,278,6:00 - 22:00,2021-12-08
+aafce761-a874-45d3-94b2-67207bd6edfe,"Atkins, Young and Hardin",warehouse,8.9401245,95.753797,2715 Kirk Creek Suite 394,Port Philip,Massachusetts,Bosnia and Herzegovina,10942,False,8133,7:00 - 22:00,2024-08-22
+4e387b96-78bb-44da-a01b-f001aa275918,Harris-Munoz,supplier,39.5926385,-25.49852,2152 Rosario Gardens,New Meredithmouth,Montana,Mongolia,44299,False,5293,9:00 - 21:00,2023-02-04
+194666ee-b8fc-4fa5-b307-9edb5efe4e1a,Ward-Ross,distribution_center,-16.9863075,-95.629471,79827 Arthur Way,East Jennifer,New Jersey,Andorra,47278,True,8150,7:00 - 20:00,2017-07-02
+c8f235d8-0175-4ddb-ac88-534ccb1e29fb,"Moore, Patterson and Perez",customer,79.6409265,150.81067,70851 Fowler Expressway Apt. 031,Marcside,Illinois,Bouvet Island (Bouvetoya),49965,False,2137,6:00 - 21:00,2016-09-05
+916d85cc-fe3a-48ac-849b-13653db129fa,Stone Inc,store,-46.386252,-93.619937,7964 Cobb Flats,East Adamshire,Washington,Oman,17074,False,8501,6:00 - 21:00,2017-10-08
+e0b8cd7c-c896-45f7-bfe8-50d5731ff930,Tucker Inc,customer,-31.2407655,15.691463,071 David Locks Suite 076,North Luiston,Alaska,Zambia,40624,False,713,7:00 - 21:00,2023-01-30
+8623548b-381c-4140-af34-6a20a794799c,Fletcher-Stone,customer,67.241772,-133.118027,32704 Kathleen Rapid Apt. 798,North Patricia,Florida,Cote d'Ivoire,99540,False,2298,7:00 - 19:00,2023-08-27
+349bc5d9-9fea-4a3d-8c4a-c37c1f5c078b,"Hood, Ferguson and Gaines",store,-41.4443225,127.168123,5635 Hernandez Forest Apt. 236,New Timothy,Michigan,Jersey,77055,False,6852,8:00 - 19:00,2023-09-29
+48cc33a0-6604-4c8f-8bd3-7b3a8456e6b1,Brady-Fields,store,83.51099,140.48795,746 Sonia Views Suite 601,Mendezport,Kansas,Estonia,30010,True,308,9:00 - 21:00,2023-03-23
+b741febd-e474-4203-8986-c3bc7e9332d8,Adams PLC,customer,-89.580003,60.151453,312 Walter Lights,West Christopher,Georgia,Suriname,01219,False,9498,9:00 - 21:00,2021-12-13
+ca05474f-f836-41f6-bd68-2db3dfb45a12,"Moore, Fisher and Turner",supplier,-38.5931255,-145.533358,69090 Silva Prairie,Hoopertown,Montana,Puerto Rico,83561,False,8655,6:00 - 19:00,2020-12-12
+75b1b9cf-8c60-4790-a749-d379ef3eb3ff,Smith Ltd,customer,39.1312865,31.272638,9962 Joshua Falls,Leblancport,Hawaii,Guinea-Bissau,08939,True,4954,8:00 - 21:00,2021-07-14
+b03aee67-6976-42a9-82f3-fe3fa677c23d,Morgan-Ponce,supplier,54.891772,-65.385056,33193 John Plains Apt. 466,New Stephanieborough,New York,United Kingdom,32404,False,2858,7:00 - 21:00,2023-04-24
+8d6e70a4-d94a-4a9e-9c48-309922649431,Bonilla Inc,distribution_center,87.2758065,-118.61459,0675 Andrew Crest Suite 032,West Kylefurt,Massachusetts,Equatorial Guinea,37521,False,6782,7:00 - 21:00,2021-07-25
+dd90476b-b588-4ebb-87d1-bf0bf7b910b8,Watkins-Norris,distribution_center,1.627713,-90.869398,2043 Susan Corners,North Joshua,Mississippi,Grenada,55635,False,2061,7:00 - 18:00,2019-09-02
+5cf0704d-b994-4e77-9691-d2e046cd12d6,Santiago-Hernandez,customer,-89.05932,117.925805,0804 Herrera Knolls,Ericmouth,Idaho,Croatia,12659,False,8187,9:00 - 21:00,2018-10-03
+319eb9c2-854c-4906-9b96-2898974281b6,"Anderson, Evans and Martin",supplier,-20.695313,138.705516,86661 Tate Club Apt. 794,Susanside,Minnesota,Eritrea,82207,False,1034,8:00 - 22:00,2021-05-14
+9d73126f-78bf-4627-a71f-55335c0c0fe2,"Howard, Salinas and Brown",customer,62.748998,-6.372748,17894 Kim Squares Suite 676,Joshuahaven,North Carolina,Greece,25373,True,6586,10:00 - 19:00,2024-01-16
+d889c673-3370-4a4d-928e-ea6909d49ad6,Baker and Sons,customer,10.9146725,1.196538,6881 Smith Roads,Brentton,Hawaii,Sudan,79131,True,9992,6:00 - 18:00,2021-09-14
+7c368a55-e3e3-4512-8d85-b16c9e6f9962,Butler-Gillespie,customer,-52.6575475,106.506421,727 Nathan Meadows,Evanshaven,Arizona,Saint Helena,45001,False,7125,8:00 - 19:00,2023-11-27
+1b24bea2-9120-44f2-af4e-6bd386c95257,Johnson-Aguirre,distribution_center,-88.9878015,125.050299,371 Amanda Park,North Andrewfort,Illinois,Saint Kitts and Nevis,56703,True,7556,10:00 - 18:00,2023-10-20
+97f6c354-a2a2-4800-b5fe-41cec8ea3495,Peterson PLC,warehouse,65.5085565,-26.963647,143 Moore Ranch Suite 941,East Makayla,Oregon,Cambodia,72009,False,2455,8:00 - 22:00,2022-03-08
+da6768f0-bce5-4e0e-9575-0cbefc42fa34,Potts and Sons,store,38.858234,-32.168479,60678 Steven Way Apt. 393,Espinozafort,Washington,Israel,60558,False,7201,9:00 - 21:00,2025-03-20
+75096bcb-3196-4507-a57a-316b2ca2bba9,Berry and Sons,distribution_center,-80.2482245,-67.686153,5057 Dennis Manors,Williamsshire,Arizona,Zambia,23065,True,3361,10:00 - 19:00,2021-08-27
+e3c4c3f4-8dda-46c5-b5fc-17590a73ee99,Martin Ltd,distribution_center,88.8486505,-137.125077,49018 Stephanie Manor Suite 003,West Noahborough,Maryland,Costa Rica,37047,False,981,7:00 - 21:00,2024-10-21
+1e49f1d3-a9e8-412c-8f7b-846019b4e621,Edwards Inc,distribution_center,-37.999055,136.672899,927 Reyes Court Suite 202,Stoneborough,New Hampshire,Tajikistan,12671,False,2669,9:00 - 19:00,2019-01-02
+f1d22b0e-d05d-4497-9793-d7eec99ed179,Smith-Jacobs,store,-10.023144,86.017692,23517 Matthew Isle,Marshport,Wisconsin,Vietnam,38257,False,1570,7:00 - 20:00,2023-01-28
+cbf1b05e-fff0-49db-b14b-4ea2f3b30f17,Price-Snow,store,-72.110229,-71.378589,85560 Cherry Prairie,South Randallport,Texas,Oman,81971,True,7484,10:00 - 20:00,2018-07-10
+5e8f659e-708b-4e78-b898-89f6730f9520,"Taylor, Garcia and Cook",store,53.520965,45.020973,0260 Kimberly Plaza Apt. 474,South Brandi,Maine,Thailand,91577,False,1261,7:00 - 18:00,2019-04-27
+4990e909-5cae-4be1-8f72-915f8f729ee8,"Nunez, Perez and Thornton",store,-16.5328175,-134.082833,05386 Summer Mountain Apt. 539,Lake Lori,Oregon,Bahrain,88430,True,9632,6:00 - 21:00,2018-07-19
+868259c4-6cec-4a15-9c3a-ca12d9e4c5b2,Jones-Kirby,supplier,40.456498,-58.52096,869 Wade Run,South Johnathan,Virginia,Cayman Islands,48251,False,3870,9:00 - 22:00,2022-05-20
+c9936907-c296-4e55-91c5-7d7e2c280cb4,"Bradford, Bush and Alvarado",customer,-74.319615,-61.139716,24457 Mason Summit Apt. 351,Sandersfort,New Mexico,Comoros,68860,True,3958,9:00 - 20:00,2019-10-13
+31023921-7458-4dea-ab98-1a7ce66271c5,Hunt-Hendricks,supplier,20.0394275,112.310215,1971 Jacob Rest Apt. 326,Davenportburgh,Hawaii,Lesotho,89420,False,2099,6:00 - 20:00,2019-07-10
+28e0b42f-390d-4a9e-a5f7-feb27f564902,Sweeney PLC,customer,80.451621,-176.468271,6818 Ashley Islands Suite 744,Cruzchester,Connecticut,Samoa,82219,False,9670,9:00 - 19:00,2015-11-18
+dd4c1ecb-2c83-4217-9bb3-1c096a9b7c95,Johnson Ltd,distribution_center,54.2978,-50.966236,245 Sandra Inlet,Patelton,North Dakota,Montserrat,30538,False,259,6:00 - 22:00,2019-11-08
+e45a1f23-ce17-49a7-a4c8-785f19689b60,Martin Group,store,81.7207625,-151.191456,261 Kim Keys,Port Kenneth,Idaho,Nigeria,45043,True,1117,8:00 - 19:00,2016-02-11
+646a47ac-4265-40e7-a87f-98cb63ae20b0,Johnson Inc,store,9.2256005,10.285094,6072 Nguyen View,North Tonya,North Carolina,Turks and Caicos Islands,29864,True,4433,6:00 - 21:00,2024-10-12
+e20c6e7e-4dd2-4297-a781-77616b9a42a2,"Davis, Perry and Smith",supplier,36.9827005,29.255975,7385 Richardson Mission Apt. 452,West Chad,Louisiana,San Marino,87909,False,7994,10:00 - 21:00,2021-05-25
+e8a15000-0e45-42f0-b8b2-f826a5141316,"Floyd, Fuller and Russo",store,63.892475,-167.944882,04441 Kristen Mountain Suite 935,New Kaylafort,South Dakota,Antigua and Barbuda,06895,False,6347,8:00 - 20:00,2023-05-10
+b09ea4dd-6c6a-4cb1-8345-4a7c50493d94,"Frazier, Greer and White",warehouse,-29.5567205,80.957288,63807 Richards Road,Mooreton,Arkansas,Honduras,35933,True,8568,7:00 - 21:00,2017-11-23
+d2e506f6-8f50-4170-8697-f74ba38ec181,"Macdonald, Collins and Stone",warehouse,-23.1942045,138.461273,91638 Smith Curve Suite 683,Dudleybury,Michigan,Estonia,68305,True,2112,6:00 - 21:00,2025-03-15
+6739e99d-63ad-4b59-8e28-eab3a5e8a5a1,"Davis, Patton and Edwards",customer,-1.6642825,-14.517302,5599 Latoya Village,Tiffanybury,Illinois,Thailand,88992,False,6652,6:00 - 19:00,2021-01-30
+a28b1f39-5297-4033-a6b1-24487f058655,Brooks-Thomas,store,-82.371747,117.441909,1585 Brenda Loaf,Williamsstad,Texas,North Macedonia,25666,True,7794,9:00 - 21:00,2019-11-29
+cf3cea9c-ea9f-467a-a8f4-df21830ff3e7,"Garcia, Murphy and Kelly",warehouse,34.9098165,-125.939352,78547 Hernandez Canyon Suite 789,Debraview,Georgia,Senegal,81405,False,4139,7:00 - 22:00,2023-12-26
+9d4fe659-48b1-4e7c-adb4-a2d3e8621daa,Stokes-Martin,supplier,67.276279,25.762957,123 Mason Path,East Leonard,Maryland,Chad,46180,False,1397,8:00 - 20:00,2020-09-26
+b29725c3-5b64-4dc2-89be-6776af0b5f3e,Fuller Ltd,store,58.422749,32.749685,1190 Meghan Knoll,South Lauren,Virginia,Guyana,53121,True,7978,8:00 - 21:00,2017-11-14
+63a24a7d-f2f2-4944-98f2-d3158da5a01d,"Arellano, Allen and Miller",distribution_center,72.0818515,-52.697732,6429 Thomas Tunnel Suite 823,Spencerbury,Colorado,Faroe Islands,32332,True,2973,9:00 - 19:00,2018-08-14
+cc4c3575-2b86-45c8-8008-933400b40563,Jensen-Leach,store,-29.5904845,146.475533,8484 Bobby Bridge Suite 032,New Shirley,Missouri,Mozambique,73744,True,5524,7:00 - 20:00,2021-08-25
+ca43a4df-cad0-4225-9ec4-f107c609975f,Schwartz Ltd,store,-7.203259,-6.02624,625 Marissa Extensions Suite 164,Hardymouth,Iowa,Oman,00575,True,115,10:00 - 22:00,2016-05-12
+f89db36e-89f3-4eb7-b048-1c43ea6c8466,Leonard-Johnson,supplier,-7.984451,59.175561,515 Jennifer Loop Suite 288,Monicastad,Iowa,Seychelles,06563,False,5680,8:00 - 21:00,2017-04-10
+31da1999-7b3e-4dc8-a863-fe5d16ff168a,"Grimes, Torres and Cole",supplier,31.5453325,74.107661,018 Jacqueline Pines,Juliaton,Iowa,Portugal,82220,True,271,8:00 - 21:00,2016-01-21
+4bf913e5-a011-4476-b313-cb970d04acac,"Williams, White and Haley",customer,-0.415767,141.527332,618 Chase Crossroad,Lake Cynthia,Tennessee,Djibouti,97646,False,809,6:00 - 19:00,2015-12-27
+9460d964-7b00-460c-a930-8e1a388b3e8b,"Sanchez, Hicks and Bradley",distribution_center,-63.3266285,28.189066,26811 Desiree Ports Apt. 283,West Marc,New Jersey,Pakistan,38689,True,9304,9:00 - 18:00,2018-06-12
+94881ba1-6b27-4fca-a104-008b55d9400f,Watson and Sons,warehouse,10.3117255,-45.513573,32678 York Rapid,Christianchester,Delaware,British Virgin Islands,31560,False,1734,6:00 - 21:00,2015-07-10
+4cadbb50-48a8-49c6-8070-8acfcef0288c,Wilson-Williams,warehouse,60.8508405,43.837631,3766 Jessica Greens,Sherryhaven,Pennsylvania,Austria,51589,False,1310,6:00 - 18:00,2018-08-30
+9f4d1b32-ea1e-44a1-b442-514d3ab5a7a9,Copeland Inc,store,-32.9095385,-125.587376,7169 Perez Corners,Oliviafurt,Oklahoma,Jordan,99804,True,978,6:00 - 20:00,2020-03-24
+48420fbf-a777-4b32-8bf5-f7cea6c0e3e0,Riddle-Keith,warehouse,-1.092556,98.776629,218 Rivera Spur Apt. 657,Lake Edwardberg,Maine,Grenada,73288,False,2361,9:00 - 22:00,2018-12-16
+1f814bf9-c735-4a69-beda-9e60748a2ee3,Smith LLC,store,74.166599,72.40766,80155 Rebecca Field Suite 123,West Brentborough,Kansas,Lebanon,84478,True,5454,9:00 - 18:00,2020-05-09
+cbc4bede-d628-4e63-af2f-91feaa09c0c5,Small-Bauer,distribution_center,-10.20314,53.608606,89600 James Crossroad Apt. 663,Port Lisafort,Utah,Lao People's Democratic Republic,15361,False,3257,10:00 - 20:00,2022-05-17
+dfceaeb4-f723-48a3-a703-a4ddc981dd1e,"Williams, Mckinney and Martinez",store,-58.256046,24.706129,72998 Morgan Track Suite 575,Morenobury,Maine,Swaziland,69665,False,2398,10:00 - 20:00,2017-04-20
+de73b14b-7a3a-4867-b268-66d72483c444,"Key, Gonzalez and Hobbs",store,-22.5236495,162.757014,33624 Laura Brooks,New Anthonyborough,Oklahoma,Lebanon,85664,False,4406,9:00 - 20:00,2019-07-29
+a0c53f7f-1574-483a-a67f-92bca8fd0188,"Webster, Marshall and Gould",supplier,-41.001808,-112.604483,633 Keller Harbors,North Joeview,Washington,Tunisia,47182,True,5993,9:00 - 22:00,2025-06-21
+ec731a41-b8a1-46c6-b14c-2bfff49a2bc0,Brown-Baker,warehouse,0.4807105,-70.249581,730 Greg Villages,North Emilymouth,Kansas,Lesotho,86944,True,2852,6:00 - 22:00,2022-02-05
+5e76519c-5f8c-4058-93ed-a6896efec901,Malone LLC,warehouse,15.589768,-80.647168,36999 Wells Key,Port Zachary,Tennessee,Christmas Island,80239,False,7978,9:00 - 22:00,2021-05-06
+b884fef1-1aaa-492b-97d7-c659f359cf9f,"Lopez, Smith and Boyd",customer,-76.1318425,-93.613568,26401 Phillip Mall,New Christine,Georgia,Kenya,75526,True,8764,10:00 - 19:00,2021-12-19
+f5f88796-0ffe-4e46-b5ab-13403de830f5,"Davis, Pham and Howard",warehouse,-1.982579,9.792762,8613 Alyssa Passage,Andrewton,Delaware,Poland,59091,False,6246,7:00 - 20:00,2019-10-05
+edf1f01a-2b93-4b24-934e-0a84b8ce0c78,Neal PLC,store,76.3520325,-156.031308,78090 Golden Junctions Suite 630,Torresshire,Missouri,Colombia,38369,False,1455,9:00 - 22:00,2023-12-25
+3cf35cbc-1c49-4693-86f3-9072c3c79a6f,Oliver-Elliott,supplier,-50.982407,0.348143,9595 Anna Ridges Apt. 167,East Nichole,West Virginia,Ecuador,40328,True,1724,10:00 - 22:00,2015-10-24
+7556cf3d-8c31-42b0-8ecc-7cfdcbacb977,"Barrett, Ward and Lee",warehouse,-25.8170615,163.305202,9953 Joseph Streets Suite 689,Snyderland,Indiana,Ireland,11394,False,8592,9:00 - 22:00,2020-01-28
+90fabc8c-d24b-416d-8445-ba51681b0885,"Ortiz, Scott and Soto",distribution_center,-36.140708,-7.30098,742 Donald Station Apt. 043,North Erinbury,Arizona,Turkey,12615,False,6856,10:00 - 21:00,2025-05-25
+e3781e1f-cab7-4dbf-9265-d3dbc59ff154,Diaz-Williams,distribution_center,-58.7332205,74.152279,56641 Spence Turnpike,Edwinview,Virginia,Sudan,72654,False,7543,7:00 - 21:00,2023-05-20
+612cc547-0834-43ef-96ca-20c88c6f4517,Walsh-Blake,distribution_center,-77.546981,30.980741,069 Young Hills Suite 979,Zacharyburgh,Utah,Taiwan,32027,False,6375,10:00 - 22:00,2017-01-01
+11a23dcb-fd89-4787-b85a-74b24c448b59,Glass Group,store,-56.249374,158.726986,2080 Wong Valley Suite 835,Jamesside,Colorado,American Samoa,52276,False,9899,9:00 - 21:00,2019-10-26
+8dd2f675-2d67-49c1-9617-52b7656726e2,Boyer LLC,customer,-57.182158,-60.932436,096 Michelle Roads,Amymouth,Wyoming,Morocco,20498,True,2040,9:00 - 19:00,2023-10-30
+9d55e411-542c-4032-9e1d-bd3c2482fd97,Ashley Inc,customer,-27.145084,125.118268,2152 Sharp Mountains,Danielburgh,Georgia,Turks and Caicos Islands,76432,False,9151,9:00 - 20:00,2016-04-26
+a002cb32-4453-47d8-8b7e-06a8323aa390,Miller-Miller,distribution_center,54.0700155,61.084518,8273 Mcdaniel Fall Apt. 261,North Hunterton,Illinois,British Virgin Islands,91055,True,2147,6:00 - 20:00,2024-05-13
+285c9303-bfe4-4875-8cea-f0d8c13934bc,Hines-Rodriguez,store,-60.6105695,-133.121974,005 Connie Mill,Port Suzanneshire,North Carolina,Paraguay,50520,True,8384,8:00 - 19:00,2022-04-04
+7aa7f6b0-c46f-408c-9eb2-a6d1a84952a4,Robbins and Sons,supplier,56.233832,96.850307,29837 Fisher Extensions,North Steven,New Hampshire,Costa Rica,10037,False,2126,6:00 - 19:00,2024-10-09
+52d67797-7a65-4f42-9088-ecd77d15dae9,"Owens, White and Lewis",warehouse,72.1538065,23.068353,6637 Young Walks Suite 335,Rebekahberg,Wisconsin,Saint Pierre and Miquelon,37004,True,6091,10:00 - 19:00,2015-10-22
+5c61ecf4-110a-473e-995e-d71286b937fb,"Mckinney, Garcia and Best",customer,0.463328,43.20714,55535 Kaitlin Freeway Suite 920,Fosterfort,Rhode Island,Mali,91389,False,7907,10:00 - 22:00,2020-09-19
+68643ddd-e167-4769-977f-b472e40cff20,"Scott, Patrick and Snyder",store,59.842209,-22.873863,2344 Brock Falls Apt. 787,Villarrealhaven,Vermont,Liberia,01413,True,5775,7:00 - 21:00,2019-01-04
+1ebcd520-e4ab-449e-8657-94a307b88356,Riley and Sons,warehouse,-8.658246,-73.098085,96643 Eric Parkway Suite 182,Lake Dianeview,Wyoming,Cameroon,06886,False,4102,10:00 - 19:00,2023-10-08
+00723cbe-f425-4efc-9ad4-ab4a0d265e5e,"Ryan, Powers and Ryan",supplier,70.9145665,56.803651,099 Hayes Pines,Port Jilltown,Connecticut,Tunisia,00693,False,365,9:00 - 21:00,2017-11-16
+0feb1e41-e472-4b05-bf87-2a7a5e92b325,Fox-Castillo,store,69.107868,87.577867,716 Washington Underpass,New Trevorberg,Vermont,Russian Federation,18957,False,2479,8:00 - 18:00,2017-12-13
+91ac40ec-2a65-4b66-893f-3efc5c75416e,Lee PLC,distribution_center,-29.6298025,170.285367,39291 Bradley Mountain,East Stephanie,Arizona,Iraq,03435,True,7823,10:00 - 19:00,2015-08-19
+65840908-d11b-41ea-8b3b-0e4c9509053d,Davis PLC,supplier,85.55398,163.804313,058 Mcguire Station Apt. 956,New Kathryn,Illinois,Sudan,83847,True,1642,10:00 - 22:00,2023-09-17
+1b69b9bc-576e-4154-a917-3eeca7f147c2,Johnson-Rivas,store,53.11083,158.491482,129 Roy Square Apt. 821,East Michaelville,South Dakota,Indonesia,14323,False,7263,6:00 - 21:00,2017-06-09
+7d44de2c-5891-4930-8501-8710d48049ae,Mcintosh PLC,distribution_center,-12.188943,114.429498,929 Chavez Fields,Albertchester,Pennsylvania,Czech Republic,79578,True,3060,7:00 - 19:00,2022-03-29
+cda5fd63-f847-4610-b3c8-765b3dd0f9eb,"Jordan, Morris and Williams",warehouse,33.4055865,-83.055039,7162 Hughes Lane Suite 578,South Miguelport,Mississippi,South Georgia and the South Sandwich Islands,67679,False,8132,7:00 - 21:00,2015-09-21
+d478ab5f-2140-4cc9-a405-5a1880b9b046,Williams-Huff,customer,-53.214249,-125.505881,92370 Rachel Lock,Port Carmenville,Mississippi,Libyan Arab Jamahiriya,22703,False,881,6:00 - 22:00,2019-05-29
+a3b8da35-a9f9-4221-b1e0-5ab82890882e,"French, Oconnell and Norris",supplier,26.900321,4.895962,439 Harris Turnpike,Ronaldside,Tennessee,El Salvador,93159,True,2054,6:00 - 18:00,2015-09-13
+b4a46ee2-c3bb-41ad-a701-a3b109d5946b,Mccarthy-James,warehouse,0.328904,92.039436,58149 Erin Underpass Apt. 436,Kellyside,Arizona,Aruba,51532,True,2421,9:00 - 19:00,2019-08-17
+15fa4ad6-7ee3-4ec2-bcf0-49de2aa09c08,"Moore, Smith and Solomon",warehouse,84.0582395,82.449988,21056 Michelle Crest Suite 164,Josephville,Connecticut,Russian Federation,23932,True,6561,7:00 - 18:00,2025-03-16
+72b0fcea-121a-4171-9625-4e24f37ecf3c,Logan Ltd,supplier,48.681361,166.440766,75022 Baird Fork Apt. 169,Dustinstad,Washington,Russian Federation,79562,False,1665,10:00 - 22:00,2022-10-30
+a7e2e314-2bbd-401c-9034-78f631b2a8fd,Brown Inc,warehouse,-29.4916975,-93.186585,07212 April Mission Suite 427,East Andrewport,Massachusetts,Guam,59948,True,7476,7:00 - 19:00,2018-01-12
+9e48d6eb-e008-403e-b26d-4b646cb85294,"Delacruz, Gallagher and Carter",customer,-25.1261195,-58.473349,682 Stephen Pike,Frankmouth,Michigan,Egypt,18061,True,5596,10:00 - 21:00,2022-12-07
+d36587aa-196d-4f33-a479-fe896440bad2,Evans Inc,warehouse,72.6466925,-91.840933,33974 Johnson Crest Suite 531,West Ashleyport,South Carolina,Latvia,73331,False,4861,9:00 - 22:00,2021-11-19
+6a48079b-a34a-4a80-b03d-6daccb2255ef,Gonzalez-Garcia,warehouse,-40.28769,35.089878,5509 Lawrence Alley,West Paula,California,Cameroon,74280,True,2383,9:00 - 21:00,2016-06-11
+d95e515b-522b-415b-bc5a-48b49f381f55,"Fowler, Williams and Morgan",warehouse,25.7263635,-67.746167,274 Dillon Points Suite 396,West Anthony,Pennsylvania,Morocco,69996,False,2594,10:00 - 22:00,2024-10-01
+d35c225c-aa5c-49d0-a783-b8c9ae405f7b,Rivera-Richard,supplier,79.2757875,103.138372,7652 Peters Spur Suite 324,Mortonchester,Colorado,Uruguay,09330,False,3753,10:00 - 18:00,2018-08-10
+3836c58c-82d5-4b9c-b89b-42774367294c,Watson Group,supplier,50.7989045,125.129359,444 Collier Skyway Suite 174,New Emilymouth,Massachusetts,Cayman Islands,80771,False,2256,9:00 - 21:00,2025-02-03
+176d2d9d-731a-4880-819a-6ebc8b128cbc,Orr-Oliver,warehouse,7.235467,-69.978171,70911 Bowers Rue,Burgessport,Rhode Island,Syrian Arab Republic,91130,True,8321,10:00 - 18:00,2022-09-06
+bd1a7ea3-6113-4c97-bb07-dbfe4f7f6c22,Boyd-Palmer,warehouse,-8.864333,144.419795,47585 Brown Valley,Anthonyburgh,Montana,Falkland Islands (Malvinas),84277,True,8746,6:00 - 18:00,2017-08-06
+0955c5d4-a700-413d-9ded-f9d565fb222d,Moran PLC,warehouse,-6.05502,-3.492894,1612 Blackwell Burgs,South Catherinestad,Mississippi,Uruguay,74847,True,7840,6:00 - 21:00,2020-09-18
+8fe0b79c-9b1d-49e0-bd6e-b05da392ae24,Scott and Sons,store,38.7995935,-156.180954,1052 Michael Loop,East Brian,Iowa,Thailand,58291,True,1268,8:00 - 18:00,2024-12-21
+fdd25f44-2ce0-472d-bfbd-d6ef1e2a6885,Macias-Jones,supplier,39.129418,66.974927,602 Charles Points,Port Jacobhaven,New Mexico,Austria,38945,True,4178,9:00 - 18:00,2019-12-18
+ad6447ae-b464-4621-93db-15d4f60cff6f,Anderson Ltd,warehouse,-85.7567875,-109.411728,63632 Jones Path Suite 760,Larsonbury,New York,Bosnia and Herzegovina,91076,True,9745,7:00 - 19:00,2022-09-16
+387b393f-8c24-45d0-9a4c-b1d52b4354dd,Floyd-Carrillo,distribution_center,-35.4308935,109.852176,27310 Garner Points Apt. 518,Lake Kaylaview,Pennsylvania,Uruguay,89175,True,9078,10:00 - 20:00,2023-09-11
+0a973c65-7b07-46ee-b913-ca3e3735bf32,"Jackson, Beltran and Johnson",customer,-43.1103025,-116.86304,58099 Yolanda Summit,South Richard,Massachusetts,Israel,73273,False,9653,9:00 - 20:00,2015-11-08
+8b763ed6-251d-43f9-a639-0c5848e2f7ec,Smith-Patel,store,9.007918,-59.306443,1765 Margaret Mountains Apt. 835,Lake Daniel,Maine,North Macedonia,09262,False,2684,7:00 - 22:00,2023-12-13
+cb3370a0-0802-403e-a416-a93586b27afd,"Mckenzie, Schwartz and Ford",customer,48.0284455,110.372568,31011 Steven Park,Lake Leonardton,Texas,Netherlands,69525,False,2573,8:00 - 18:00,2018-10-06
+0a116118-7521-4ae0-a4d5-bb67ba339a52,Fitzgerald-Miller,supplier,-21.912017,-44.97473,479 Strong Locks Apt. 857,Johnchester,Nebraska,Wallis and Futuna,17283,False,1341,7:00 - 19:00,2019-01-31
+804f0a84-c584-422e-8374-424d2bd7ebd5,Farmer-Miller,warehouse,82.1005735,-135.631379,81243 Christopher Cove Suite 100,Stevenburgh,Washington,Mozambique,35566,True,7480,6:00 - 22:00,2022-12-19
+d75fce18-ea48-471d-b115-7b1b16c68791,"Harvey, Harrison and Flores",store,-26.8585175,-151.694978,272 Matthew Cape Apt. 968,North Chadside,Georgia,Belarus,71339,True,1813,7:00 - 20:00,2024-08-18
+df810e29-0949-47d5-810f-73b3743c92eb,Doyle-Scott,supplier,-48.564199,-89.376196,3556 Benjamin Spur,New Johnathan,Maine,Taiwan,49016,False,4877,7:00 - 22:00,2025-03-01
+f21299df-1235-4153-a1dc-d935318cbb18,"Zuniga, Patrick and Hill",store,81.155025,174.994719,0717 Lauren Shores Apt. 156,North Jamieshire,Pennsylvania,Equatorial Guinea,98143,True,5490,7:00 - 19:00,2020-03-23
+474dddf6-827a-47ba-9c0e-8c2356953811,Murray-Martin,distribution_center,78.0729715,-156.663621,06810 Lawrence Manor Apt. 387,Lake Penny,Tennessee,France,29990,False,9283,7:00 - 19:00,2018-09-26
+b22c2814-13d8-4883-9a9e-b4b67aa77df7,Mcguire Inc,warehouse,-56.4393155,-57.269017,7047 Elizabeth Causeway Apt. 388,Lake Jayborough,New Hampshire,Burkina Faso,74533,False,6011,6:00 - 22:00,2025-06-19
+7d9c729b-8ec5-4daa-9da5-c3538b57788d,Wright-Hancock,store,85.255926,-125.752403,144 Marie View,North Robert,Oregon,Zambia,90597,True,2957,10:00 - 18:00,2018-03-22
+c2c9670d-7b8f-4f4e-8977-59682c647941,Wade LLC,distribution_center,46.0306815,-25.867713,46277 Jonathan Estate Suite 463,North Troy,New Mexico,Palau,28400,False,8837,10:00 - 19:00,2024-08-09
+57945524-c9a4-4e25-bdd2-823d22693d42,Carroll-Mcmillan,supplier,14.6137625,26.868933,469 Myers Glens,Lake Philip,Nebraska,Oman,96257,False,5564,10:00 - 18:00,2021-10-31
+3abbbd71-5075-410f-a6cf-f6ec0fce2672,Manning and Sons,warehouse,-87.7121565,-68.491335,009 Bridget Underpass,West Toddport,Iowa,Saint Vincent and the Grenadines,35048,True,1037,9:00 - 21:00,2016-10-08
+ddfdeba9-e798-4963-983e-d4fc87391191,"Clayton, Martinez and Parker",distribution_center,17.1791355,-83.281421,10722 Wilson Trail,South Justinhaven,North Dakota,Palau,64248,True,3424,8:00 - 21:00,2020-12-31
+3baea776-d613-4b91-8801-ea9a9b6df523,Brewer and Sons,distribution_center,-41.1596555,-163.295861,3539 Stewart Shores,Adammouth,Ohio,Isle of Man,43655,True,6353,6:00 - 21:00,2022-04-24
+7e72762e-0aa6-4596-aa92-dacec3f58c93,Jones-Nichols,customer,49.6615715,-134.466695,46984 Christine Trace,Michealborough,North Dakota,Montserrat,30502,False,1158,7:00 - 18:00,2023-08-06
+a623ca1e-ce22-4375-ac93-cae2f92e6b13,Peterson-Walsh,supplier,79.221125,-173.008057,1488 Tiffany Club Apt. 943,Brittneyhaven,West Virginia,Saint Vincent and the Grenadines,63113,False,7832,7:00 - 21:00,2024-09-16
+4c8d2bb1-408f-403e-8070-fb853bc495d1,Cunningham LLC,supplier,87.617961,139.496129,675 Michael Greens,Torresfort,Minnesota,Cocos (Keeling) Islands,92712,True,3570,8:00 - 18:00,2019-10-17
+c6902215-ccd4-4097-a3de-7843289633bd,Boyer Ltd,supplier,79.6041575,-75.292101,796 Douglas Inlet,West Matthewhaven,Kansas,Saudi Arabia,07330,False,8228,7:00 - 21:00,2016-08-15
+b2742c33-18b9-4fa4-9b1f-49a899d492c1,Phillips-Potter,customer,-29.610097,-112.905883,28331 Janice Ville,Lake Randallshire,Georgia,Namibia,41691,True,9079,9:00 - 21:00,2025-03-04
+450d8307-a35a-43ed-acdd-3b4023e97a56,"Banks, Smith and Thompson",distribution_center,-71.759878,100.502791,09132 Costa Cliffs,East Melissaton,Vermont,Equatorial Guinea,61204,False,1006,9:00 - 19:00,2024-06-13
+76f334a8-c673-4a9c-a263-2a992b5e96d5,"Smith, Allen and Pena",customer,-62.260806,92.241257,32505 Melissa Forges Suite 658,Michaeltown,Wisconsin,Taiwan,23998,True,1774,10:00 - 18:00,2023-09-30
+088022b6-6f74-4843-bbe9-87993baf5ee6,Garcia-Hoover,distribution_center,-24.207075,57.436379,86004 Martinez Loaf Suite 497,Kevinbury,New Mexico,Saint Kitts and Nevis,50814,True,1880,9:00 - 22:00,2023-12-22
+261a21ee-c66e-4941-94b3-49ca09053d0f,Waters-Ramirez,distribution_center,9.9522865,-95.821103,148 Dorothy Street Apt. 415,Barberville,South Carolina,Tunisia,18829,True,3367,9:00 - 22:00,2021-05-29
+44a8cd42-8e69-498d-ac53-09ce2cdae505,Graves-Hughes,distribution_center,41.885117,-124.319025,07985 Patricia Fall,New Brianbury,Pennsylvania,Solomon Islands,78007,False,4104,8:00 - 19:00,2019-11-11
+cf58b91f-7d52-49cd-a1ba-8c29283b9cab,Griffin PLC,store,-37.0967055,-42.063574,75230 Jessica Land,South Heather,Idaho,United States of America,36374,False,6830,9:00 - 22:00,2020-07-15
+e9a6eb19-680d-4fb8-a1b3-80fd9b11d66f,Guerrero Group,store,-37.499007,-12.763841,32168 Keith Trail Apt. 975,East Nancy,Oklahoma,Slovenia,37091,False,3773,8:00 - 19:00,2015-10-30
+9a237dc6-f624-4bd3-b8a7-b341f21ac6a3,"Scott, French and Cox",supplier,-82.1110265,-67.24234,65641 Patrick Drives,North Sandy,Hawaii,Korea,05858,False,5296,9:00 - 20:00,2020-06-25
+ad24e778-d45f-4e88-a2ad-8001e5d66e0c,"Hughes, Carlson and Williams",warehouse,-87.222061,120.567127,92429 Nicole Unions Suite 396,Chavezburgh,Tennessee,Czech Republic,86121,True,6231,7:00 - 18:00,2024-11-04
+55840caa-a3e0-46c5-aec5-82befbc3dda6,Martinez Group,warehouse,45.31594,-65.697488,74301 Jones Wall,Port Bradleymouth,California,Saint Vincent and the Grenadines,91979,False,2040,6:00 - 18:00,2020-03-13
+d61a9e75-5728-4080-8d6e-808bd62e130f,"Williams, Logan and Ruiz",customer,-67.3731445,47.310685,927 Andrew Key Apt. 194,South Brian,Georgia,Bosnia and Herzegovina,72985,False,431,8:00 - 18:00,2016-06-11
+5d313094-9622-4b40-96ef-85d32dcced0a,"Marshall, Palmer and Pierce",store,-88.4883545,-160.682688,7807 Cathy Locks,East Katelyn,Wyoming,Mauritius,13116,True,1692,10:00 - 22:00,2023-04-18
+aeb0cda1-c176-45c9-b82b-1962f76dbcc1,Daniels-Burch,customer,-76.4701105,-120.163711,889 Merritt Spur Suite 485,Millerfurt,Missouri,Central African Republic,54461,True,861,10:00 - 22:00,2017-04-06
+e8269c33-4b80-431b-b088-2ac6713f0e92,Ryan-Long,supplier,-54.742875,-132.91021,12178 Lawrence Branch,East Megantown,Georgia,Ghana,29092,True,6576,8:00 - 21:00,2017-01-29
+4a142c8c-8d5f-45dd-bb18-ea3f44dbfea8,Bell PLC,warehouse,-57.997709,-42.96332,92650 Hill Plains Apt. 379,Davisbury,Mississippi,Liechtenstein,68277,False,1767,9:00 - 21:00,2017-04-22
+b154dd69-15e3-44a0-b3e6-057ebcc15eb7,"Lee, Lane and Miller",customer,-65.490038,40.736662,9890 Atkins Vista Suite 168,Port Melissatown,Minnesota,Armenia,92810,True,255,8:00 - 22:00,2021-08-20
+7d625da0-fc3c-43bc-a8f2-bf6fb56b20fe,Jackson-Myers,warehouse,26.93388,-45.984009,3004 Williams Turnpike Apt. 941,Turnerview,Kentucky,Zambia,26070,False,4405,6:00 - 20:00,2017-10-10
+d2ef4c71-8ca5-4601-93af-6050d409aba4,Lopez-Jordan,supplier,-74.4208345,115.396794,504 Tracy Flat Suite 125,Gatesshire,Washington,United Kingdom,71977,True,3949,10:00 - 21:00,2016-05-05
+783d60df-4072-4176-b501-754702cd67da,"Roberts, Medina and Morgan",customer,-26.33599,-122.829295,6701 Gordon Courts,Port Michael,Kentucky,Cuba,18322,True,4225,9:00 - 20:00,2016-04-18
+d296ff90-12d2-4b04-853b-b0f4da040898,Fisher Inc,warehouse,3.198471,-156.803809,567 Walters Mountain Suite 912,North Jeffreymouth,North Carolina,Cuba,38475,False,8960,10:00 - 18:00,2017-02-09
+821ab6d0-9261-40dd-a007-d754fb8dd102,Ellison Ltd,distribution_center,70.425601,39.199378,525 Brooks Pine,Taylorville,Illinois,Jersey,17248,False,8156,8:00 - 21:00,2025-01-16
+777acc74-6c89-4f08-b2bf-a2ef70a8f0df,"Jackson, Reeves and Williams",customer,0.6072365,-42.035495,31794 Hernandez Valleys,Lake Ricky,Indiana,Ireland,76247,True,9509,10:00 - 20:00,2024-01-18
+38286900-7c54-49e0-8055-b00557be34cd,Collins Ltd,supplier,-64.83069,-104.204172,7463 White Glens,Trujillofurt,Illinois,Saint Kitts and Nevis,19394,False,6304,7:00 - 18:00,2016-05-07
+356a92cd-0506-4cda-a3d7-d665f4226997,"Smith, Macias and Griffin",supplier,15.674329,164.025959,13327 Baker Mountains Suite 014,Port Christopher,North Carolina,Martinique,05783,True,3437,7:00 - 22:00,2022-06-18
+9cbc12e4-70c9-43d4-9121-303dc88e9392,Downs Inc,distribution_center,-17.5724965,-49.215288,57400 Samantha Drives Suite 330,Port Chaseburgh,Pennsylvania,Saint Vincent and the Grenadines,94432,False,8862,10:00 - 21:00,2021-02-02
+9f8245b8-0aed-4fe2-8730-bc8ef5725d88,Pierce Ltd,distribution_center,-55.1655295,-160.157147,5085 Austin Parkway,Velasquezstad,Wisconsin,New Zealand,83830,False,1822,9:00 - 19:00,2023-12-05
+12898417-6a92-40fe-afab-246060cf791b,Jackson Inc,supplier,26.735213,103.116732,081 Thompson Mountains,Lake Andre,Hawaii,Korea,09649,True,5937,7:00 - 22:00,2023-08-29
+dc824163-c0a2-42f3-b6e3-20c5496bb623,Anderson-Cook,distribution_center,54.645756,-31.76999,66520 Rodriguez Terrace Apt. 680,East Margaret,South Dakota,Ukraine,60276,True,8327,6:00 - 22:00,2023-01-25
+0b42b544-5a95-44cc-9c6a-6ee2b83666a7,Suarez Group,warehouse,-43.9395385,-51.492898,951 Nichols Rue,Lake Calvinborough,California,China,90686,True,1695,8:00 - 19:00,2017-01-05
+fc70763f-8941-4cd2-9f8f-f712d21fbbbe,"Rodriguez, Spencer and Strickland",store,-13.589261,-112.251689,262 Hill Tunnel Suite 398,Ruizville,Massachusetts,Honduras,43660,True,5823,7:00 - 18:00,2016-09-26
+e12da6a6-0ba0-4deb-9606-7350c30915fd,Mills Ltd,store,-27.6693575,-12.140947,2152 Johnson Fork Apt. 527,Richardland,New Hampshire,Belgium,86854,True,9522,10:00 - 22:00,2017-07-09
+ffc1b078-e90f-4c7e-b5ae-397fd4f2a4bc,"Mendez, Bennett and Anderson",store,34.5249875,59.194595,1256 Kathy Walk,Bowersland,Rhode Island,New Caledonia,27120,False,2749,9:00 - 22:00,2019-01-24
+cdb8cc67-2a23-4d67-a28a-e0fc797ef304,Gutierrez-Sanchez,distribution_center,-87.426528,-156.449408,1238 Kaitlin Ramp,Krausechester,Washington,Cook Islands,86143,True,8984,9:00 - 22:00,2017-10-10
+c5e9f546-b84b-4dd7-878c-d9f659e63ee7,Byrd LLC,warehouse,40.186033,67.831747,36234 Connie Wells Apt. 896,Stevensonfurt,Kentucky,Korea,96224,False,3974,8:00 - 21:00,2018-11-18
+ae72d905-589a-421c-a7d6-02ef37eead68,Monroe-Stevens,supplier,59.275375,-109.483632,79365 Kathy Union Suite 505,Lake Virginia,Montana,Saint Barthelemy,27130,True,9710,10:00 - 21:00,2017-12-19
+eed2e75b-a5d7-45bb-a312-4eee0f61ee4a,Williamson-Wilson,distribution_center,-16.1779595,-107.344293,7987 Jennifer Drive Apt. 628,East Anthony,Ohio,Martinique,87886,False,705,9:00 - 18:00,2015-11-02
+5dcde927-3b0d-4321-a1ea-eee9b588a45d,Jensen-Grant,supplier,-66.5923985,-38.344585,92364 Sanders Centers,Heatherside,Rhode Island,El Salvador,44319,True,4183,6:00 - 19:00,2017-12-22
+b8d0c29d-44a7-400d-8ba0-735226dc6f73,"Lindsey, Perez and Griffin",store,46.914561,103.26752,1541 Franklin Alley Suite 413,Michaelton,Maryland,Saint Helena,47348,False,8745,10:00 - 22:00,2021-12-21
+b246c5d0-dba6-49b5-9e32-6e6e3d3aba91,Galloway-Graham,distribution_center,8.9051325,65.324517,2562 Floyd Plain,Ashleyfurt,Georgia,Panama,43741,True,7219,7:00 - 21:00,2019-06-06
+0110b766-171d-4518-8256-05660b68a5fb,"Morris, Roth and Spencer",supplier,45.194484,-153.48506,5988 Joshua Rapid,Kirbymouth,Texas,Isle of Man,38281,False,8423,9:00 - 20:00,2024-09-20
+01730229-9b16-4db8-a13e-10a13c841b6a,Russell-Castro,warehouse,-22.871892,-26.330794,4985 Goodman Knoll Apt. 678,West Kellychester,Louisiana,Taiwan,89450,True,3973,7:00 - 22:00,2021-05-04

@@ -2,14 +2,16 @@
 Mock data generation using Faker for realistic synthetic datasets.
 """
 
-import pandas as pd
-import numpy as np
-from faker import Faker
-from typing import Dict, List, Optional, Any
 import random
+import uuid
 from datetime import datetime, timedelta
-import duckdb
 from pathlib import Path
+from typing import List, Optional, Tuple
+
+import duckdb
+import numpy as np
+import pandas as pd
+from faker import Faker
 
 
 class DataGenerator:
@@ -17,7 +19,7 @@ class DataGenerator:
 
     def __init__(self, seed: int = 42):
         self.fake = Faker()
-        Faker.seed(seed)
+        self.fake.seed_instance(seed)
         random.seed(seed)
         np.random.seed(seed)
 
@@ -188,21 +190,93 @@ class DataGenerator:
         return pd.DataFrame(locations)
 
 
-def setup_database_with_mock_data(db_path: str = "/workdir/data.db") -> None:
-    """Set up DuckDB database with generated mock data."""
-    generator = DataGenerator()
+def save_data_to_csv(data_dir: str = "data") -> None:
+    """Generate and save all mock data to CSV files for consistent evaluation."""
+    print(f"Generating and saving mock data to {data_dir}/...")
 
-    # Generate datasets
-    print("Generating mock data...")
+    # Create data directory
+    Path(data_dir).mkdir(exist_ok=True)
+
+    # Generate all datasets
+    generator = DataGenerator(seed=42)  # Fixed seed for consistency
+
+    print("Generating customers data...")
     customers_df = generator.generate_customers(1000)
+    customers_df.to_csv(f"{data_dir}/customers.csv", index=False)
 
-    # Extract customer IDs for transactions
+    print("Generating transactions data...")
     customer_ids = customers_df["customer_id"].tolist()
-    transactions_df = generator.generate_sales_transactions(5000, customer_ids[:200])
+    transactions_df = generator.generate_sales_transactions(5000, customer_ids)
+    transactions_df.to_csv(f"{data_dir}/transactions.csv", index=False)
 
+    print("Generating time series data...")
     time_series_df = generator.generate_time_series(2000)
-    reviews_df = generator.generate_reviews(1500)
+    time_series_df.to_csv(f"{data_dir}/time_series.csv", index=False)
+
+    print("Generating reviews data...")
+    # Generate some product IDs for reviews
+    product_ids = [str(uuid.uuid4()) for _ in range(100)]
+    reviews_df = generator.generate_reviews(1500, product_ids)
+    reviews_df.to_csv(f"{data_dir}/reviews.csv", index=False)
+
+    print("Generating locations data...")
     locations_df = generator.generate_geospatial_data(300)
+    locations_df.to_csv(f"{data_dir}/locations.csv", index=False)
+
+    print(f"Data saved to {data_dir}/ directory")
+    print("Table counts:")
+    print(f"  customers: {len(customers_df):,} rows")
+    print(f"  transactions: {len(transactions_df):,} rows")
+    print(f"  time_series: {len(time_series_df):,} rows")
+    print(f"  reviews: {len(reviews_df):,} rows")
+    print(f"  locations: {len(locations_df):,} rows")
+
+
+def load_data_from_csv(
+    data_dir: str = "data",
+) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Load data from CSV files."""
+    print(f"Loading data from {data_dir}/...")
+
+    customers_df = pd.read_csv(f"{data_dir}/customers.csv")
+    transactions_df = pd.read_csv(f"{data_dir}/transactions.csv")
+    time_series_df = pd.read_csv(f"{data_dir}/time_series.csv")
+    reviews_df = pd.read_csv(f"{data_dir}/reviews.csv")
+    locations_df = pd.read_csv(f"{data_dir}/locations.csv")
+
+    print("Data loaded from CSV files")
+    print("Table counts:")
+    print(f"  customers: {len(customers_df):,} rows")
+    print(f"  transactions: {len(transactions_df):,} rows")
+    print(f"  time_series: {len(time_series_df):,} rows")
+    print(f"  reviews: {len(reviews_df):,} rows")
+    print(f"  locations: {len(locations_df):,} rows")
+
+    return customers_df, transactions_df, time_series_df, reviews_df, locations_df
+
+
+def setup_database_with_mock_data(db_path: str = "./data.db", use_csv: bool = True, data_dir: str = "data") -> None:
+    """Set up DuckDB database with generated mock data."""
+
+    if use_csv and Path(data_dir).exists():
+        # Load from CSV files for consistent evaluation
+        customers_df, transactions_df, time_series_df, reviews_df, locations_df = load_data_from_csv(data_dir)
+    else:
+        # Generate new data (for initial setup)
+        print("Generating mock data...")
+        generator = DataGenerator(seed=42)  # Fixed seed for consistency
+
+        # Generate customer data first
+        customers_df = generator.generate_customers(1000)
+        customer_ids = customers_df["customer_id"].tolist()
+
+        # Generate related data
+        transactions_df = generator.generate_sales_transactions(5000, customer_ids)
+        time_series_df = generator.generate_time_series(2000)
+        # Generate some product IDs for reviews
+        product_ids = [str(uuid.uuid4()) for _ in range(100)]
+        reviews_df = generator.generate_reviews(1500, product_ids)
+        locations_df = generator.generate_geospatial_data(300)
 
     # Create database directory if it doesn't exist
     Path(db_path).parent.mkdir(parents=True, exist_ok=True)
@@ -211,26 +285,22 @@ def setup_database_with_mock_data(db_path: str = "/workdir/data.db") -> None:
     print(f"Setting up database at {db_path}...")
     conn = duckdb.connect(db_path)
 
-    try:
-        # Create tables
-        conn.execute("CREATE TABLE IF NOT EXISTS customers AS SELECT * FROM customers_df")
-        conn.execute("CREATE TABLE IF NOT EXISTS transactions AS SELECT * FROM transactions_df")
-        conn.execute("CREATE TABLE IF NOT EXISTS time_series AS SELECT * FROM time_series_df")
-        conn.execute("CREATE TABLE IF NOT EXISTS reviews AS SELECT * FROM reviews_df")
-        conn.execute("CREATE TABLE IF NOT EXISTS locations AS SELECT * FROM locations_df")
+    # Create tables from DataFrames
+    conn.execute("CREATE OR REPLACE TABLE customers AS SELECT * FROM customers_df")
+    conn.execute("CREATE OR REPLACE TABLE transactions AS SELECT * FROM transactions_df")
+    conn.execute("CREATE OR REPLACE TABLE time_series AS SELECT * FROM time_series_df")
+    conn.execute("CREATE OR REPLACE TABLE reviews AS SELECT * FROM reviews_df")
+    conn.execute("CREATE OR REPLACE TABLE locations AS SELECT * FROM locations_df")
 
-        # Verify data was loaded
-        tables = ["customers", "transactions", "time_series", "reviews", "locations"]
-        for table in tables:
-            count = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-            print(f"Table '{table}': {count} rows")
+    # Print table info
+    for table_name in ["customers", "transactions", "time_series", "reviews", "locations"]:
+        count = conn.execute(f"SELECT COUNT(*) FROM {table_name}").fetchone()[0]
+        print(f"Table '{table_name}': {count} rows")
 
-        print("Database setup complete!")
-
-    finally:
-        conn.close()
+    conn.close()
+    print("Database setup complete!")
 
 
 if __name__ == "__main__":
-    # Generate and setup database when run directly
-    setup_database_with_mock_data()
+    # Generate and save data to CSV files
+    save_data_to_csv("data")

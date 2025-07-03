@@ -4,8 +4,8 @@
 timeout_seconds: 600  # 10 minutes default timeout
 max_memory_mb: 2048   # 2GB memory limit
 max_cpu_cores: 2.0    # CPU core limit
-workdir: "/workdir"   # Working directory for agent
-database_path: "/workdir/data.db"  # DuckDB database path
+workdir: "./workdir"   # Working directory for agent
+database_path: "./workdir/data.db"  # DuckDB database path
 
 # Agent settings
 model: "claude-3-5-sonnet-20241022"
