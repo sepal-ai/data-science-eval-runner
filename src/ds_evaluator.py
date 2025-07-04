@@ -271,7 +271,7 @@ class DSAgentEvaluator:
         except Exception as e:
             return {"success": False, "output": None, "error": f"Failed to start container: {str(e)}"}
 
-    async def _score_agent_results(self, problem_id: str, workdir: Path, agent_output: str) -> Dict[str, Any]:
+    async def _score_agent_results(self, problem_id: str, workdir: Path, agent_output: Any) -> Dict[str, Any]:
         """Score agent results using the rubric."""
         rubric = self.scoring_rubrics[problem_id]
 
@@ -309,7 +309,7 @@ class DSAgentEvaluator:
             }
 
         except Exception as e:
-            print(f"Scoring error: {e}")
+            print(f"Scoring error: {e}", exc_info=True)
             return {"total_score": 0.0, "subscores": subscores, "metadata": {"error": str(e)}}
 
     async def _score_correctness(self, problem_id: str, workdir: Path, created_files: List[str]) -> float:
@@ -364,20 +364,28 @@ class DSAgentEvaluator:
 
         return min(1.0, score)
 
-    async def _score_methodology(self, problem_id: str, agent_output: str, created_files: List[str]) -> float:
+    async def _score_methodology(self, problem_id: str, agent_output: Any, created_files: List[str]) -> float:
         """Score the appropriateness of approach and techniques."""
         score = 0.0
 
+        # Convert agent_output to string if it's a list or other type
+        if isinstance(agent_output, list):
+            agent_output_str = " ".join(str(item) for item in agent_output)
+        elif agent_output is None:
+            agent_output_str = ""
+        else:
+            agent_output_str = str(agent_output)
+
         # Check for appropriate SQL queries
-        if "SELECT" in agent_output.upper() and "FROM" in agent_output.upper():
+        if "SELECT" in agent_output_str.upper() and "FROM" in agent_output_str.upper():
             score += 0.3
 
         # Check for data exploration
-        if any(keyword in agent_output.upper() for keyword in ["DESCRIBE", "COUNT", "GROUP BY", "DISTINCT"]):
+        if any(keyword in agent_output_str.upper() for keyword in ["DESCRIBE", "COUNT", "GROUP BY", "DISTINCT"]):
             score += 0.3
 
         # Check for analytical thinking
-        if any(keyword in agent_output.lower() for keyword in ["analysis", "insight", "pattern", "trend"]):
+        if any(keyword in agent_output_str.lower() for keyword in ["analysis", "insight", "pattern", "trend"]):
             score += 0.2
 
         # Check for appropriate file outputs
