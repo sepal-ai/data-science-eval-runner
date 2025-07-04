@@ -174,53 +174,6 @@ python -m ds_runner eval-agent my_agent --problem sales_analysis_001 --verbose
 
 ## Building Custom Agents
 
-### Basic Agent Structure
-
-```python
-import asyncio
-from src.ds_agent import DSAgent, RunAgentParams
-
-class MyDSAgent:
-    def __init__(self, db_path="/workdir/data.db"):
-        self.agent = DSAgent(db_path)
-    
-    async def solve_problem(self, problem_statement: str):
-        # 1. Explore data
-        tables = await self.agent.list_tables()
-        
-        # 2. Analyze specific tables
-        customers = await self.agent.describe_table("customers")
-        
-        # 3. Run SQL queries
-        query = "SELECT COUNT(*) FROM customers"
-        result = await self.agent.execute_sql(query)
-        
-        # 4. Write analysis files
-        code = "# Analysis code here"
-        await self.agent.write_file("analysis.py", code)
-        
-        return {"success": True}
-```
-
-### Agent with Claude Integration
-
-```python
-from src.ds_agent import DSAgent, RunAgentParams
-
-# Create agent with conversation loop
-agent = DSAgent()
-
-# Run with Claude integration
-params = RunAgentParams(
-    problem_id="sales_analysis_001",
-    problem_statement="Analyze sales data...",
-    model="claude-3-5-sonnet-20241022",
-    max_iterations=10
-)
-
-result = await agent.run_agent(params)
-```
-
 ## Scoring System
 
 ### Rubric Categories
