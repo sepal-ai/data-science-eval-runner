@@ -84,7 +84,7 @@ python -m ds_runner run-agent "sales_analysis_001" "Analyze customer sales data 
 
 4. **Evaluate an agent:**
 ```bash
-python -m ds_runner eval-agent examples.sample_ds_agent --problem sales_analysis_001 --output results.json
+python -m ds_runner eval-agent src/ds_agent.py --problem sales_analysis_001 --output results.json
 ```
 
 ## Evaluation Problems
@@ -271,24 +271,6 @@ CREATE TABLE transactions (
 );
 ```
 
-## Development
-
-### Project Structure
-
-```
-├── src/
-│   ├── ds_agent.py          # Core agent with conversation loop
-│   ├── data_generator.py    # Mock data generation
-│   ├── ds_evaluator.py      # Evaluation orchestration
-│   └── cli_runner.py        # Command line interface
-├── problems/                # Problem definitions
-├── examples/                # Sample agents
-├── ds_runner/               # Main package entry point
-├── config.yaml             # Default configuration
-├── Dockerfile              # Evaluation environment
-└── README.md               # This file
-```
-
 ### Adding New Problems
 
 1. Create a YAML file in `problems/`:
@@ -315,27 +297,6 @@ expected_files:
 ```bash
 python -m ds_runner eval-agent examples.sample_ds_agent --problem my_new_problem
 ```
-
-### Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Submit a pull request
-
-## Examples
-
-See the `examples/` directory for:
-- `sample_ds_agent.py` - Basic agent demonstrating the tool usage
-- Advanced agent patterns and techniques
-- Problem-specific solution approaches
-
-## Support
-
-For issues and questions:
-1. Check the GitHub issues
-2. Review the example agents
-3. Validate your setup with `python -m ds_runner validate-setup`
 
 ## License
 
