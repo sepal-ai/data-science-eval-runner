@@ -1,0 +1,170 @@
+{
+  "top_customers": [
+    {
+      "customer_id": "969ecc23-9f3a-4133-8f34-8245353ced5c",
+      "first_name": "Brian",
+      "last_name": "Johnson",
+      "email": "duncanjoshua@example.org",
+      "total_spent": 12723.16,
+      "transaction_count": 5
+    },
+    {
+      "customer_id": "ef9240b6-52d7-4f10-ba3a-6e9623ff23d3",
+      "first_name": "John",
+      "last_name": "Green",
+      "email": "seanadams@example.com",
+      "total_spent": 11220.05,
+      "transaction_count": 4
+    },
+    {
+      "customer_id": "46183169-6925-4436-9afb-16a7fe2c0822",
+      "first_name": "Joseph",
+      "last_name": "Crawford",
+      "email": "patrickhernandez@example.com",
+      "total_spent": 10966.89,
+      "transaction_count": 4
+    },
+    {
+      "customer_id": "4642a480-ebc5-4f09-a766-9ceeffba331a",
+      "first_name": "Daniel",
+      "last_name": "Walker",
+      "email": "ahicks@example.org",
+      "total_spent": 10681.19,
+      "transaction_count": 5
+    },
+    {
+      "customer_id": "bb0c686a-1a5c-4752-a705-1d9697b732b3",
+      "first_name": "Javier",
+      "last_name": "White",
+      "email": "martinezalexa@example.net",
+      "total_spent": 10620.98,
+      "transaction_count": 3
+    },
+    {
+      "customer_id": "13e675fd-1c99-4366-88b6-2c18c355853e",
+      "first_name": "Andrew",
+      "last_name": "Washington",
+      "email": "gwilliams@example.org",
+      "total_spent": 9427.87,
+      "transaction_count": 6
+    },
+    {
+      "customer_id": "33beb361-1193-474e-b915-f9075dec7ccc",
+      "first_name": "Jason",
+      "last_name": "Wang",
+      "email": "dholt@example.com",
+      "total_spent": 9402.82,
+      "transaction_count": 5
+    },
+    {
+      "customer_id": "27c1d438-454f-42ab-9a5e-a455df63b4e9",
+      "first_name": "Elizabeth",
+      "last_name": "Barnett",
+      "email": "heathersanchez@example.com",
+      "total_spent": 9281.19,
+      "transaction_count": 6
+    },
+    {
+      "customer_id": "cf979ff0-7afd-4718-abce-d334fb7b00c7",
+      "first_name": "Megan",
+      "last_name": "Keller",
+      "email": "abbottchristopher@example.net",
+      "total_spent": 9224.98,
+      "transaction_count": 4
+    },
+    {
+      "customer_id": "2010dd30-8e9d-4261-9e2f-e73350a0c3f0",
+      "first_name": "Rhonda",
+      "last_name": "Owens",
+      "email": "danielmendez@example.com",
+      "total_spent": 9153.28,
+      "transaction_count": 5
+    }
+  ],
+  "monthly_sales": [
+    {
+      "month": "2024-07-01 00:00:00",
+      "total_sales": 181240.62,
+      "transaction_count": 107,
+      "avg_transaction_value": 1693.84
+    },
+    {
+      "month": "2024-08-01 00:00:00",
+      "total_sales": 150669.43,
+      "transaction_count": 100,
+      "avg_transaction_value": 1506.69
+    },
+    {
+      "month": "2024-09-01 00:00:00",
+      "total_sales": 162384.77,
+      "transaction_count": 101,
+      "avg_transaction_value": 1607.77
+    },
+    {
+      "month": "2024-10-01 00:00:00",
+      "total_sales": 144284.82,
+      "transaction_count": 93,
+      "avg_transaction_value": 1551.45
+    },
+    {
+      "month": "2024-11-01 00:00:00",
+      "total_sales": 181311.4,
+      "transaction_count": 114,
+      "avg_transaction_value": 1590.45
+    },
+    {
+      "month": "2024-12-01 00:00:00",
+      "total_sales": 146635.08,
+      "transaction_count": 93,
+      "avg_transaction_value": 1576.72
+    },
+    {
+      "month": "2025-01-01 00:00:00",
+      "total_sales": 153165.05,
+      "transaction_count": 97,
+      "avg_transaction_value": 1579.02
+    },
+    {
+      "month": "2025-02-01 00:00:00",
+      "total_sales": 154417.98,
+      "transaction_count": 104,
+      "avg_transaction_value": 1484.79
+    },
+    {
+      "month": "2025-03-01 00:00:00",
+      "total_sales": 137436.05,
+      "transaction_count": 99,
+      "avg_transaction_value": 1388.24
+    },
+    {
+      "month": "2025-04-01 00:00:00",
+      "total_sales": 179216.48,
+      "transaction_count": 105,
+      "avg_transaction_value": 1706.82
+    },
+    {
+      "month": "2025-05-01 00:00:00",
+      "total_sales": 179953.96,
+      "transaction_count": 117,
+      "avg_transaction_value": 1538.07
+    },
+    {
+      "month": "2025-06-01 00:00:00",
+      "total_sales": 157774.43,
+      "transaction_count": 102,
+      "avg_transaction_value": 1546.81
+    },
+    {
+      "month": "2025-07-01 00:00:00",
+      "total_sales": 36131.99,
+      "transaction_count": 19,
+      "avg_transaction_value": 1901.68
+    }
+  ],
+  "summary_stats": {
+    "unique_customers": 711,
+    "total_transactions": 1251,
+    "total_revenue": 1964622.06,
+    "avg_transaction_value": 1570.44
+  }
+}

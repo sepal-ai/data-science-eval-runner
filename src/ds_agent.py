@@ -235,6 +235,8 @@ class DSAgent:
                     result = await self.read_table(tool_input["table_name"], tool_input.get("limit"))
                 elif tool_name == "execute_sql":
                     result = await self.execute_sql(tool_input["query"])
+                elif tool_name == "submit_analysis":
+                    result = await self.submit_analysis(tool_input["analysis_results"])
                 else:
                     result = ToolResult(error=f"Unknown tool: {tool_name}")
 
@@ -303,6 +305,62 @@ class DSAgent:
                     "required": ["query"],
                 },
             },
+            {
+                "name": "submit_analysis",
+                "description": "Submit final analysis results in structured format for evaluation",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "analysis_results": {
+                            "type": "object",
+                            "description": "Structured analysis results",
+                            "properties": {
+                                "top_customer_total_spent": {
+                                    "type": "number",
+                                    "description": "Total amount spent by top customer",
+                                },
+                                "top_customer_name": {"type": "string", "description": "Name of top customer"},
+                                "total_revenue": {
+                                    "type": "number",
+                                    "description": "Total revenue from completed transactions",
+                                },
+                                "total_transactions": {
+                                    "type": "integer",
+                                    "description": "Total number of completed transactions",
+                                },
+                                "unique_customers": {
+                                    "type": "integer",
+                                    "description": "Number of unique customers who made purchases",
+                                },
+                                "avg_transaction_value": {"type": "number", "description": "Average transaction value"},
+                                "highest_month_sales": {
+                                    "type": "number",
+                                    "description": "Highest monthly sales amount",
+                                },
+                                "lowest_month_sales": {"type": "number", "description": "Lowest monthly sales amount"},
+                                "months_with_data": {
+                                    "type": "integer",
+                                    "description": "Number of months with transaction data",
+                                },
+                                "key_insights": {
+                                    "type": "array",
+                                    "items": {"type": "string"},
+                                    "description": "Key insights from analysis",
+                                },
+                            },
+                            "required": [
+                                "top_customer_total_spent",
+                                "top_customer_name",
+                                "total_revenue",
+                                "total_transactions",
+                                "unique_customers",
+                                "avg_transaction_value",
+                            ],
+                        }
+                    },
+                    "required": ["analysis_results"],
+                },
+            },
         ]
 
     def _get_default_system_prompt(self) -> str:
@@ -315,20 +373,32 @@ Available tools:
 - describe_table: Get schema and basic stats for a table
 - read_table: Sample or read full table data
 - execute_sql: Run SQL queries on datasets
+- submit_analysis: Submit final analysis results in structured JSON format
 
 Approach:
 1. Start by exploring the available data using list_tables and describe_table
 2. Use SQL queries to analyze and aggregate data
 3. Write well-commented Python code for your analysis
 4. Create clear output files (CSV, reports) as requested
-5. Provide insights and recommendations
+5. Calculate key metrics and statistics
+6. **IMPORTANT**: Always finish by calling submit_analysis with structured results
 
 Best practices:
 - Always explore data first before analysis
 - Use appropriate SQL for data aggregation
 - Write clean, documented code
 - Validate your results
-- Provide business insights in your reports"""
+- Provide business insights in your reports
+- **MUST**: Submit structured analysis results at the end using submit_analysis tool
+
+For analysis problems, ensure you calculate and submit these key metrics:
+- Top customer information (name and total spent)
+- Total revenue from completed transactions
+- Total number of completed transactions
+- Number of unique customers
+- Average transaction value
+- Monthly sales trends (highest/lowest months)
+- Key insights from your analysis"""
 
     async def write_file(self, path: str, content: str) -> ToolResult:
         """Write code/analysis files to the filesystem."""
@@ -428,6 +498,41 @@ Best practices:
             return ToolResult(output=output)
         except Exception as e:
             return ToolResult(error=f"Failed to execute query: {str(e)}")
+
+    async def submit_analysis(self, analysis_results: dict) -> ToolResult:
+        """Submit final analysis results in structured format."""
+        try:
+            # Store the analysis results for evaluation
+            self.analysis_results = analysis_results
+
+            # Save to JSON file for evaluation
+            import json
+
+            results_path = Path("./workdir/analysis_results.json")
+            results_path.parent.mkdir(parents=True, exist_ok=True)
+
+            with open(results_path, "w") as f:
+                json.dump(analysis_results, f, indent=2)
+
+            # Create a summary for display
+            summary = f"""
+Analysis Results Submitted:
+- Top Customer: {analysis_results.get("top_customer_name", "N/A")} (${analysis_results.get("top_customer_total_spent", 0)})
+- Total Revenue: ${analysis_results.get("total_revenue", 0)}
+- Total Transactions: {analysis_results.get("total_transactions", 0)}
+- Unique Customers: {analysis_results.get("unique_customers", 0)}
+- Average Transaction Value: ${analysis_results.get("avg_transaction_value", 0)}
+- Months with Data: {analysis_results.get("months_with_data", 0)}
+            """
+
+            if "key_insights" in analysis_results:
+                summary += f"\nKey Insights:\n"
+                for i, insight in enumerate(analysis_results["key_insights"], 1):
+                    summary += f"  {i}. {insight}\n"
+
+            return ToolResult(output=summary.strip())
+        except Exception as e:
+            return ToolResult(error=f"Failed to submit analysis: {str(e)}")
 
     def close(self):
         """Close database connection."""

@@ -43,5 +43,16 @@ validation_criteria:
   - "Analysis script should be well-commented and executable"
   - "Report should contain actionable insights"
 
+ground_truth:
+  top_customer_total_spent: 12723.16
+  top_customer_name: "Brian Johnson"
+  total_revenue: 1964622.06
+  total_transactions: 1251
+  unique_customers: 711
+  avg_transaction_value: 1570.44
+  highest_month_sales: 181311.4
+  lowest_month_sales: 36131.99
+  months_with_data: 13
+
 estimated_time_minutes: 30
 timeout_seconds: 600 

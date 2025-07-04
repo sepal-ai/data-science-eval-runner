@@ -1,55 +1,91 @@
 id: time_series_forecast_003
-title: "Daily Sales Forecasting"
-description: "Build a time series model to forecast daily sales for the next 30 days"
-difficulty: "hard"
-category: "time_series_analysis"
-tags: ["forecasting", "time_series", "prediction"]
+title: Daily Sales Forecasting
+description: Build a time series model to forecast daily sales for the next 30 days
+difficulty: hard
+category: time_series_analysis
+tags:
+- forecasting
+- time_series
+- prediction
+problem_statement: 'Using the transaction data, build a time series forecasting model
+  to predict daily sales.
 
-problem_statement: |
-  Using the transaction data, build a time series forecasting model to predict daily sales.
-  
+
   Your tasks:
+
   1. Aggregate transaction data to daily sales totals
+
   2. Explore time series patterns (trend, seasonality)
+
   3. Prepare data for forecasting (handle missing values, outliers)
+
   4. Build and evaluate forecasting models
+
   5. Generate 30-day forecast with confidence intervals
+
   6. Provide model performance metrics and business insights
-  
+
+
   Expected deliverables:
+
   - Data preparation script (data_prep.py)
+
   - Time series analysis script (ts_analysis.py)
+
   - Forecasting model script (forecast_model.py)
+
   - Daily sales data (daily_sales.csv)
+
   - 30-day forecast (sales_forecast.csv)
+
   - Model evaluation report (forecast_report.md)
 
+  '
 expected_files:
-  - "data_prep.py"
-  - "ts_analysis.py"
-  - "forecast_model.py"
-  - "daily_sales.csv"
-  - "sales_forecast.csv"
-  - "forecast_report.md"
-
+- data_prep.py
+- ts_analysis.py
+- forecast_model.py
+- daily_sales.csv
+- sales_forecast.csv
+- forecast_report.md
 scoring:
   correctness: 0.4
   methodology: 0.35
   code_quality: 0.15
   completeness: 0.1
-
 hints:
-  - "Aggregate transaction data by date to get daily sales"
-  - "Check for missing dates and handle appropriately"
-  - "Consider seasonal patterns (day of week, month effects)"
-  - "Use appropriate forecasting methods (ARIMA, exponential smoothing)"
-  - "Validate model performance using train/test split"
-
+- Aggregate transaction data by date to get daily sales
+- Check for missing dates and handle appropriately
+- Consider seasonal patterns (day of week, month effects)
+- Use appropriate forecasting methods (ARIMA, exponential smoothing)
+- Validate model performance using train/test split
 validation_criteria:
-  - "Daily sales aggregation should be correct"
-  - "Forecast should include confidence intervals"
-  - "Model evaluation metrics should be included"
-  - "Business interpretation should be meaningful"
-
+- Daily sales aggregation should be correct
+- Forecast should include confidence intervals
+- Model evaluation metrics should be included
+- Business interpretation should be meaningful
 estimated_time_minutes: 90
-timeout_seconds: 1200 
+timeout_seconds: 1200
+ground_truth:
+  total_days_analyzed: 365
+  days_with_sales: 356
+  total_sales: 1964622.06
+  avg_daily_sales: 5382.53
+  max_daily_sales: 23177.5
+  min_daily_sales: 0.0
+  best_sales_date: '2025-01-21'
+  best_sales_amount: 23177.5
+  worst_sales_date: '2024-07-20'
+  worst_sales_amount: 0.0
+  trend_direction: stable
+  trend_correlation: 0.017
+  best_day_of_week: Sunday
+  best_day_avg_sales: 6019.4
+  worst_day_of_week: Thursday
+  worst_day_avg_sales: 4814.88
+  best_month: 2025-07
+  worst_month: 2025-03
+  volatility_coefficient: 0.69
+  last_7_days_avg: 7646.05
+  last_30_days_avg: 5965.97
+  forecast_baseline: 7646.05

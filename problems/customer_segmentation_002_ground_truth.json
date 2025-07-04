@@ -1,0 +1,53 @@
+{
+  "total_customers_analyzed": 711,
+  "number_of_segments": 5,
+  "largest_segment": "Lost Customers",
+  "largest_segment_size": 434,
+  "highest_value_segment": "Loyal Customers",
+  "highest_value_segment_avg": 9319.39,
+  "champions_count": 0,
+  "lost_customers_count": 434,
+  "avg_rfm_score": 1.78,
+  "segments_summary": [
+    {
+      "segment": "At Risk",
+      "customer_count": 1,
+      "avg_monetary": 5958.33,
+      "total_monetary": 5958.33,
+      "avg_frequency": 5.0,
+      "avg_recency": 187.0
+    },
+    {
+      "segment": "Lost Customers",
+      "customer_count": 434,
+      "avg_monetary": 2332.67,
+      "total_monetary": 1012377.06,
+      "avg_frequency": 1.51,
+      "avg_recency": 204.13
+    },
+    {
+      "segment": "Loyal Customers",
+      "customer_count": 9,
+      "avg_monetary": 9319.39,
+      "total_monetary": 83874.53,
+      "avg_frequency": 5.22,
+      "avg_recency": 24.44
+    },
+    {
+      "segment": "New Customers",
+      "customer_count": 180,
+      "avg_monetary": 3264.81,
+      "total_monetary": 587666.03,
+      "avg_frequency": 2.08,
+      "avg_recency": 28.89
+    },
+    {
+      "segment": "Potential Loyalists",
+      "customer_count": 87,
+      "avg_monetary": 3158.0,
+      "total_monetary": 274746.11,
+      "avg_frequency": 1.94,
+      "avg_recency": 73.64
+    }
+  ]
+}

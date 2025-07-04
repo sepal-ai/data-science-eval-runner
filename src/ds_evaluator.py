@@ -316,20 +316,51 @@ class DSAgentEvaluator:
         """Score the correctness of the analysis and results."""
         score = 0.0
 
-        # Check if expected output files exist
-        expected_files = self._get_expected_files(problem_id)
-        for expected_file in expected_files:
-            if expected_file in created_files:
-                score += 0.3
+        # Load ground truth for comparison
+        ground_truth = self._load_ground_truth(problem_id)
 
-        # Check if analysis file contains expected elements
-        analysis_files = [f for f in created_files if f.endswith((".py", ".sql", ".md", ".txt"))]
-        if analysis_files:
-            score += 0.4
+        # Check if structured analysis results exist
+        analysis_results_file = workdir / "analysis_results.json"
+        if analysis_results_file.exists():
+            try:
+                import json
 
-        # Check if results are reasonable (basic sanity checks)
-        if self._validate_results(workdir, created_files):
-            score += 0.3
+                with open(analysis_results_file, "r") as f:
+                    agent_results = json.load(f)
+
+                # Compare against ground truth
+                if ground_truth:
+                    accuracy_score = self._compare_results_to_ground_truth(agent_results, ground_truth)
+                    score += accuracy_score * 0.7  # 70% weight for accuracy
+                else:
+                    score += 0.5  # Partial credit if no ground truth available
+
+                # Check if key metrics are present
+                required_keys = [
+                    "top_customer_total_spent",
+                    "top_customer_name",
+                    "total_revenue",
+                    "total_transactions",
+                    "unique_customers",
+                    "avg_transaction_value",
+                ]
+                present_keys = sum(1 for key in required_keys if key in agent_results)
+                score += (present_keys / len(required_keys)) * 0.3  # 30% weight for completeness
+
+            except Exception as e:
+                print(f"Error loading analysis results: {e}")
+                score += 0.2  # Partial credit for file existence
+        else:
+            # Fallback to old scoring method
+            expected_files = self._get_expected_files(problem_id)
+            for expected_file in expected_files:
+                if expected_file in created_files:
+                    score += 0.1
+
+            # Check if analysis file contains expected elements
+            analysis_files = [f for f in created_files if f.endswith((".py", ".sql", ".md", ".txt"))]
+            if analysis_files:
+                score += 0.2
 
         return min(1.0, score)
 
@@ -426,6 +457,71 @@ class DSAgentEvaluator:
         except Exception as e:
             print(f"Error loading problem statement: {e}")
             return f"Analyze the data and provide insights for problem: {problem_id}"
+
+    def _load_ground_truth(self, problem_id: str) -> Optional[Dict[str, Any]]:
+        """Load ground truth solutions for a problem."""
+        try:
+            import yaml
+
+            problem_file = Path("problems") / f"{problem_id}.yaml"
+            if problem_file.exists():
+                with open(problem_file, "r") as f:
+                    problem_data = yaml.safe_load(f)
+                    return problem_data.get("ground_truth")
+            return None
+        except Exception as e:
+            print(f"Error loading ground truth: {e}")
+            return None
+
+    def _compare_results_to_ground_truth(self, agent_results: Dict[str, Any], ground_truth: Dict[str, Any]) -> float:
+        """Compare agent results to ground truth and return accuracy score (0-1)."""
+        score = 0.0
+        total_checks = 0
+
+        # Define tolerance for numerical comparisons
+        tolerance = 0.05  # 5% tolerance
+
+        # Check numerical values
+        numerical_keys = [
+            ("top_customer_total_spent", "top_customer_total_spent"),
+            ("total_revenue", "total_revenue"),
+            ("total_transactions", "total_transactions"),
+            ("unique_customers", "unique_customers"),
+            ("avg_transaction_value", "avg_transaction_value"),
+            ("highest_month_sales", "highest_month_sales"),
+            ("lowest_month_sales", "lowest_month_sales"),
+            ("months_with_data", "months_with_data"),
+        ]
+
+        for agent_key, gt_key in numerical_keys:
+            if agent_key in agent_results and gt_key in ground_truth:
+                total_checks += 1
+                agent_val = float(agent_results[agent_key])
+                gt_val = float(ground_truth[gt_key])
+
+                # Check if within tolerance
+                if abs(agent_val - gt_val) / gt_val <= tolerance:
+                    score += 1.0
+                elif abs(agent_val - gt_val) / gt_val <= tolerance * 2:
+                    score += 0.5  # Partial credit for close values
+
+        # Check string values
+        string_keys = [
+            ("top_customer_name", "top_customer_name"),
+        ]
+
+        for agent_key, gt_key in string_keys:
+            if agent_key in agent_results and gt_key in ground_truth:
+                total_checks += 1
+                if agent_results[agent_key].strip().lower() == ground_truth[gt_key].strip().lower():
+                    score += 1.0
+                elif (
+                    agent_results[agent_key].strip().lower() in ground_truth[gt_key].strip().lower()
+                    or ground_truth[gt_key].strip().lower() in agent_results[agent_key].strip().lower()
+                ):
+                    score += 0.5  # Partial credit for partial matches
+
+        return score / total_checks if total_checks > 0 else 0.0
 
     def _get_expected_files(self, problem_id: str) -> List[str]:
         """Get list of expected output files for a problem."""
