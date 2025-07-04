@@ -508,8 +508,8 @@ For analysis problems, ensure you calculate and submit these key metrics:
             # Save to JSON file for evaluation
             import json
 
-            results_path = Path("./workdir/analysis_results.json")
-            results_path.parent.mkdir(parents=True, exist_ok=True)
+            # During evaluation, we're already in the workdir, so save directly to current directory
+            results_path = Path("analysis_results.json")
 
             with open(results_path, "w") as f:
                 json.dump(analysis_results, f, indent=2)
