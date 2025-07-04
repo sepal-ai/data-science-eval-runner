@@ -1,4 +1,4 @@
-# Data Science Agent Evaluation System
+# Data Science Agent Evaluation Runner
 
 A comprehensive evaluation framework for data science agents, featuring a restricted action space for analytical tasks, mock data generation, and automated scoring.
 
