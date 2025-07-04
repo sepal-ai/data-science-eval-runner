@@ -172,8 +172,6 @@ python -m ds_runner eval-agent my_agent --suite all --output results.json
 python -m ds_runner eval-agent my_agent --problem sales_analysis_001 --verbose
 ```
 
-## Building Custom Agents
-
 ## Scoring System
 
 ### Rubric Categories
